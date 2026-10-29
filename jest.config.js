@@ -9,5 +9,8 @@ module.exports = {
     // CSS-only shared module (imported via @import "c/pcStyles")
     "^c/pcStyles$": "<rootDir>/force-app/main/default/lwc/pcStyles/pcStyles.css"
   },
-  modulePathIgnorePatterns: ["<rootDir>/.localdevserver"]
+  modulePathIgnorePatterns: [
+    "<rootDir>/.localdevserver",
+    "<rootDir>/local-only"
+  ]
 };
