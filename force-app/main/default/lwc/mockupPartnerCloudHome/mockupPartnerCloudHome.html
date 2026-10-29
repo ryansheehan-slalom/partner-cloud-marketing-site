@@ -1,0 +1,274 @@
+<!--
+  MOCKUP — Partner Cloud Home (Elevated / Abstract)
+  Layout departure: net-new marketing page assembled from the ecHtf* reference
+  patterns (hero grid, feature split, asset-grid cards, orb CTA band, dark footer)
+  and pushed toward a bolder, layered aesthetic — gradient mesh hero, glass cards,
+  animated orbs. All content is static (see partner-cloud-home-content-map.md).
+-->
+<template>
+  <div class="pc">
+    <!-- ══════════════ HERO ══════════════ -->
+    <section class="pc-hero" id="home" aria-labelledby="hero-heading">
+      <div class="pc-hero__mesh" aria-hidden="true"></div>
+      <div class="pc-container">
+        <div class="pc-hero__grid">
+          <div class="pc-hero__copy">
+            <p class="pc-eyebrow">Salesforce Partner Cloud</p>
+            <h1 id="hero-heading" class="pc-hero__title">
+              Empower your partners with a <span class="pc-accent">compelling</span> experience that <span class="pc-accent">accelerates growth</span> and provides <span class="pc-accent">meaningful value</span>.
+            </h1>
+            <p class="pc-hero__lede">
+              A strategy-first approach to modernizing partner ecosystems — grounded in program insight, intentional design, and Slalom's deep Salesforce expertise.
+            </p>
+            <div class="pc-hero__cta">
+              <a class="pc-btn pc-btn--primary pc-btn--lg" href="#connect" data-label="connect" onclick={handleNavClick}>Connect with us <span class="pc-arr" aria-hidden="true">→</span></a>
+              <a class="pc-btn pc-btn--ghost pc-btn--lg" href="#solution">See our approach</a>
+            </div>
+            <ul class="pc-hero__assure" aria-label="Assurances">
+              <li class="pc-chip-a"><span class="pc-chip-a__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Strategy-led</li>
+              <li class="pc-chip-a"><span class="pc-chip-a__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 360° partner view</li>
+              <li class="pc-chip-a"><span class="pc-chip-a__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Slalom-only accelerators</li>
+            </ul>
+          </div>
+
+          <div class="pc-hero__art-wrap">
+            <div class="pc-hero__art" role="img" aria-label="A Slalom team collaborating with Salesforce partners">
+              <div class="pc-hero__art-glow" aria-hidden="true"></div>
+              <svg class="pc-hero__art-svg" viewBox="0 0 400 340" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="pcArtG" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="340" fill="url(#pcArtG)"/>
+                <circle cx="90" cy="120" r="34" fill="rgba(255,255,255,.22)"/>
+                <circle cx="200" cy="150" r="42" fill="rgba(255,255,255,.28)"/>
+                <circle cx="310" cy="120" r="34" fill="rgba(255,255,255,.22)"/>
+                <rect x="46" y="180" width="88" height="90" rx="16" fill="rgba(255,255,255,.18)"/>
+                <rect x="156" y="205" width="88" height="90" rx="16" fill="rgba(255,255,255,.24)"/>
+                <rect x="266" y="180" width="88" height="90" rx="16" fill="rgba(255,255,255,.18)"/>
+              </svg>
+            </div>
+            <div class="pc-hero__floatcard">
+              <span class="pc-floatcard__ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17 6 12l-2 2 7 7L22 9l-2-2-9 10Z"/><path d="M2 12l3-3 3 3"/></svg>
+              </span>
+              <div class="pc-floatcard__body">
+                <strong class="pc-floatcard__title">Salesforce Partner</strong>
+                <span class="pc-floatcard__sub">Consulting Summit tier</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 3 · THE CHALLENGE ══════════════ -->
+    <section class="pc-section pc-section--surface" id="challenge" aria-labelledby="challenge-heading">
+      <div class="pc-container">
+        <div class="pc-feature">
+          <div class="pc-feature__media">
+            <div class="pc-feature__media-inner" aria-hidden="true">
+              <svg viewBox="0 0 320 260" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="pcChG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6efff"/><stop offset="1" stop-color="#d9f1fa"/></linearGradient></defs>
+                <rect width="320" height="260" fill="url(#pcChG)"/>
+                <rect x="34" y="40" width="180" height="14" rx="7" fill="#0c62fb" opacity=".28"/>
+                <rect x="34" y="70" width="240" height="10" rx="5" fill="#0847c4" opacity=".18"/>
+                <rect x="34" y="94" width="210" height="10" rx="5" fill="#0847c4" opacity=".14"/>
+                <rect x="34" y="140" width="120" height="80" rx="14" fill="#0c62fb" opacity=".16"/>
+                <rect x="170" y="140" width="120" height="80" rx="14" fill="#00a1e0" opacity=".2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pc-feature__copy">
+            <span class="pc-eyebrow">The Challenge</span>
+            <h2 id="challenge-heading">Partner experiences that get in the way of growth.</h2>
+            <p class="pc-feature__body">
+              A thriving partner ecosystem boosts adoption, scale, and innovation — but achieving that impact requires partner experiences that are simple, consistent, and easy to navigate.
+            </p>
+            <p class="pc-feature__label">Common challenges we see…</p>
+            <ul class="pc-feature__list">
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span>
+                <div class="pc-feature__txt"><strong>Frustrating deal registration</strong><span>Long forms drag down pipeline visibility.</span></div>
+              </li>
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+                <div class="pc-feature__txt"><strong>Cluttered user experiences</strong><span>Hidden key actions push partners off-platform.</span></div>
+              </li>
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+                <div class="pc-feature__txt"><strong>Limited tiering visibility</strong><span>Progress and rewards go unrecognized, weakening loyalty.</span></div>
+              </li>
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span>
+                <div class="pc-feature__txt"><strong>No channel conflict strategy</strong><span>Ambiguity erodes partner trust.</span></div>
+              </li>
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8L4 10l5 3.5L7.5 20 12 16l4.5 4L15 13.5 20 10l-6.1-1.2Z"/></svg></span>
+                <div class="pc-feature__txt"><strong>Weak enablement &amp; onboarding</strong><span>Adoption and usage stall out.</span></div>
+              </li>
+              <li class="pc-feature__item">
+                <span class="pc-feature__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
+                <div class="pc-feature__txt"><strong>Non-sales partner needs ignored</strong><span>Program value is capped at the deal desk.</span></div>
+              </li>
+            </ul>
+            <p class="pc-feature__note">
+              With deep experience solving these challenges, Slalom helps organizations modernize partner experiences — whether improving existing tools or implementing new solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 4 · THE SOLUTION ══════════════ -->
+    <section class="pc-section" id="solution" aria-labelledby="solution-heading">
+      <div class="pc-container">
+        <header class="pc-sec-head">
+          <span class="pc-eyebrow">The Solution</span>
+          <h2 id="solution-heading">A strategy-first approach to partner ecosystem modernization.</h2>
+          <p class="pc-sec-head__lede">Using partner-program insight and intentional design to modernize ecosystems and remove friction.</p>
+        </header>
+
+        <div class="pc-asset-grid">
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></span>
+            <h3>Strategy-led ecosystem design</h3>
+            <p>Grounded in partner strategy, industry insight, and purposeful UX.</p>
+          </article>
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <h3>Realized ROI and partner value</h3>
+            <p>Pair deal insights with incentive forecasting and marketing attribution for a 360° view of investment and expected revenue.</p>
+          </article>
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></span>
+            <h3>Streamlined core partner journeys</h3>
+            <p>Simplified onboarding, enablement, selling motions, and program progression.</p>
+          </article>
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+            <h3>Multi-channel engagement</h3>
+            <p>Combining marketing communications with Slack-based, real-time interactions.</p>
+          </article>
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <h3>Centralized partner hub architecture</h3>
+            <p>Provide partners with a full view of their engagement across the ecosystem.</p>
+          </article>
+          <article class="pc-card">
+            <span class="pc-card__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></span>
+            <h3>Slalom-only accelerators</h3>
+            <p>Drive immediate impact with intuitive marketing development visualization and deal intake channels through directory management.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 5 · INSIGHTS PREVIEW ══════════════ -->
+    <section class="pc-section pc-section--white" id="insights-preview" aria-labelledby="insights-heading">
+      <div class="pc-container">
+        <header class="pc-sec-head">
+          <span class="pc-eyebrow">Insights</span>
+          <h2 id="insights-heading">Notes from the ecosystem.</h2>
+          <p class="pc-sec-head__lede">Fresh perspectives on modernizing partner programs, from the Slalom team building them.</p>
+        </header>
+
+        <div class="pc-insights-grid">
+          <article class="pc-article">
+            <div class="pc-article__img pc-article__img--a" aria-hidden="true"></div>
+            <div class="pc-article__body">
+              <div class="pc-article__meta"><span class="pc-tag">Strategy</span><span class="pc-article__date">Aug 12, 2026</span></div>
+              <h3>Designing partner journeys that actually convert</h3>
+              <p>Why the first 30 days of onboarding decide the next 30 months of program value.</p>
+            </div>
+          </article>
+          <article class="pc-article">
+            <div class="pc-article__img pc-article__img--b" aria-hidden="true"></div>
+            <div class="pc-article__body">
+              <div class="pc-article__meta"><span class="pc-tag">Data</span><span class="pc-article__date">Jul 28, 2026</span></div>
+              <h3>Proving partner ROI with a 360° revenue view</h3>
+              <p>Connecting deal insights, incentives, and attribution into one forecastable picture.</p>
+            </div>
+          </article>
+          <article class="pc-article">
+            <div class="pc-article__img pc-article__img--c" aria-hidden="true"></div>
+            <div class="pc-article__body">
+              <div class="pc-article__meta"><span class="pc-tag">Engagement</span><span class="pc-article__date">Jul 09, 2026</span></div>
+              <h3>Meeting partners where they work: Slack + Salesforce</h3>
+              <p>Real-time engagement patterns that keep partners on-platform and moving deals.</p>
+            </div>
+          </article>
+        </div>
+        <div class="pc-insights-cta">
+          <a class="pc-btn pc-btn--ghost" href="#insights-preview" data-label="all-insights" onclick={handleNavClick}>See all insights <span class="pc-arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 6 · WHO WE ARE ══════════════ -->
+    <section class="pc-section pc-section--surface pc-section--tight" id="who-we-are" aria-labelledby="who-heading">
+      <div class="pc-container">
+        <div class="pc-feature pc-feature--rev">
+          <div class="pc-feature__copy">
+            <span class="pc-eyebrow">Who We Are</span>
+            <h2 id="who-heading">Purpose-led. Salesforce-fluent. Ecosystem-focused.</h2>
+            <p class="pc-feature__body">
+              Slalom is a purpose-led, global business and technology consulting company. Our purpose — to help people and organizations dream bigger, move faster, and build better tomorrows for all — guides everything we do.
+            </p>
+            <p class="pc-feature__body pc-feature__body--dim">
+              Salesforce Partner Cloud is where our decades of channel and partner-program experience meet the platform's fastest-growing ecosystem product line. We help organizations turn partner strategy into partner behavior.
+            </p>
+            <div class="pc-feature__cta">
+              <a class="pc-btn pc-btn--primary" href="https://slalom.com/salesforce" target="_blank" rel="noopener noreferrer" data-label="learn-more" onclick={handleNavClick}>Learn more at slalom.com/salesforce <span class="pc-arr" aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="pc-feature__media pc-feature__media--alt">
+            <div class="pc-feature__media-inner pc-lockup" aria-hidden="true">
+              <div class="pc-lockup__row">
+                <span class="pc-lockup__slalom">slalom</span>
+                <span class="pc-lockup__x">×</span>
+                <span class="pc-lockup__cloud">
+                  <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.2 9.2 4 4 0 0 0 7 17"/></svg>
+                </span>
+              </div>
+              <span class="pc-lockup__tag">Salesforce Partner Cloud</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ 7 · CTA BAND ══════════════ -->
+    <section class="pc-cta-section" id="connect">
+      <div class="pc-container">
+        <div class="pc-cta-band" aria-labelledby="cta-heading">
+          <div class="pc-cta-band__orb pc-cta-band__orb--1" aria-hidden="true"></div>
+          <div class="pc-cta-band__orb pc-cta-band__orb--2" aria-hidden="true"></div>
+          <div class="pc-cta-band__inner">
+            <div class="pc-cta-band__copy">
+              <span class="pc-eyebrow pc-eyebrow--on-dark">Connect With Us</span>
+              <h2 id="cta-heading" class="pc-cta-band__title">Ready to modernize your partner experience?</h2>
+              <p class="pc-cta-band__body">
+                Talk to our Salesforce Partner Cloud lead — we'll workshop your program challenges and outline the fastest path to impact.
+              </p>
+              <div class="pc-cta-band__btns">
+                <a class="pc-btn pc-btn--on-dark pc-btn--lg" href="mailto:jake.seibert@slalom.com" data-label="email-jake" onclick={handleNavClick}>Email Jake <span class="pc-arr" aria-hidden="true">→</span></a>
+                <a class="pc-btn pc-btn--outline-white pc-btn--lg" href="https://slalom.com/salesforce" target="_blank" rel="noopener noreferrer">slalom.com/salesforce</a>
+              </div>
+            </div>
+
+            <aside class="pc-contact-card">
+              <div class="pc-contact-card__avatar" aria-hidden="true">JS</div>
+              <div class="pc-contact-card__body">
+                <strong class="pc-contact-card__name">Jake Seibert</strong>
+                <span class="pc-contact-card__role">Senior Principal, Salesforce Partner Cloud</span>
+                <a class="pc-contact-card__email" href="mailto:jake.seibert@slalom.com">jake.seibert@slalom.com</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>

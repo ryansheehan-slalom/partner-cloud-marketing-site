@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+
+            <property
+        name="route"
+        type="String"
+        label="Route"
+        description="Page route to render (home, about, faq, contact, catalog, apply). Resolved against the brand's page entries in Contentful."
+        default="home"
+      />
+
+            <property
+        name="homePageName"
+        type="String"
+        label="Home Page API Name"
+        description="Experience Cloud community page API name used to generate the Home page URL."
+        default="Home"
+      />
+
+            <property
+        name="aboutPageName"
+        type="String"
+        label="About Us Page API Name"
+        description="Experience Cloud community page API name used to generate the About Us page URL."
+        default="about"
+      />
+
+            <property
+        name="faqPageName"
+        type="String"
+        label="FAQ Page API Name"
+        description="Experience Cloud community page API name used to generate the FAQ page URL."
+        default="faq"
+      />
+
+            <property
+        name="contactPageName"
+        type="String"
+        label="Contact Page API Name"
+        description="Experience Cloud community page API name used to generate the Contact page URL."
+        default="contact"
+      />
+
+            <property
+        name="catalogPageName"
+        type="String"
+        label="Catalog Page API Name"
+        description="Experience Cloud community page API name used to generate the Equipment Catalog page URL."
+        default="catalog"
+      />
+
+            <property
+        name="applyPageName"
+        type="String"
+        label="Apply / Get a Quote Page API Name"
+        description="Experience Cloud community page API name used to generate the Apply (Get a Quote) page URL."
+        default="apply"
+      />
+
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

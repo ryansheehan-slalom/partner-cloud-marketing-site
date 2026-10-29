@@ -1,0 +1,14 @@
+<template>
+  <!-- Layout is composed in Contentful (page entry, route="home") and rendered
+       by c-contentful-page. This wrapper exists only so Experience Builder
+       routing/SEO for the Home page stays unchanged. -->
+  <c-contentful-page
+    route="home"
+    home-page-name={homePageName}
+    about-page-name={aboutPageName}
+    faq-page-name={faqPageName}
+    contact-page-name={contactPageName}
+    catalog-page-name={catalogPageName}
+    apply-page-name={applyPageName}
+  ></c-contentful-page>
+</template>

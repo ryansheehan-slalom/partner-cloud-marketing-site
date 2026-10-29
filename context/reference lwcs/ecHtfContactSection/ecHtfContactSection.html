@@ -1,0 +1,275 @@
+<template>
+  <section class="contact-sec">
+    <div class="container contact-grid">
+      <!-- ── LEFT: Form card ──────────────────────────────────────── -->
+      <div class="form-col">
+        <div class="form-card">
+          <!-- Success state -->
+          <template if:true={formSubmitted}>
+            <div class="success-panel">
+              <span
+                class="success-panel__icon"
+                data-icon="checkc"
+                data-size="56"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <h2 class="success-panel__title">Message sent!</h2>
+              <p class="success-panel__body">
+                Thank you for reaching out. A financing specialist will be in
+                touch within one business day.
+              </p>
+            </div>
+          </template>
+
+          <!-- Form -->
+          <template if:false={formSubmitted}>
+            <h2 class="form-card__heading">Send us a message</h2>
+            <p class="form-card__sub">
+              We&rsquo;ll get back to you within one business day.
+            </p>
+
+            <div class="form-body">
+              <div class="field">
+                <label class="field__label" for="cf-first"
+                  >First name <span class="req">*</span></label
+                >
+                <input
+                  id="cf-first"
+                  type="text"
+                  class={firstNameClass}
+                  value={formData.firstName}
+                  data-key="firstName"
+                  oninput={handleInput}
+                  autocomplete="given-name"
+                  placeholder="Jordan"
+                />
+                <template if:true={formErrors.firstName}
+                  ><span class="field__err"
+                    >{formErrors.firstName}</span
+                  ></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-last"
+                  >Last name <span class="req">*</span></label
+                >
+                <input
+                  id="cf-last"
+                  type="text"
+                  class={lastNameClass}
+                  value={formData.lastName}
+                  data-key="lastName"
+                  oninput={handleInput}
+                  autocomplete="family-name"
+                  placeholder="Avery"
+                />
+                <template if:true={formErrors.lastName}
+                  ><span class="field__err"
+                    >{formErrors.lastName}</span
+                  ></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-email"
+                  >Email <span class="req">*</span></label
+                >
+                <input
+                  id="cf-email"
+                  type="email"
+                  class={emailClass}
+                  value={formData.email}
+                  data-key="email"
+                  oninput={handleInput}
+                  autocomplete="email"
+                  placeholder="you@business.com"
+                />
+                <template if:true={formErrors.email}
+                  ><span class="field__err">{formErrors.email}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-phone">Phone</label>
+                <input
+                  id="cf-phone"
+                  type="tel"
+                  class="field__input"
+                  value={formData.phone}
+                  data-key="phone"
+                  oninput={handleInput}
+                  autocomplete="tel"
+                  placeholder="(555) 000-0000"
+                />
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="cf-company"
+                  >{companyLabel}</label
+                >
+                <input
+                  id="cf-company"
+                  type="text"
+                  class="field__input"
+                  value={formData.company}
+                  data-key="company"
+                  oninput={handleInput}
+                  autocomplete="organization"
+                  placeholder={companyPlaceholder}
+                />
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="cf-topic"
+                  >How can we help? <span class="req">*</span></label
+                >
+                <select
+                  id="cf-topic"
+                  class={topicClass}
+                  data-key="topic"
+                  onchange={handleSelect}
+                >
+                  <option value="">Select a topic…</option>
+                  <template for:each={topicOptionsList} for:item="opt">
+                    <option key={opt} value={opt}>{opt}</option>
+                  </template>
+                </select>
+                <template if:true={formErrors.topic}
+                  ><span class="field__err">{formErrors.topic}</span></template
+                >
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="cf-message"
+                  >Message <span class="req">*</span></label
+                >
+                <textarea
+                  id="cf-message"
+                  class={messageClass}
+                  rows="5"
+                  value={formData.message}
+                  data-key="message"
+                  oninput={handleInput}
+                  placeholder="Tell us a little about what you&rsquo;re looking to finance…"
+                ></textarea>
+                <template if:true={formErrors.message}
+                  ><span class="field__err"
+                    >{formErrors.message}</span
+                  ></template
+                >
+              </div>
+
+              <template if:true={submitError}>
+                <div class="field--wide form-error" role="alert">
+                  {submitError}
+                </div>
+              </template>
+
+              <div class="form-footer">
+                <button
+                  type="button"
+                  class="btn btn--brand btn--lg"
+                  onclick={handleSubmit}
+                  disabled={submitting}
+                >
+                  {submitLabel}
+                </button>
+                <span class="form-footer__note"
+                  >Prefer to talk? Call
+                  <a href={phoneHref}>{content.phone}</a>.</span
+                >
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Info panel ────────────────────────────────────── -->
+      <div class="info-col">
+        <div class="info-panel">
+          <h3 class="info-panel__title">{programName}</h3>
+          <p class="info-panel__attr">{attribution}.</p>
+
+          <ul class="contact-items" aria-label="Contact details">
+            <li class="contact-item">
+              <span
+                class="contact-item__icon"
+                data-icon="phone"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <div class="contact-item__body">
+                <span class="contact-item__label">Phone</span>
+                <a href={phoneHref} class="contact-item__value"
+                  >{content.phone}</a
+                >
+              </div>
+            </li>
+            <li class="contact-item">
+              <span
+                class="contact-item__icon"
+                data-icon="mail"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <div class="contact-item__body">
+                <span class="contact-item__label">Email</span>
+                <a href={emailHref} class="contact-item__value"
+                  >{content.email}</a
+                >
+              </div>
+            </li>
+            <li class="contact-item">
+              <span
+                class="contact-item__icon"
+                data-icon="clock"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <div class="contact-item__body">
+                <span class="contact-item__label">Hours</span>
+                <span class="contact-item__value">{content.hours}</span>
+              </div>
+            </li>
+            <li class="contact-item">
+              <span
+                class="contact-item__icon"
+                data-icon="building"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <div class="contact-item__body">
+                <span class="contact-item__label">Program</span>
+                <span class="contact-item__value">{content.address}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ready to apply CTA -->
+        <a href={applyHref} onclick={handleApplyClick} class="apply-card">
+          <span
+            class="apply-card__icon"
+            data-icon="doc"
+            data-size="22"
+            lwc:dom="manual"
+            aria-hidden="true"
+          ></span>
+          <span class="apply-card__body">
+            <strong class="apply-card__title">Ready to apply?</strong>
+            <span class="apply-card__sub"
+              >Start your application — it takes about 10 minutes.</span
+            >
+            <span class="apply-card__link">Apply now →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</template>

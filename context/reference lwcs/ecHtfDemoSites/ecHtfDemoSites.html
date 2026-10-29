@@ -1,0 +1,86 @@
+<template>
+  <!-- ═══════════════════════════════════════════════════════════════════
+         PAGE BAND — dark header with section eyebrow / title / lede
+    ═══════════════════════════════════════════════════════════════════ -->
+  <div class="page-band">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href={homeHref} onclick={handleHomeClick} class="breadcrumb__link"
+          >Home</a
+        >
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">Demo Sites</span>
+      </nav>
+      <p class="page-band__eyebrow">{showcase.eyebrow}</p>
+      <h1 class="page-band__h1">{showcase.title}</h1>
+      <p class="page-band__lede">{showcase.body}</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         BRAND CARDS — three live experiences
+    ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="demos-heading">
+    <div class="container">
+      <template if:true={hasCards}>
+        <div class="brand-grid">
+          <template for:each={brandCards} for:item="card">
+            <div
+              key={card.id}
+              class={card.cardClass}
+              data-accent={card.accent}
+              data-accent-deep={card.accentDeep}
+            >
+              <div class="brand-card__art">
+                <c-ec-htf-brand-art art-type={card.id}></c-ec-htf-brand-art>
+              </div>
+
+              <div class="brand-card__body">
+                <div class="brand-card__identity">
+                  <span class="brand-card__tag">{card.tag}</span>
+                  <h2 class="brand-card__name">{card.name}</h2>
+                  <p class="brand-card__domain">{card.domain}</p>
+                </div>
+
+                <p class="brand-card__desc">{card.description}</p>
+
+                <ul
+                  class="brand-card__pages"
+                  aria-label="Pages in this experience"
+                >
+                  <template for:each={card.pages} for:item="page">
+                    <li key={page.key} class="brand-card__page">
+                      <span
+                        class="brand-card__page-check"
+                        data-icon="check"
+                        data-size="14"
+                        lwc:dom="manual"
+                        aria-hidden="true"
+                      ></span>
+                      <span>{page.label}</span>
+                      <template if:true={page.hasExclusive}>
+                        <span class="brand-card__page-pill"
+                          >{page.exclusive}</span
+                        >
+                      </template>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+
+              <div class="brand-card__foot">
+                <a href={card.enterUrl} class="btn btn--enter"
+                  >Explore experience<span
+                    class="btn--enter__arrow"
+                    aria-hidden="true"
+                    >→</span
+                  ></a
+                >
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </section>
+</template>

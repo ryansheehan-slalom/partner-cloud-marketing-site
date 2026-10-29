@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="contactPageName"
+        type="String"
+        label="Contact Page API Name"
+        default="Contact"
+      />
+            <property
+        name="applyPageName"
+        type="String"
+        label="Apply Page API Name"
+        default="Apply"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="applyPageName"
+        type="String"
+        default="Apply"
+        label="Apply page API name"
+      />
+            <property
+        name="aboutPageName"
+        type="String"
+        default="About_Us"
+        label="About page API name"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

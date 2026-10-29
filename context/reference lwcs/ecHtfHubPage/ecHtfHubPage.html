@@ -1,0 +1,314 @@
+<template>
+  <!-- ═══════════════════════════════════════════════════════════════════
+         HERO   (header + footer come from the shared site chrome,
+                 Slalom-branded via ecHtfSiteHeader / ecHtfSiteFooter)
+    ═══════════════════════════════════════════════════════════════════ -->
+  <section class="hub-hero">
+    <div class="hub-hero__bg" aria-hidden="true">
+      <div class="hub-hero__orb hub-hero__orb--1"></div>
+      <div class="hub-hero__orb hub-hero__orb--2"></div>
+      <div class="hub-hero__orb hub-hero__orb--3"></div>
+    </div>
+    <div class="container hub-hero__layout">
+      <div class="hub-hero__inner">
+        <div
+          class="hub-hero__badge"
+          data-icon="layers"
+          data-size="34"
+          lwc:dom="manual"
+          aria-hidden="true"
+        ></div>
+        <p class="hub-eyebrow">{hero.eyebrow}</p>
+        <h1 class="hub-hero__h1">
+          {hero.titleLead}<br /><span class="hub-hero__accent"
+            >{hero.titleAccent}</span
+          >
+        </h1>
+        <p class="hub-hero__lede">{hero.lede}</p>
+        <div class="hub-hero__cta">
+          <a href={heroPrimaryHref} class="btn btn--primary btn--lg"
+            >{hero.primaryCtaLabel}</a
+          >
+          <a href={heroSecondaryHref} class="btn btn--ghost btn--lg"
+            >{hero.secondaryCtaLabel}</a
+          >
+        </div>
+      </div>
+      <div
+        class="hub-hero__art"
+        data-hero-art
+        lwc:dom="manual"
+        aria-hidden="true"
+      ></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         HOW IT WORKS — business / marketing / web audiences
+    ═══════════════════════════════════════════════════════════════════ -->
+  <template if:true={hasHowItWorks}>
+    <section
+      class="section section--tint"
+      id="how"
+      aria-labelledby="how-heading"
+    >
+      <div class="container">
+        <header class="sec-head">
+          <p class="eyebrow">{howItWorks.eyebrow}</p>
+          <h2 id="how-heading">{howItWorks.title}</h2>
+          <p class="sec-head__body">{howItWorks.body}</p>
+        </header>
+
+        <div class="audience-grid">
+          <template for:each={howGroups} for:item="group">
+            <div key={group.key} class="audience-card">
+              <span
+                class="audience-card__icon"
+                data-icon={group.icon}
+                data-size="24"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <h3 class="audience-card__title">{group.title}</h3>
+              <p class="audience-card__body">{group.body}</p>
+              <ul class="audience-card__list">
+                <template for:each={group.points} for:item="pt">
+                  <li key={pt.key}>{pt.text}</li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         CAPABILITIES — your team owns the page  + comparison
+    ═══════════════════════════════════════════════════════════════════ -->
+  <template if:true={hasCapabilities}>
+    <section class="section" id="content" aria-labelledby="content-heading">
+      <div class="container">
+        <header class="sec-head">
+          <p class="eyebrow">{capabilities.eyebrow}</p>
+          <h2 id="content-heading">{capabilities.title}</h2>
+          <p class="sec-head__body">{capabilities.body}</p>
+        </header>
+
+        <div class="cms-grid">
+          <template for:each={capCards} for:item="cap">
+            <div key={cap.key} class="cms-cap">
+              <span
+                class="cms-cap__icon"
+                data-icon={cap.icon}
+                data-size="24"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <h3 class="cms-cap__title">{cap.title}</h3>
+              <p class="cms-cap__body">{cap.body}</p>
+              <ul class="cms-cap__list">
+                <template for:each={cap.bullets} for:item="b">
+                  <li key={b.key}>{b.text}</li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+
+        <template if:true={hasComparison}>
+          <div class="cms-compare">
+            <div class="cms-compare__col cms-compare__col--old">
+              <h3 class="cms-compare__label">{comparison.traditionalLabel}</h3>
+              <ul class="cms-compare__list cms-compare__list--old">
+                <template for:each={compareTraditional} for:item="item">
+                  <li key={item.key}>{item.text}</li>
+                </template>
+              </ul>
+            </div>
+            <div class="cms-compare__col cms-compare__col--new">
+              <h3 class="cms-compare__label">{comparison.newLabel}</h3>
+              <ul class="cms-compare__list cms-compare__list--new">
+                <template for:each={compareModern} for:item="item">
+                  <li key={item.key}>{item.text}</li>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+  </template>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         ARCHITECTURE DIAGRAM — dark section
+    ═══════════════════════════════════════════════════════════════════ -->
+  <section
+    class="section section--dark"
+    id="architecture"
+    aria-labelledby="arch-heading"
+  >
+    <div class="container">
+      <header class="sec-head sec-head--on-dark">
+        <p class="eyebrow eyebrow--dim">{diagram.eyebrow}</p>
+        <h2 id="arch-heading">{diagram.title}</h2>
+        <p class="sec-head__body">{diagram.caption}</p>
+      </header>
+
+      <!-- Architecture diagram -->
+      <template if:true={hasDiagram}>
+        <div
+          class="diagram"
+          role="img"
+          aria-label="Single platform, single site, multi-brand architecture"
+        >
+          <p class="diagram__note diagram__note--top">
+            <span
+              class="diagram__note-icon"
+              data-icon="edit"
+              data-size="16"
+              lwc:dom="manual"
+              aria-hidden="true"
+            ></span>
+            {diagram.editorNote}
+          </p>
+
+          <!-- Contentful -->
+          <div class="diagram__node diagram__node--cms">
+            <div class="diagram__node-head">
+              <span
+                class="diagram__node-icon"
+                data-icon="database"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <span class="diagram__node-title">{diagramCmsLabel}</span>
+            </div>
+            <ul class="diagram__items">
+              <template for:each={diagramCmsItems} for:item="it">
+                <li key={it.key}>{it.text}</li>
+              </template>
+            </ul>
+          </div>
+
+          <div class="diagram__connector" aria-hidden="true">
+            <span
+              class="diagram__arrow"
+              data-icon="sync"
+              data-size="18"
+              lwc:dom="manual"
+            ></span>
+            <span class="diagram__connector-label">{diagram.webhookNote}</span>
+          </div>
+
+          <!-- Salesforce integration layer -->
+          <div class="diagram__node diagram__node--integration">
+            <div class="diagram__node-head">
+              <span
+                class="diagram__node-icon"
+                data-icon="code"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <span class="diagram__node-title">{diagramIntegrationLabel}</span>
+            </div>
+            <ul class="diagram__items">
+              <template for:each={diagramIntegrationItems} for:item="it">
+                <li key={it.key}>{it.text}</li>
+              </template>
+            </ul>
+          </div>
+
+          <div class="diagram__connector" aria-hidden="true">
+            <span class="diagram__arrow diagram__arrow--down"></span>
+          </div>
+
+          <!-- Single Experience Cloud site -->
+          <div class="diagram__node diagram__node--site">
+            <div class="diagram__node-head">
+              <span
+                class="diagram__node-icon"
+                data-icon="cloud"
+                data-size="20"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <span class="diagram__node-title">{diagramSiteLabel}</span>
+            </div>
+            <ul class="diagram__items">
+              <template for:each={diagramSiteItems} for:item="it">
+                <li key={it.key}>{it.text}</li>
+              </template>
+            </ul>
+          </div>
+
+          <div class="diagram__connector" aria-hidden="true">
+            <span class="diagram__fanout"></span>
+          </div>
+
+          <!-- Brand endpoints -->
+          <div class="diagram__brands">
+            <template for:each={diagramBrands} for:item="b">
+              <div key={b.key} class="diagram__brand">
+                <span
+                  class="diagram__brand-icon"
+                  data-icon="globe"
+                  data-size="16"
+                  lwc:dom="manual"
+                  aria-hidden="true"
+                ></span>
+                <span class="diagram__brand-name">{b.name}</span>
+                <span class="diagram__brand-domain">{b.domain}</span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         FOR TECHNICAL TEAMS — white section
+    ═══════════════════════════════════════════════════════════════════ -->
+  <template if:true={hasTechnical}>
+    <section class="section" id="technical" aria-labelledby="tech-heading">
+      <div class="container">
+        <header class="sec-head">
+          <p class="eyebrow">{technical.eyebrow}</p>
+          <h2 id="tech-heading">{technical.title}</h2>
+          <p class="sec-head__body">{technical.body}</p>
+        </header>
+
+        <div class={techGridClass}>
+          <template for:each={techPillars} for:item="pillar">
+            <div key={pillar.key} class="arch-card">
+              <span
+                class="arch-card__icon"
+                data-icon={pillar.icon}
+                data-size="24"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <h3 class="arch-card__title">{pillar.title}</h3>
+              <p class="arch-card__body">{pillar.body}</p>
+            </div>
+          </template>
+        </div>
+
+        <!-- Tech stack strip (merged from "Under the hood") -->
+        <template if:true={hasStack}>
+          <div class="stack-strip">
+            <template for:each={stackItems} for:item="item">
+              <div key={item.key} class="stack-strip__item">
+                <p class="stack-strip__layer">{item.layer}</p>
+                <p class="stack-strip__tech">{item.tech}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </section>
+  </template>
+</template>

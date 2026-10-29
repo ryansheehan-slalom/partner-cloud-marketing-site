@@ -1,0 +1,240 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #c8ceca;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --bg: #ffffff;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 18px rgba(20, 28, 24, 0.08), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --shadow-lg:
+    0 24px 60px rgba(20, 28, 24, 0.16), 0 8px 22px rgba(20, 28, 24, 0.09);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p {
+  margin: 0;
+}
+
+/* ── Page section wrapper ──────────────────────────────────────── */
+
+.cta-section {
+  padding: clamp(56px, 8vw, 104px) 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── CTA Band card ─────────────────────────────────────────────── */
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 6vw, 72px);
+}
+
+.cta-band__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cta-band__orb--1 {
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  background: var(--brand);
+  opacity: 0.18;
+  filter: blur(10px);
+}
+
+.cta-band__orb--2 {
+  right: 120px;
+  bottom: -90px;
+  width: 200px;
+  height: 200px;
+  background: var(--brand-2);
+  opacity: 0.16;
+  filter: blur(8px);
+}
+
+.cta-band__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.cta-band__copy {
+  flex: 1 1 320px;
+  max-width: 560px;
+}
+
+/* ── Eyebrow ───────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-2);
+}
+
+/* ── Copy ──────────────────────────────────────────────────────── */
+
+.cta-band__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  color: #ffffff;
+  margin: 12px 0 0;
+  max-width: 16ch;
+}
+
+.cta-band__body {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 18px;
+  margin-top: 16px;
+  max-width: 46ch;
+}
+
+/* ── Button group ──────────────────────────────────────────────── */
+
+.cta-band__btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none !important;
+  line-height: 1;
+  transition:
+    transform 0.15s var(--ease),
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.btn:hover,
+.btn:focus {
+  text-decoration: none !important;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* White pill button — primary action on dark background */
+.btn--on-dark {
+  background: #ffffff;
+  color: var(--ink) !important;
+  border-color: transparent;
+}
+.btn--on-dark:hover {
+  background: var(--brand-2);
+  color: #ffffff !important;
+}
+
+/* Ghost pill button — secondary action on dark background */
+.btn--outline-white {
+  background: transparent;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.btn--outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff !important;
+}
+
+.btn--lg {
+  padding: 17px 32px;
+  font-size: 16.5px;
+}
+
+.arr {
+  transition: transform 0.2s var(--ease);
+}
+.btn:hover .arr {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .cta-band__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+  .cta-band__btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+  }
+}

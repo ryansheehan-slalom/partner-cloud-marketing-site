@@ -1,0 +1,28 @@
+<template>
+  <section class="page-hero" aria-labelledby="page-hero-heading">
+    <div class="page-hero__art" aria-hidden="true">
+      <c-ec-htf-brand-art art-type={brandId}></c-ec-htf-brand-art>
+    </div>
+
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a
+            href={homeBreadcrumbHref}
+            onclick={handleHomeClick}
+            class="breadcrumb__link"
+            >Home</a
+          >
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <span class="breadcrumb__current" aria-current="page"
+            >{breadcrumbLabel}</span
+          >
+        </nav>
+
+        <span class="eyebrow page-hero__eyebrow">{pageEyebrow}</span>
+        <h1 id="page-hero-heading" class="page-hero__h1">{pageTitle}</h1>
+        <p class="page-hero__lede">{pageLede}</p>
+      </div>
+    </div>
+  </section>
+</template>

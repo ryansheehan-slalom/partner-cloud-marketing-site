@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+
+            <property
+        name="homePageName"
+        type="String"
+        label="Home Page API Name"
+        description="Experience Cloud community page API name used to generate the Home page URL."
+        default="Home"
+      />
+
+            <property
+        name="aboutPageName"
+        type="String"
+        label="About Us Page API Name"
+        description="Experience Cloud community page API name used to generate the About Us page URL."
+        default="About_Us"
+      />
+
+            <property
+        name="faqPageName"
+        type="String"
+        label="FAQ Page API Name"
+        description="Experience Cloud community page API name used to generate the FAQ page URL."
+        default="FAQ"
+      />
+
+            <property
+        name="contactPageName"
+        type="String"
+        label="Contact Page API Name"
+        description="Experience Cloud community page API name used to generate the Contact page URL."
+        default="Contact"
+      />
+
+            <property
+        name="catalogPageName"
+        type="String"
+        label="Catalog Page API Name"
+        description="Experience Cloud community page API name used to generate the Equipment Catalog page URL."
+        default="Catalog"
+      />
+
+            <property
+        name="applyPageName"
+        type="String"
+        label="Apply / Get a Quote Page API Name"
+        description="Experience Cloud community page API name used to generate the Apply (Get a Quote) page URL."
+        default="Apply"
+      />
+
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

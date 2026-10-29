@@ -1,0 +1,356 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 18px rgba(20, 28, 24, 0.08), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.btn,
+.btn:hover,
+.btn:focus {
+  text-decoration: none !important;
+}
+p {
+  margin: 0;
+}
+h2 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+/* ── Search + filter ───────────────────────────────────────────────── */
+.filter-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.filter-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 0 0 300px;
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .search-wrap {
+    flex: 1 1 100%;
+  }
+}
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-3);
+  display: flex;
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  padding: 13px 15px 13px 44px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 11px;
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  color: var(--ink);
+  background: #fff;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand), transparent 82%);
+}
+.search-input::placeholder {
+  color: var(--ink-3);
+}
+
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  flex: 1 1 auto;
+}
+.cat-pill {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.cat-pill:hover {
+  border-color: var(--line-strong);
+}
+.cat-pill--active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-on);
+}
+
+/* ── FAQ list ──────────────────────────────────────────────────────── */
+.faq-sec {
+  padding: clamp(56px, 8vw, 104px) 0;
+  background: #fff;
+  min-height: 320px;
+}
+.faq-list {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-q:hover .faq-q__text {
+  color: var(--brand-deep);
+}
+.faq-q__left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.faq-q__cat {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+  line-height: 1;
+}
+.faq-q__text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.faq-q__chevron {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+  color: var(--ink-2);
+  transition:
+    transform 0.22s ease,
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.faq-q[aria-expanded="true"] .faq-q__chevron {
+  transform: rotate(135deg);
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.faq-a {
+  overflow: hidden;
+}
+.faq-a__inner {
+  padding: 0 4px 26px;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 70ch;
+}
+.faq-a__inner p {
+  margin: 0 0 14px;
+}
+.faq-a__inner p:last-child {
+  margin-bottom: 0;
+}
+.faq-a__inner a {
+  color: var(--brand-deep);
+  font-weight: 600;
+}
+.faq-a__inner a:hover {
+  color: var(--brand);
+}
+.faq-a__inner strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ── Empty state ───────────────────────────────────────────────────── */
+.faq-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(48px, 7vw, 80px) 24px;
+  text-align: center;
+  color: var(--ink-3);
+}
+.faq-empty__icon {
+  color: var(--ink-3);
+  opacity: 0.5;
+  display: flex;
+}
+.faq-empty__text {
+  font-size: 16px;
+  color: var(--ink-2);
+}
+
+/* ── Contact CTA (centered brand-tint card — matches reference) ────── */
+.faq-cta {
+  padding: clamp(40px, 5vw, 68px) 0 clamp(56px, 8vw, 104px);
+}
+.faq-cta__panel {
+  background: var(--brand-tint);
+  border-radius: var(--radius-lg);
+  padding: clamp(36px, 5vw, 64px);
+  text-align: center;
+}
+.faq-cta__copy .eyebrow {
+  justify-content: center;
+}
+.faq-cta__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 14px 0 0;
+}
+.faq-cta__body {
+  margin: 16px auto 0;
+  color: var(--ink-2);
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 46ch;
+}
+.faq-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+/* ── Buttons (pill) ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16.5px;
+  padding: 17px 32px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: 0.15s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn--brand {
+  background: var(--brand);
+  color: var(--brand-on) !important;
+}
+.btn--brand:hover {
+  background: var(--brand-deep);
+  color: var(--brand-on) !important;
+}
+.btn--outline-brand {
+  background: transparent;
+  color: var(--ink) !important;
+  border-color: var(--line-strong);
+}
+.btn--outline-brand:hover {
+  border-color: var(--brand);
+  color: var(--brand-deep) !important;
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+  .faq-cta__actions .btn {
+    width: 100%;
+  }
+}

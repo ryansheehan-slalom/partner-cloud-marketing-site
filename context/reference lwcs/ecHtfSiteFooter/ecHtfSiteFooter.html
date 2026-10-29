@@ -1,0 +1,113 @@
+<template>
+  <!-- Slalom hub footer -->
+  <template lwc:if={isSlalom}>
+    <footer class="site-footer site-footer--slalom">
+      <div class="container">
+        <div class="slalom-foot">
+          <span
+            class="slalom-foot__logo"
+            data-slalom-logo
+            data-h="24"
+            lwc:dom="manual"
+            aria-hidden="true"
+          ></span>
+          <span class="slalom-foot__text">{slalomAttribution}.</span>
+          <a
+            href={aboutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="slalom-foot__link"
+            >slalom.com →</a
+          >
+        </div>
+        <div class="site-footer__bot site-footer__bot--slalom">
+          <span>© 2026 Slalom, Inc. All rights reserved.</span>
+          <span>Composable architecture demo — Salesforce + Contentful.</span>
+        </div>
+      </div>
+    </footer>
+  </template>
+
+  <!-- Program brand footer -->
+  <footer lwc:else class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <!-- Brand block -->
+        <div class="site-footer__brandblock">
+          <img class="footer-logo" src={htfLogoUrl} alt="Hudson Bank" />
+          <p>{brand.attribution}.</p>
+          <p class="sub-domain">{brand.programName} · {brand.domain}</p>
+        </div>
+
+        <!-- Program links -->
+        <div>
+          <h4>Program</h4>
+          <ul>
+            <li>
+              <a data-page={homePageName} onclick={handleNavClick}>Home</a>
+            </li>
+            <template if:true={brand.hasCatalog}>
+              <li>
+                <a data-page={catalogPageName} onclick={handleNavClick}
+                  >Catalog</a
+                >
+              </li>
+            </template>
+            <li>
+              <a data-page={aboutPageName} onclick={handleNavClick}>About Us</a>
+            </li>
+            <li><a data-page={faqPageName} onclick={handleNavClick}>FAQ</a></li>
+            <li>
+              <a data-page={contactPageName} onclick={handleNavClick}
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a data-page={applyPageName} onclick={handleNavClick}
+                >Apply for financing</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Finance/asset links -->
+        <div>
+          <h4>Finance</h4>
+          <ul>
+            <template for:each={brand.assets} for:item="asset">
+              <li key={asset.title}>
+                <a
+                  data-page={homePageName}
+                  data-anchor="finance"
+                  onclick={handleNavClick}
+                  >{asset.title}</a
+                >
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href={phoneHref}>{brand.contact.phone}</a></li>
+            <li><a href={emailHref}>{brand.contact.email}</a></li>
+            <li>{brand.contact.hours}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bot">
+        <span>© 2026 Hudson Bank. All rights reserved.</span>
+        <span>Member FDIC · Equal Housing Lender</span>
+      </div>
+      <p class="disclosure">
+        Hudson Bank and Teagan® are service marks of Hudson Bank. Lending and
+        leasing products are subject to credit application and approval. All
+        brand names, logos and trademarks are the property of their respective
+        owners.
+      </p>
+    </div>
+  </footer>
+</template>

@@ -1,0 +1,8 @@
+<template>
+  <!-- data-art-type makes the template depend on artType so a brand change
+         re-renders the component and re-fires renderedCallback (rebuilds the SVG). -->
+  <div class="brand-art-root" data-art-type={artType} lwc:dom="manual"></div>
+  <template if:true={label}>
+    <div class="brand-art__label">{label}</div>
+  </template>
+</template>

@@ -1,0 +1,59 @@
+<template>
+  <section class="feature" aria-labelledby="feature-heading">
+    <div class="container">
+      <div class={featureGridClass}>
+        <!-- Art panel -->
+        <div class="feature__media">
+          <c-ec-htf-brand-art art-type={brandId}></c-ec-htf-brand-art>
+        </div>
+
+        <!-- Copy panel -->
+        <div class="feature__copy">
+          <span class="eyebrow">{featureEyebrow}</span>
+          <h2 id="feature-heading">{featureTitle}</h2>
+          <p class="feature__body">{featureBody}</p>
+
+          <ul class="feature__list" aria-label="Program features">
+            <template for:each={featureList} for:item="feat">
+              <li key={feat.id} class="feature__item">
+                <span
+                  class="feature__item-icon"
+                  data-icon={feat.icon}
+                  data-size="22"
+                  lwc:dom="manual"
+                  aria-hidden="true"
+                ></span>
+                <div class="feature__item-text">
+                  <strong class="feature__item-title">{feat.title}</strong>
+                  <span class="feature__item-sub">{feat.sub}</span>
+                </div>
+              </li>
+            </template>
+          </ul>
+
+          <div class="feature__cta">
+            <a onclick={handleApplyClick} class="btn btn--primary"
+              >{ctaPrimaryLabel}</a
+            >
+            <template if:true={isHTF}>
+              <a
+                href={teaganPdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn--ghost"
+                >{secondaryLabel}</a
+              >
+            </template>
+            <template if:false={isHTF}>
+              <a onclick={handleSecondaryClick} class="btn btn--ghost"
+                >{secondaryLabel}</a
+              >
+            </template>
+          </div>
+
+          <p class="feature__note">{featureNote}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

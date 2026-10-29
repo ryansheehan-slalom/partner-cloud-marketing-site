@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-2-deep: #4a4d51;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --surface-2: #eef0ef;
+  --line: #e3e6e4;
+  --line-strong: #cfd4d1;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --bg: #ffffff;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-sm: 9px;
+  --shadow-sm:
+    0 1px 2px rgba(20, 28, 24, 0.06), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --shadow: 0 6px 18px rgba(20, 28, 24, 0.08), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --shadow-lg:
+    0 24px 60px rgba(20, 28, 24, 0.16), 0 8px 22px rgba(20, 28, 24, 0.09);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --maxw: 1200px;
+  font-family: var(--font-body);
+  color: var(--ink);
+}

@@ -1,0 +1,15 @@
+<template>
+  <template lwc:if={preview}>
+    <div class="cf-preview-banner" role="status" aria-live="polite">
+      <span class="cf-preview-banner__badge">
+        <span class="cf-preview-banner__dot" aria-hidden="true"></span>
+        Draft preview
+      </span>
+      <span class="cf-preview-banner__text">
+        Showing unpublished draft content from Contentful — not visible to the
+        public.
+      </span>
+      <a class="cf-preview-banner__exit" href={exitUrl}>Exit preview</a>
+    </div>
+  </template>
+</template>

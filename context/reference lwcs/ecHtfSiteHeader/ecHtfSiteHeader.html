@@ -1,0 +1,216 @@
+<template>
+  <!-- Contentful preview banner (renders only when ?preview is in the URL) -->
+  <c-contentful-preview-banner></c-contentful-preview-banner>
+
+  <!-- Attribution bar -->
+  <div class="site-attribution">
+    <div class="container">
+      <div class="site-attribution__left">
+        <span class="dot"></span>
+        <span>{brand.attribution}</span>
+      </div>
+      <div class="site-attribution__right">
+        <div class="site-attribution__links">
+          <template for:each={brand.attributionLinks} for:item="link">
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              >{link.label}</a
+            >
+          </template>
+        </div>
+
+        <!-- Brand switcher -->
+        <div class="brand-switch" data-brand-switch>
+          <button
+            class="brand-switch__btn"
+            onclick={toggleSwitcher}
+            aria-haspopup="true"
+            aria-expanded={switcherOpen}
+          >
+            <span class="swatch"></span>
+            <span>Experience</span>
+            <span class="chev" lwc:dom="manual"></span>
+          </button>
+          <template if:true={switcherOpen}>
+            <div class="brand-switch__menu" role="menu" style={menuStyle}>
+              <div class="brand-switch__head">Switch experience</div>
+              <template for:each={switcherOptions} for:item="opt">
+                <button
+                  key={opt.id}
+                  class={opt.cls}
+                  onclick={handleBrandSwitch}
+                  data-brandid={opt.id}
+                >
+                  <span class="brand-opt__chip" style={opt.chipStyle}
+                    >{opt.initials}</span
+                  >
+                  <span class="brand-opt__meta">
+                    <strong>{opt.name}</strong>
+                    <span>{opt.switchTag}</span>
+                  </span>
+                  <span class="brand-opt__check" lwc:dom="manual"></span>
+                </button>
+              </template>
+              <div class="brand-switch__foot">
+                One platform, one application engine — each brand runs on its
+                own domain with its own theme &amp; content.
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="site-header__bar">
+        <!-- Logo (navigates home) -->
+        <a
+          class="brand-logo"
+          href={homeHref}
+          data-page={homePageName}
+          onclick={handleNavClick}
+          aria-label="Home"
+        >
+          <template lwc:if={isSlalom}>
+            <span
+              class="brand-logo__slalom"
+              data-slalom-logo
+              data-variant="blue"
+              data-h="30"
+              lwc:dom="manual"
+            ></span>
+          </template>
+          <template lwc:else>
+            <img
+              src={brand.logoPath}
+              alt={brand.name}
+              class={brand.logoClass}
+            />
+          </template>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="main-nav" aria-label="Main navigation">
+          <template lwc:if={isSlalom}>
+            <a
+              data-page={demoSitesPageName}
+              onclick={handleNavClick}
+              class="nav-link"
+              >Demo Sites</a
+            >
+            <a
+              href={aboutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-link nav-link--external"
+              >About Slalom<span
+                class="nav-link__ext"
+                data-icon="external"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span
+            ></a>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-link nav-link--external"
+              >GitHub Repo<span
+                class="nav-link__ext"
+                data-icon="external"
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span
+            ></a>
+          </template>
+          <template lwc:else>
+            <template if:true={brand.hasCatalog}>
+              <a
+                data-page={catalogPageName}
+                onclick={handleNavClick}
+                class={catalogNavClass}
+                >What You Can Lease</a
+              >
+            </template>
+            <a
+              data-page={aboutPageName}
+              onclick={handleNavClick}
+              class={aboutNavClass}
+              >About Us</a
+            >
+            <a
+              data-page={faqPageName}
+              onclick={handleNavClick}
+              class={faqNavClass}
+              >FAQ</a
+            >
+            <a
+              data-page={contactPageName}
+              onclick={handleNavClick}
+              class={contactNavClass}
+              >Contact</a
+            >
+          </template>
+        </nav>
+
+        <!-- Header CTAs -->
+        <div class="header-cta">
+          <template lwc:if={isSlalom}></template>
+          <template lwc:else>
+            <a
+              data-page={applyPageName}
+              onclick={handleNavClick}
+              class="btn btn--primary btn--sm"
+              >Apply now</a
+            >
+            <button
+              class="nav-toggle"
+              aria-label="Open menu"
+              onclick={openMobileNav}
+              lwc:dom="manual"
+            ></button>
+          </template>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <template if:true={mobileNavOpen}>
+    <div class="mobile-nav open">
+      <div class="mobile-nav__scrim" onclick={closeMobileNav}></div>
+      <div class="mobile-nav__panel">
+        <div class="mobile-nav__head">
+          <img src={brand.logoPath} alt="" style="height: 30px" />
+          <button
+            class="nav-toggle"
+            aria-label="Close menu"
+            onclick={closeMobileNav}
+            lwc:dom="manual"
+          ></button>
+        </div>
+        <template if:true={brand.hasCatalog}>
+          <a data-page={catalogPageName} onclick={handleNavClick}
+            >What You Can Lease</a
+          >
+        </template>
+        <a data-page={aboutPageName} onclick={handleNavClick}>About Us</a>
+        <a data-page={faqPageName} onclick={handleNavClick}>FAQ</a>
+        <a data-page={contactPageName} onclick={handleNavClick}>Contact</a>
+        <a
+          data-page={applyPageName}
+          onclick={handleNavClick}
+          class="btn btn--primary btn--block"
+          style="margin-top: 14px"
+          >Apply now</a
+        >
+      </div>
+    </div>
+  </template>
+</template>

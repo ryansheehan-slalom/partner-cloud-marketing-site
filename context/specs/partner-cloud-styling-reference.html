@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Cloud — Styling & Structure Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-display: 'Archivo', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+    --bg: #fafbfd;
+    --surface: #ffffff;
+    --surface-soft: #f0f3f8;
+    --surface-sink: #e8edf5;
+    --border: #dde3ec;
+    --border-strong: #c8d1de;
+    --text: #0a2540;
+    --text-dim: #4a5c78;
+    --text-faint: #7f8fa8;
+
+    /* Partner Cloud palette — Slalom blue + Salesforce cloud */
+    --pc-brand: #0c62fb;
+    --pc-brand-deep: #0847c4;
+    --pc-brand-soft: #e6efff;
+    --pc-cloud: #00a1e0;
+    --pc-cloud-soft: #d9f1fa;
+
+    /* Semantic accents */
+    --lime: #2f8a4c;
+    --lime-soft: #e2f0e5;
+    --amber: #9a5f14;
+    --amber-soft: #f5ecd8;
+    --rose: #a83752;
+    --rose-soft: #f6e2e6;
+    --violet: #5a3fa8;
+    --violet-soft: #ebe4f9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1220;
+      --surface: #131b2e;
+      --surface-soft: #1a2440;
+      --surface-sink: #202c4f;
+      --border: #263258;
+      --border-strong: #354578;
+      --text: #edf1fa;
+      --text-dim: #a4b3ce;
+      --text-faint: #6e7b96;
+      --pc-brand: #6ea1ff;
+      --pc-brand-deep: #a9c6ff;
+      --pc-brand-soft: #1c2c50;
+      --pc-cloud: #4dc7ec;
+      --pc-cloud-soft: #14304a;
+      --lime: #7fc891;
+      --lime-soft: #1e2f26;
+      --amber: #e9b661;
+      --amber-soft: #362c1a;
+      --rose: #ea8098;
+      --rose-soft: #3a2028;
+      --violet: #b3a1e6;
+      --violet-soft: #2a2145;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+  }
+
+  /* ============ LAYOUT ============ */
+  .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+    max-width: 1240px;
+    margin: 0 auto;
+    gap: 48px;
+    padding: 48px 32px 96px;
+  }
+
+  aside {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+  .toc-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--text-faint);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  aside ol { list-style: none; padding: 0; counter-reset: toc; }
+  aside li { counter-increment: toc; padding: 3px 0; }
+  aside a {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13.5px;
+    line-height: 1.4;
+    padding: 5px 0;
+    transition: color .15s ease;
+  }
+  aside a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-faint);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  aside a:hover { color: var(--pc-brand); }
+
+  main { min-width: 0; max-width: 820px; }
+
+  /* ============ HEADER ============ */
+  header {
+    margin-bottom: 56px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .kicker {
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+    color: var(--pc-brand);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin-bottom: 18px;
+    text-wrap: balance;
+  }
+  .subtitle {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    max-width: 640px;
+  }
+  .constraint {
+    background: color-mix(in srgb, var(--surface) 70%, var(--rose-soft) 30%);
+    border: 1px solid var(--rose-soft);
+    border-left: 3px solid var(--rose);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 20px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .constraint strong {
+    color: var(--rose);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ============ SECTION ============ */
+  section {
+    margin-bottom: 80px;
+    scroll-margin-top: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--pc-brand);
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .section-lede {
+    font-size: 17px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    margin-bottom: 32px;
+    max-width: 660px;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    padding-top: 8px;
+  }
+  h3.no-top { margin-top: 8px; padding-top: 0; }
+  h4 {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-top: 24px;
+    margin-bottom: 6px;
+  }
+  p { margin-bottom: 16px; }
+  ul, ol { padding-left: 22px; margin-bottom: 16px; }
+  li { margin-bottom: 5px; }
+
+  a { color: var(--pc-brand); text-decoration: none; border-bottom: 1px dotted var(--pc-brand); }
+  a:hover { border-bottom-style: solid; }
+  aside a { border-bottom: none; }
+
+  /* ============ CODE ============ */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--surface-soft);
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    white-space: nowrap;
+  }
+  li code, td code { white-space: normal; }
+
+  pre {
+    background: var(--surface-sink);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 14px 0 22px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    white-space: pre;
+    color: var(--text);
+  }
+  .pre-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-faint);
+    padding: 8px 20px 6px;
+    background: var(--surface-sink);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: -18px;
+    display: block;
+    width: max-content;
+    font-weight: 600;
+  }
+  .pre-label + pre { border-top-left-radius: 0; margin-top: 0; }
+
+  /* ============ TABLE ============ */
+  .tw {
+    overflow-x: auto;
+    margin: 16px 0 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td {
+    text-align: left;
+    padding: 11px 15px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  tr:last-child td { border-bottom: none; }
+  th {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: var(--text-dim);
+    background: var(--surface-soft);
+    border-bottom: 1px solid var(--border-strong);
+    white-space: nowrap;
+  }
+  tbody tr:hover { background: var(--surface-soft); }
+  td small { color: var(--text-dim); font-size: 12.5px; display: block; margin-top: 3px; }
+
+  /* ============ TOKEN GRID ============ */
+  .tokens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .token {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    min-width: 0;
+  }
+  .token__swatch {
+    width: 100%;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .token__name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+    color: var(--text);
+    word-break: break-all;
+  }
+  .token__val {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    display: block;
+    margin-top: 2px;
+  }
+  .token__note {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* ============ TYPE SPECIMEN ============ */
+  .type-spec {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 16px 0 24px;
+  }
+  .type-spec + .type-spec { margin-top: -12px; border-top-left-radius: 0; border-top-right-radius: 0; }
+  .type-spec__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .type-spec__meta span { display: inline-flex; align-items: center; gap: 4px; }
+  .type-spec__sample { color: var(--text); }
+
+  /* Sample size variants */
+  .s-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pc-brand-deep);
+  }
+  .s-h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 5.6vw, 70px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+  .s-h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(30px, 4vw, 46px);
+    letter-spacing: -0.02em;
+  }
+  .s-h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+  }
+  .s-lede {
+    font-size: clamp(18px, 1.5vw, 21px);
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .s-body { font-size: 16px; line-height: 1.6; }
+  .s-detail { font-size: 14.5px; color: var(--text-dim); }
+
+  /* ============ BUTTON DEMO ============ */
+  .btn-demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 14px 0 22px;
+  }
+  .btn-demo--dark {
+    background: #0a2540;
+    color: #fff;
+  }
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    text-decoration: none !important;
+    border-bottom: 1.5px solid transparent !important;
+  }
+  .demo-btn--primary { background: var(--pc-brand); color: #fff !important; }
+  .demo-btn--ghost { background: transparent; color: var(--text) !important; border-color: var(--border-strong); }
+  .demo-btn--on-dark { background: #fff; color: var(--text) !important; }
+  .demo-btn--outline-white { background: transparent; color: #fff !important; border-color: rgba(255,255,255,0.32); }
+
+  /* ============ CALLOUTS ============ */
+  .call {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--pc-brand);
+    border-radius: 0 8px 8px 0;
+    padding: 15px 20px;
+    margin: 22px 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .call--warn { border-left-color: var(--amber); background: color-mix(in srgb, var(--surface) 70%, var(--amber-soft) 30%); }
+  .call--tip { border-left-color: var(--lime); background: color-mix(in srgb, var(--surface) 70%, var(--lime-soft) 30%); }
+  .call__label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .call--warn .call__label { color: var(--amber); }
+  .call--tip .call__label { color: var(--lime); }
+  .call--info .call__label { color: var(--pc-brand); }
+  .call p:last-child { margin-bottom: 0; }
+  .call code { background: var(--bg); }
+
+  /* ============ COMPONENT CARDS ============ */
+  .cc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 16px 0;
+  }
+  .cc__head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .cc__name {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--surface-soft);
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+  }
+  .cc__pattern {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .cc__use {
+    background: var(--pc-brand-soft);
+    color: var(--pc-brand-deep);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+  .cc__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+    font-size: 14px;
+  }
+  .cc__grid strong {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: var(--text-faint);
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .cc__grid p { margin: 0; color: var(--text-dim); font-size: 14px; line-height: 1.5; }
+  .cc__grid p code { white-space: normal; font-size: 12.5px; }
+
+  /* ============ DETAILS ============ */
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 14px 0 22px;
+    overflow: hidden;
+  }
+  summary {
+    cursor: pointer;
+    padding: 13px 18px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: var(--text);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '＋';
+    color: var(--pc-brand);
+    transition: transform .2s ease;
+  }
+  details[open] summary::before { content: '−'; }
+  details > *:not(summary) { padding: 0 20px 20px; }
+  details pre { margin: 0 20px 20px; }
+  details .tw { margin: 0 20px 20px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; padding: 32px 20px 64px; gap: 32px; }
+    aside {
+      position: static; max-height: none; overflow: visible;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      background: var(--surface);
+    }
+    aside ol { columns: 2; column-gap: 20px; }
+    main { max-width: 100%; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    .cc__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    aside ol { columns: 1; }
+    h1 { font-size: 30px; }
+    .subtitle { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ============ SIDEBAR TOC ============ -->
+  <aside>
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#intent">Why this doc</a></li>
+      <li><a href="#tokens">Design tokens</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#layout">Layout primitives</a></li>
+      <li><a href="#buttons">Button system</a></li>
+      <li><a href="#cards">Cards & icon badges</a></li>
+      <li><a href="#sections">Section patterns</a></li>
+      <li><a href="#chrome">Header & footer</a></li>
+      <li><a href="#responsive">Responsive rules</a></li>
+      <li><a href="#dataflow">Data flow pattern</a></li>
+      <li><a href="#icons">Icon system</a></li>
+      <li><a href="#field-guide">Component field guide</a></li>
+      <li><a href="#starter">Starter snippet</a></li>
+    </ol>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <header>
+      <p class="kicker">Styling & Structure Reference</p>
+      <h1>Building Partner Cloud components that look native.</h1>
+      <p class="subtitle">The Contentful1 <code>ecHtf*</code> component library is off-limits for edits — but it's the source of truth for visual language. This document extracts every pattern you need to reproduce that language in a new <code>pc*</code> component.</p>
+      <div class="constraint">
+        <strong>Constraint</strong>
+        Do not modify any existing <code>ecHtf*</code> or <code>contentful*</code> component, Apex class, or custom metadata. New <code>pc*</code> components mirror the visual and structural patterns documented here — they do <em>not</em> import from or extend the existing components.
+      </div>
+    </header>
+
+    <!-- ============ 1. INTENT ============ -->
+    <section id="intent">
+      <span class="section-num">01 · Intent</span>
+      <h2>Why this document exists</h2>
+      <p class="section-lede">To let engineers building the Partner Cloud site achieve visual parity with the Contentful1 site without touching a single existing file.</p>
+      <p>The existing library encodes a specific visual language: a warm-neutral canvas with a strong brand-blue accent, dense Archivo display type against generous Hanken Grotesk body text, pill buttons, big rounded panels with soft shadows, 1200-pixel container, and a consistent section rhythm. If <code>pc*</code> components don't reproduce that language, the two sites will feel like different products stitched together.</p>
+      <p>Everything below is extracted verbatim from the compiled CSS of the existing components — the same values, same variable names, same clamp() functions. Copy them into new component files; do not import from the existing ones.</p>
+
+      <div class="call call--warn">
+        <span class="call__label">A note on data</span>
+        <p>This document covers <strong>visual patterns only</strong>. Because we cannot modify <code>ContentfulService</code>, <code>contentfulService</code>, or <code>ecHtfContentService</code>, the Partner Cloud site cannot reuse their single-space Contentful pipeline directly. The data layer for the new site needs its own resolution — track that separately from styling.</p>
+      </div>
+    </section>
+
+    <!-- ============ 2. TOKENS ============ -->
+    <section id="tokens">
+      <span class="section-num">02 · Foundation</span>
+      <h2>Design tokens</h2>
+      <p class="section-lede">Every existing component declares the same set of CSS custom properties on <code>:host</code>. New components should do the same, with Partner-Cloud-specific values.</p>
+
+      <h3 class="no-top">2.1 · The pattern</h3>
+      <p>Each component owns its own <code>:host { --brand: … }</code> block. This gives every component a self-contained set of defaults it can render with. At runtime the existing HTF library overrides these via <code>applyBrandTokens()</code> which sets the same variables on the host element with values pulled from Contentful.</p>
+      <p><strong>For Partner Cloud:</strong> hard-code Partner Cloud values in the <code>:host</code> block. No runtime override needed unless we plan multi-tenant Partner Cloud brands later.</p>
+
+      <h3>2.2 · Color tokens (Partner Cloud recommended values)</h3>
+      <div class="tokens">
+        <div class="token">
+          <div class="token__swatch" style="background:#0c62fb;"></div>
+          <span class="token__name">--brand</span>
+          <span class="token__val">#0c62fb</span>
+          <p class="token__note">Primary CTAs, links, focus rings.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#0847c4;"></div>
+          <span class="token__name">--brand-deep</span>
+          <span class="token__val">#0847c4</span>
+          <p class="token__note">Eyebrows, hovered primary buttons, hero title accents.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#00a1e0;"></div>
+          <span class="token__name">--brand-2</span>
+          <span class="token__val">#00a1e0</span>
+          <p class="token__note">Secondary accent (Salesforce cloud blue). CTA orbs, chip highlights.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#e6efff;border-color:#c8d1de;"></div>
+          <span class="token__name">--brand-tint</span>
+          <span class="token__val">#e6efff</span>
+          <p class="token__note">Icon-badge backgrounds, ghost-button hover, subtle highlights.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#eef0ef;"></div>
+          <span class="token__name">--brand-tint-2</span>
+          <span class="token__val">#eef0ef</span>
+          <p class="token__note">Alt tint for chip backgrounds, disabled states.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#ffffff;border-color:#c8d1de;"></div>
+          <span class="token__name">--brand-on</span>
+          <span class="token__val">#ffffff</span>
+          <p class="token__note">Text/icon color when rendered on a brand-colored surface.</p>
+        </div>
+      </div>
+
+      <h3>2.3 · Ink (text hierarchy)</h3>
+      <div class="tokens">
+        <div class="token">
+          <div class="token__swatch" style="background:#23282b;"></div>
+          <span class="token__name">--ink</span>
+          <span class="token__val">#23282b</span>
+          <p class="token__note">Primary body text, headings.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#555d60;"></div>
+          <span class="token__name">--ink-2</span>
+          <span class="token__val">#555d60</span>
+          <p class="token__note">Secondary text, ledes, section body copy.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#828a8c;"></div>
+          <span class="token__name">--ink-3</span>
+          <span class="token__val">#828a8c</span>
+          <p class="token__note">Muted meta, hint text, disclosures.</p>
+        </div>
+      </div>
+
+      <h3>2.4 · Surfaces & lines</h3>
+      <div class="tokens">
+        <div class="token">
+          <div class="token__swatch" style="background:#f6f7f6;border-color:#e3e6e4;"></div>
+          <span class="token__name">--surface</span>
+          <span class="token__val">#f6f7f6</span>
+          <p class="token__note">Alternating section background. <code>.section--surface</code>.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#e3e6e4;"></div>
+          <span class="token__name">--line</span>
+          <span class="token__val">#e3e6e4</span>
+          <p class="token__note">Card borders, list dividers, stat separators.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#d2d6d3;"></div>
+          <span class="token__name">--line-strong</span>
+          <span class="token__val">#d2d6d3</span>
+          <p class="token__note">Ghost button border, emphasized dividers.</p>
+        </div>
+      </div>
+
+      <h3>2.5 · Dark surfaces</h3>
+      <div class="tokens">
+        <div class="token">
+          <div class="token__swatch" style="background:#0a2540;"></div>
+          <span class="token__name">--dark</span>
+          <span class="token__val">#0a2540</span>
+          <p class="token__note">CTA bands, footer, attribution bar background.</p>
+        </div>
+        <div class="token">
+          <div class="token__swatch" style="background:#103a5c;"></div>
+          <span class="token__name">--dark-2</span>
+          <span class="token__val">#103a5c</span>
+          <p class="token__note">Alt dark for gradients, orb decorations.</p>
+        </div>
+      </div>
+
+      <h3>2.6 · Radii, shadows, easing, fonts</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><code>--radius</code></td><td>14px</td><td>Cards, panels, media wrappers</td></tr>
+            <tr><td><code>--radius-sm</code></td><td>9px</td><td>Nav-link hover pill, small badges</td></tr>
+            <tr><td><code>--radius-lg</code></td><td>22px</td><td>Hero art panel, feature media, CTA band</td></tr>
+            <tr><td><code>--shadow</code></td><td><code>0 6px 18px rgba(20,28,24,0.08), 0 2px 6px rgba(20,28,24,0.05)</code></td><td>Card hover, feature media</td></tr>
+            <tr><td><code>--shadow-lg</code></td><td><code>0 24px 60px rgba(20,28,24,0.16), 0 8px 22px rgba(20,28,24,0.09)</code></td><td>Hero art panel, floating cards</td></tr>
+            <tr><td><code>--ease</code></td><td><code>cubic-bezier(0.22, 0.61, 0.36, 1)</code></td><td>All transitions with duration</td></tr>
+            <tr><td><code>--font-display</code></td><td><code>"Archivo", system-ui, sans-serif</code></td><td>Headings, buttons, eyebrows, nav</td></tr>
+            <tr><td><code>--font-body</code></td><td><code>"Hanken Grotesk", system-ui, sans-serif</code></td><td>Paragraph body, list text</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details>
+        <summary>Copy-paste :host block for a new pc component</summary>
+        <span class="pre-label">css — component.css</span>
+<pre><code>:host {
+  display: block;
+
+  /* Partner Cloud brand */
+  --brand: #0c62fb;
+  --brand-deep: #0847c4;
+  --brand-2: #00a1e0;
+  --brand-tint: #e6efff;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+
+  /* Ink */
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+
+  /* Surfaces */
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+
+  /* Structure */
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 18px rgba(20, 28, 24, 0.08), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --shadow-lg: 0 24px 60px rgba(20, 28, 24, 0.16), 0 8px 22px rgba(20, 28, 24, 0.09);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Type */
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+p { margin: 0; }
+h2, h3 { margin: 0; }</code></pre>
+      </details>
+    </section>
+
+    <!-- ============ 3. TYPOGRAPHY ============ -->
+    <section id="typography">
+      <span class="section-num">03 · Type</span>
+      <h2>Typography</h2>
+      <p class="section-lede">Archivo for display (700–800), Hanken Grotesk for body (400–600). Loaded once by <code>ecHtfSiteHeader</code>; new components inherit them via the shared font tokens.</p>
+
+      <h3 class="no-top">3.1 · Font loading</h3>
+      <p>Fonts are loaded via a <code>&lt;link&gt;</code> injected into <code>document.head</code> by <code>ecHtfSiteHeader._loadFonts()</code>. As long as a Partner Cloud page includes the equivalent chrome (or loads its own <code>&lt;link&gt;</code> in the theme layout), <code>Archivo</code> and <code>Hanken Grotesk</code> resolve normally.</p>
+      <span class="pre-label">html — theme layout head (recommended)</span>
+<pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+
+      <h3>3.2 · Type scale</h3>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Archivo · 700 · 12.5px</span>
+          <span>letter-spacing 0.14em</span>
+          <span>uppercase</span>
+          <span>color <code>--brand-deep</code></span>
+        </div>
+        <div class="s-eyebrow type-spec__sample">Eyebrow · section label</div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Archivo · 800</span>
+          <span><code>clamp(40px, 5.6vw, 70px)</code></span>
+          <span>line-height 0.98</span>
+          <span>letter-spacing −0.025em</span>
+        </div>
+        <div class="s-h1 type-spec__sample" style="line-height:1;">H1 — hero headline<br><span style="color:var(--pc-brand-deep);">with an accent span</span></div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Archivo · 800</span>
+          <span><code>clamp(30px, 4vw, 46px)</code></span>
+          <span>letter-spacing −0.02em</span>
+        </div>
+        <div class="s-h2 type-spec__sample">H2 — section heading</div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Archivo · 700 · 19px</span>
+          <span>weight 700</span>
+        </div>
+        <div class="s-h3 type-spec__sample">H3 — card & step title</div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Hanken Grotesk · 400</span>
+          <span><code>clamp(18px, 1.5vw, 21px)</code></span>
+          <span>line-height 1.55</span>
+          <span>color <code>--ink-2</code></span>
+        </div>
+        <div class="s-lede type-spec__sample">Lede — the sentence that sits under the H1 or H2. Longer, breathing paragraph type at 18–21 pixels, capped around 36 characters wide on hero, wider on section headers.</div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Hanken Grotesk · 400</span>
+          <span>16px · line-height 1.6</span>
+        </div>
+        <div class="s-body type-spec__sample">Body — standard paragraph copy. Article body, feature descriptions, form help text. Sits at 16 pixels with generous line height so long-form content stays readable.</div>
+      </div>
+
+      <div class="type-spec">
+        <div class="type-spec__meta">
+          <span>Hanken Grotesk · 400 · 14.5px</span>
+          <span>color <code>--ink-2</code> or <code>--ink-3</code></span>
+        </div>
+        <div class="s-detail type-spec__sample">Detail — small print, meta, sub-labels on cards, assurance chips, disclosures.</div>
+      </div>
+    </section>
+
+    <!-- ============ 4. LAYOUT ============ -->
+    <section id="layout">
+      <span class="section-num">04 · Layout</span>
+      <h2>Layout primitives</h2>
+      <p class="section-lede">Two building blocks every existing component uses: <code>.container</code> for horizontal constraint, <code>.section</code> for vertical rhythm.</p>
+
+      <h3 class="no-top">4.1 · Container (1200px, 28px gutter)</h3>
+      <span class="pre-label">css</span>
+<pre><code>.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+}</code></pre>
+
+      <h3>4.2 · Section wrapper (fluid vertical padding)</h3>
+      <p>Every section component wraps its content in a <code>&lt;section class="…"&gt;</code> with padding that scales fluidly from mobile to desktop via <code>clamp()</code>.</p>
+      <span class="pre-label">css</span>
+<pre><code>.section       { padding: clamp(56px, 8vw, 104px) 0; }
+.section--tight { padding: clamp(40px, 5vw, 68px) 0; }
+.section--surface { background: var(--surface); }
+.section--dark    { background: var(--dark); color: #fff; }</code></pre>
+
+      <h3>4.3 · Section head (eyebrow + h2 + lede)</h3>
+      <p>Recurring pattern for section headers — used by Feature, Finance, Process, Faq, About, CTA.</p>
+      <span class="pre-label">css</span>
+<pre><code>.sec-head { max-width: 680px; }
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 46px);
+  letter-spacing: -0.02em;
+  margin: 16px 0 0;
+  color: var(--ink);
+}
+.sec-head p {
+  margin-top: 16px;
+  color: var(--ink-2);
+  font-size: 18px;
+  line-height: 1.6;
+}</code></pre>
+
+      <span class="pre-label">html</span>
+<pre><code>&lt;header class="sec-head"&gt;
+  &lt;p class="eyebrow"&gt;{eyebrow}&lt;/p&gt;
+  &lt;h2&gt;{title}&lt;/h2&gt;
+  &lt;p&gt;{lede}&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+    </section>
+
+    <!-- ============ 5. BUTTONS ============ -->
+    <section id="buttons">
+      <span class="section-num">05 · Buttons</span>
+      <h2>Button system</h2>
+      <p class="section-lede">One pill-shaped shell, five variants. All CTAs in the existing library use this pattern — Partner Cloud buttons should match pixel-for-pixel.</p>
+
+      <div class="btn-demo">
+        <span class="demo-btn demo-btn--primary">Primary</span>
+        <span class="demo-btn demo-btn--ghost">Ghost</span>
+        <span class="demo-btn demo-btn--primary" style="padding:17px 32px;font-size:16.5px;">Primary Large</span>
+      </div>
+      <div class="btn-demo btn-demo--dark">
+        <span class="demo-btn demo-btn--on-dark">On dark</span>
+        <span class="demo-btn demo-btn--outline-white">Outline white</span>
+      </div>
+
+      <h3>5.1 · Base <code>.btn</code></h3>
+      <span class="pre-label">css</span>
+<pre><code>.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15.5px;
+  padding: 14px 26px;
+  border-radius: 999px;         /* pill */
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none !important;
+  line-height: 1;
+  transition: transform 0.15s var(--ease),
+              background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:active { transform: translateY(1px); }</code></pre>
+
+      <h3>5.2 · Variants</h3>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Variant</th><th>Purpose</th><th>Key styles</th></tr></thead>
+          <tbody>
+            <tr><td><code>.btn--primary</code></td><td>Primary CTA on light bg</td><td><code>background: var(--brand); color: var(--brand-on);</code> hover → <code>--brand-deep</code></td></tr>
+            <tr><td><code>.btn--ghost</code></td><td>Secondary CTA on light bg</td><td>transparent bg · <code>--line-strong</code> border · hover borders/tints with <code>--brand</code></td></tr>
+            <tr><td><code>.btn--on-dark</code></td><td>Primary CTA on dark section</td><td>white bg · dark text · hover → <code>--brand-2</code></td></tr>
+            <tr><td><code>.btn--outline-white</code></td><td>Secondary CTA on dark section</td><td>transparent · white text · <code>rgba(255,255,255,0.32)</code> border</td></tr>
+            <tr><td><code>.btn--lg</code></td><td>Enlarged variant (add on top)</td><td><code>padding: 17px 32px; font-size: 16.5px;</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ 6. CARDS ============ -->
+    <section id="cards">
+      <span class="section-num">06 · Cards</span>
+      <h2>Cards & icon badges</h2>
+      <p class="section-lede">The card is the atomic content container. It's used for asset cards, article cards (for our blog), stat cards, and floating cards on the hero.</p>
+
+      <h3 class="no-top">6.1 · Base card</h3>
+      <span class="pre-label">css</span>
+<pre><code>.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);          /* 14px */
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+}
+.card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--line-strong);
+}</code></pre>
+
+      <h3>6.2 · Card with icon badge + top section</h3>
+      <p>Pattern from <code>ecHtfFinanceSection</code>'s asset cards. Ideal for article cards on the Partner Cloud blog list.</p>
+      <span class="pre-label">css</span>
+<pre><code>.asset-card__top {
+  padding: 24px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.asset-card__top .ic {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.asset-card__top h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+}
+.asset-card__body {
+  padding: 18px 24px 24px;
+}
+.asset-card__body p {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}</code></pre>
+
+      <h3>6.3 · Floating card (hero decoration)</h3>
+      <p>Absolutely-positioned card that overlaps the hero art. Used to inject a proof point or micro-statement adjacent to the hero visual.</p>
+      <span class="pre-label">css — from ecHtfHeroPanel</span>
+<pre><code>.hero__floatcard {
+  position: absolute;
+  z-index: 4;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 16px 18px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  right: -14px;
+  bottom: -18px;
+  white-space: nowrap;
+}
+.floatcard__icon {
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  display: grid; place-items: center;
+}</code></pre>
+    </section>
+
+    <!-- ============ 7. SECTIONS ============ -->
+    <section id="sections">
+      <span class="section-num">07 · Section patterns</span>
+      <h2>Section layouts you'll want to reproduce</h2>
+      <p class="section-lede">Six recurring section patterns cover ~95% of the Partner Cloud home page composition (matching the "Challenge / Solution / Stats / Process / CTA" rhythm from the one-pager).</p>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.1 · Hero panel</span>
+          <span class="cc__name">reference: ecHtfHeroPanel</span>
+          <span class="cc__use">Partner Cloud home hero</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Grid</strong>
+            <p>2-col: <code>grid-template-columns: 1.05fr 0.95fr; gap: 56px;</code>. Copy on the left, art panel + floating card on the right.</p>
+          </div>
+          <div>
+            <strong>Vertical padding</strong>
+            <p><code>clamp(48px, 7vw, 92px) 0</code></p>
+          </div>
+          <div>
+            <strong>Left column</strong>
+            <p>eyebrow → h1 (with <code>.accent</code> span) → lede → <code>.hero__cta</code> (primary + ghost) → optional <code>.hero__assure</code> chip row</p>
+          </div>
+          <div>
+            <strong>Right column</strong>
+            <p><code>.hero__art</code> — <code>aspect-ratio: 4 / 3.4</code>, <code>--radius-lg</code>, <code>--shadow-lg</code>, brand-colored bg. Optional <code>.hero__floatcard</code> anchored to bottom-right.</p>
+          </div>
+          <div>
+            <strong>Mobile break</strong>
+            <p>At 900px, collapses to single column. Art max-width 560px. Float card repositions to bottom-right of art.</p>
+          </div>
+          <div>
+            <strong>H1 accent pattern</strong>
+            <p>Split the title into normal + <code>&lt;span class="accent"&gt;</code>. Existing library uses <code>lwc:dom="manual"</code> to inject the split. New components can render both spans directly in the template.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.2 · Feature split</span>
+          <span class="cc__name">reference: ecHtfFeatureSection</span>
+          <span class="cc__use">"The Solution" bullets · "Why Partner Cloud"</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Grid</strong>
+            <p>2-col: <code>1fr 1fr</code> · <code>gap: 56px</code> · <code>align-items: center</code>. Add <code>.feature__grid--rev</code> to reverse (media right → left) for alternating rhythm across the page.</p>
+          </div>
+          <div>
+            <strong>Section bg</strong>
+            <p><code>background: var(--surface)</code> — the soft neutral <code>#f6f7f6</code> that separates it from adjacent white sections.</p>
+          </div>
+          <div>
+            <strong>Media panel</strong>
+            <p><code>aspect-ratio: 5 / 4</code>, <code>--radius-lg</code>, brand-tint bg with <code>--shadow</code>. Use for a hero illustration or a photo (matches the Slalom PDF's "team photo" pattern).</p>
+          </div>
+          <div>
+            <strong>Feature list</strong>
+            <p>Each item: <code>display: flex; gap: 13px; padding: 12px 0</code>, top-border separator, icon on left in <code>var(--brand)</code>. Perfect for the "Strategy-led / Realized ROI / Streamlined journeys" checklist from the PDF.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.3 · Stat band</span>
+          <span class="cc__name">reference: ecHtfStatBand</span>
+          <span class="cc__use">"150K+ partners · $10B ecosystem" strip</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Grid</strong>
+            <p>3-col: <code>grid-template-columns: repeat(3, 1fr)</code> · <code>gap: 0</code>. Left vertical divider on all but the first stat via <code>border-left: 2px solid var(--line)</code>.</p>
+          </div>
+          <div>
+            <strong>Stat number</strong>
+            <p><code>font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4vw, 50px); letter-spacing: -0.02em; line-height: 1;</code></p>
+          </div>
+          <div>
+            <strong>Emphasis span</strong>
+            <p>Wrap unit or accent character in <code>&lt;span class="u"&gt;</code> — it renders in <code>var(--brand)</code> (e.g. "150K<span style="color:var(--pc-brand);">+</span>").</p>
+          </div>
+          <div>
+            <strong>Mobile break</strong>
+            <p>At 760px, stacks to single column with top-border dividers instead of left.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.4 · Process steps</span>
+          <span class="cc__name">reference: ecHtfProcessSection</span>
+          <span class="cc__use">"Recruit → Enable → Co-sell → Measure" partner lifecycle</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Grid</strong>
+            <p>4-col: <code>repeat(4, 1fr)</code> · <code>gap: 22px</code> · <code>margin-top: 50px</code> below section head.</p>
+          </div>
+          <div>
+            <strong>Step number</strong>
+            <p>38×38 circle, <code>background: var(--brand)</code>, white number, Archivo 800 15px. Sits above the step's h3.</p>
+          </div>
+          <div>
+            <strong>Dashed connector</strong>
+            <p><code>::after</code> on every step except last — <code>repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 12px)</code>, positioned between the numbered circles.</p>
+          </div>
+          <div>
+            <strong>Step title</strong>
+            <p>h3 · Archivo 700 · 19px · <code>margin-bottom: 8px</code>. Description in <code>--ink-2</code> at 15px, line-height 1.55.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.5 · Asset / article grid</span>
+          <span class="cc__name">reference: ecHtfFinanceSection</span>
+          <span class="cc__use">Partner Cloud blog article list · capability grid</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Grid</strong>
+            <p>3-col: <code>repeat(3, 1fr)</code> · <code>gap: 24px</code> · <code>margin-top: 46px</code> below section head.</p>
+          </div>
+          <div>
+            <strong>Card structure</strong>
+            <p>Two zones: <code>.asset-card__top</code> (icon + h3 + bottom border) and <code>.asset-card__body</code> (paragraph + optional chip row).</p>
+          </div>
+          <div>
+            <strong>Hover state</strong>
+            <p><code>translateY(-4px)</code> + <code>--shadow</code> + <code>--line-strong</code> border on hover.</p>
+          </div>
+          <div>
+            <strong>Chip row (tags)</strong>
+            <p><code>.chips</code> — flex wrap, gap 7px, mounted top 14px. Perfect for article tag pills.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc">
+        <div class="cc__head">
+          <span class="cc__pattern">7.6 · CTA band</span>
+          <span class="cc__name">reference: ecHtfCtaBand</span>
+          <span class="cc__use">"Connect with us" band · "View demo" close</span>
+        </div>
+        <div class="cc__grid">
+          <div>
+            <strong>Container</strong>
+            <p><code>.cta-band</code> — <code>background: var(--dark)</code>, <code>border-radius: var(--radius-lg)</code>, padding <code>clamp(40px, 6vw, 72px)</code>, white text.</p>
+          </div>
+          <div>
+            <strong>Orb decorations</strong>
+            <p>Two absolutely-positioned orbs (280px + 200px), <code>filter: blur(10px)</code>, tinted with <code>var(--brand)</code> and <code>var(--brand-2)</code> at 16–18% opacity. Purely decorative.</p>
+          </div>
+          <div>
+            <strong>Layout</strong>
+            <p>Inner flex with <code>align-items: flex-end; justify-content: space-between; gap: 34px; flex-wrap: wrap</code>. Copy left, button group right.</p>
+          </div>
+          <div>
+            <strong>Buttons</strong>
+            <p>Use <code>.btn--on-dark</code> (primary) + <code>.btn--outline-white</code> (secondary). Both with <code>.btn--lg</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. CHROME ============ -->
+    <section id="chrome">
+      <span class="section-num">08 · Chrome</span>
+      <h2>Site header & footer</h2>
+      <p class="section-lede">Partner Cloud can't use <code>ecHtfSiteHeader</code>/<code>ecHtfSiteFooter</code> directly (they contain HTF-specific logic). New <code>pcSiteHeader</code>/<code>pcSiteFooter</code> components should mirror these patterns.</p>
+
+      <h3 class="no-top">8.1 · Header — key rules</h3>
+      <ul>
+        <li><strong>Sticky at top</strong> — <code>:host { position: sticky; top: 0; z-index: 100; }</code></li>
+        <li><strong>Glassy backdrop</strong> — <code>background: rgba(255,255,255,0.86); backdrop-filter: saturate(1.4) blur(14px);</code></li>
+        <li><strong>Bar height</strong> — <code>min-height: 78px</code></li>
+        <li><strong>Bottom border</strong> — <code>border-bottom: 1px solid var(--line)</code></li>
+        <li><strong>Nav links</strong> — Archivo 600 · 15px · <code>color: var(--ink-2)</code> · hover → <code>var(--brand-deep)</code></li>
+        <li><strong>Underline on hover</strong> — animated <code>::after</code> pseudo-element (matches HTF pattern)</li>
+        <li><strong>Optional attribution bar above</strong> — <code>background: var(--dark); min-height: 38px;</code> for context or "made by Slalom" credit</li>
+      </ul>
+
+      <h3>8.2 · Footer — key rules</h3>
+      <ul>
+        <li><strong>Dark background</strong> — <code>background: var(--dark)</code>, text <code>rgba(255,255,255,0.78)</code></li>
+        <li><strong>Top padding</strong> — <code>padding: 64px 0 30px</code></li>
+        <li><strong>Column grid</strong> — <code>grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px</code> (brand block wider than link columns)</li>
+        <li><strong>Column heads</strong> — Archivo · 13px · <code>letter-spacing: 0.1em</code> · uppercase · white</li>
+        <li><strong>Link lists</strong> — flex-column, gap 11px, font-size 14.5px</li>
+        <li><strong>Bottom strip</strong> — <code>font-size: 12.5px; color: rgba(255,255,255,0.55);</code> for copyright + legal links</li>
+        <li><strong>Logo treatment</strong> — <code>filter: brightness(0) invert(1)</code> to render any brand logo as pure white</li>
+      </ul>
+    </section>
+
+    <!-- ============ 9. RESPONSIVE ============ -->
+    <section id="responsive">
+      <span class="section-num">09 · Responsive</span>
+      <h2>Responsive breakpoints</h2>
+      <p class="section-lede">The existing library uses three breakpoints. Follow the same to guarantee grid behavior matches.</p>
+
+      <div class="tw">
+        <table>
+          <thead><tr><th>Breakpoint</th><th>What changes</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>max-width: 900px</code></td>
+              <td>Hero grid collapses to single column · Feature split becomes stacked · Header nav collapses to hamburger (in existing header) · Media panels reflow to full width</td>
+            </tr>
+            <tr>
+              <td><code>max-width: 760px</code></td>
+              <td>Stat band goes single column with top-border dividers · Process steps stack · Footer columns start collapsing</td>
+            </tr>
+            <tr>
+              <td><code>max-width: 640px</code></td>
+              <td>Container padding shrinks from 28px → 20px · Hero CTAs stack vertically · Card padding tightens</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="call call--tip">
+        <span class="call__label">Use fluid, not fixed</span>
+        <p>The existing library uses <code>clamp(min, preferred-vw, max)</code> aggressively for section padding, title sizes, and card padding. This means most sizing scales continuously — the breakpoints only exist for grid <em>reshape</em> moments, not for progressive size adjustments.</p>
+      </div>
+    </section>
+
+    <!-- ============ 10. DATA FLOW ============ -->
+    <section id="dataflow">
+      <span class="section-num">10 · Behavior</span>
+      <h2>Data flow pattern (for reference)</h2>
+      <p class="section-lede">Even though Partner Cloud can't reuse the existing Contentful service, the <em>shape</em> of the lifecycle every component follows is worth mirroring so behavior stays consistent.</p>
+
+      <span class="pre-label">javascript — the ecHtf lifecycle every section follows</span>
+<pre><code>connectedCallback() {
+  this._brandId = detectBrandId();
+  this._load();
+}
+
+@wire(CurrentPageReference)
+wiredPageRef(pageRef) {
+  const brandParam = ((pageRef?.state?.brand) || "").toLowerCase();
+  const resolved = BRAND_ORDER.includes(brandParam) ? brandParam : detectBrandId();
+  if (resolved !== this._brandId) {
+    this._brandId = resolved;
+    this._load();
+  }
+}
+
+async _load() {
+  const brandId = this._brandId;
+  const [theme, content] = await Promise.all([
+    getBrandTheme(brandId),
+    getSection("heroSection", brandId)
+  ]);
+  if (brandId !== this._brandId) return;  // race guard
+  applyBrandTokens(this.template.host, theme);
+  this._content = content || {};
+  this._iconsReady = false;               // trigger icon re-injection
+}
+
+renderedCallback() {
+  if (this._iconsReady) return;
+  this._iconsReady = true;
+  this._injectIcons();
+}</code></pre>
+
+      <h4>What to mirror in Partner Cloud components</h4>
+      <ul>
+        <li><strong>Race guard on async loads</strong> — if the "brand" (or in Partner Cloud's case, the config) changes mid-flight, discard the stale response.</li>
+        <li><strong>Icon injection in <code>renderedCallback</code></strong> — with an <code>_iconsReady</code> guard so it only runs once per data load.</li>
+        <li><strong>Load in parallel</strong> — <code>Promise.all</code> for theme + content.</li>
+        <li><strong>Set CSS custom properties on <code>this.template.host</code></strong> — never on the child element. This is the LWC equivalent of the <code>:host</code> selector.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 11. ICONS ============ -->
+    <section id="icons">
+      <span class="section-num">11 · Icons</span>
+      <h2>Icon system</h2>
+      <p class="section-lede">The existing library uses inline SVG icons injected via <code>lwc:dom="manual"</code>. Partner Cloud components should copy the icon paths they need into their own module — do not import <code>ecHtfBrandData</code>.</p>
+
+      <h3 class="no-top">11.1 · The pattern</h3>
+      <span class="pre-label">html</span>
+<pre><code>&lt;span
+  class="feature__item-icon"
+  data-icon="check"
+  data-size="22"
+  lwc:dom="manual"
+  aria-hidden="true"
+&gt;&lt;/span&gt;</code></pre>
+
+      <span class="pre-label">javascript — renderedCallback</span>
+<pre><code>_injectIcons() {
+  this.template.querySelectorAll("[data-icon]").forEach((el) =&gt; {
+    if (!el.innerHTML) {
+      const size = parseInt(el.dataset.size, 10) || 24;
+      el.innerHTML = getIconSvg(el.dataset.icon, size);
+    }
+  });
+}</code></pre>
+
+      <h3>11.2 · Icon-shell helper (for a new pc module)</h3>
+      <p>Copy this into a new <code>pcIconLibrary.js</code> module (utility-only, no template).</p>
+      <span class="pre-label">javascript</span>
+<pre><code>const ICON_PATHS = {
+  check:      '&lt;path d="M5 12.5 10 17l9-10"/&gt;',
+  arrow:      '&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;',
+  chevron:    '&lt;path d="M6 9l6 6 6-6"/&gt;',
+  spark:      '&lt;path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/&gt;',
+  handshake:  '&lt;path d="M3 12l3-3 4 3 2-2 2 2 4-3 3 3M7 9v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9"/&gt;',
+  users:      '&lt;circle cx="9" cy="8" r="3.2"/&gt;&lt;path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.2a3.2 3.2 0 0 1 0 6M17.5 19a5.5 5.5 0 0 0-3-4.9"/&gt;'
+  // …copy additional icons from ecHtfBrandData ICON_PATHS as needed
+};
+
+export function getIconSvg(name, size = 24) {
+  const path = ICON_PATHS[name];
+  if (!path) return "";
+  return `&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+    width="${size}" height="${size}" fill="none" stroke="currentColor"
+    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+    aria-hidden="true"&gt;${path}&lt;/svg&gt;`;
+}</code></pre>
+
+      <div class="call call--info">
+        <span class="call__label">Why copy, not import</span>
+        <p>Importing <code>getIconSvg</code> from <code>c/ecHtfBrandData</code> would create a runtime dependency on the HTF library. A copied module keeps Partner Cloud fully independent — and it's cheap: the full icon set is under 3KB. Reference the source at <code>force-app/main/default/lwc/ecHtfBrandData/ecHtfBrandData.js</code> when picking icons to include.</p>
+      </div>
+    </section>
+
+    <!-- ============ 12. FIELD GUIDE ============ -->
+    <section id="field-guide">
+      <span class="section-num">12 · Field guide</span>
+      <h2>Existing component → Partner Cloud pattern map</h2>
+      <p class="section-lede">Which existing component to study when building each Partner Cloud need. All content on the Slalom Salesforce Partner Cloud one-pager fits one of these patterns.</p>
+
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Partner Cloud need</th><th>Reference component</th><th>New component name (suggested)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Home page visually rich hero</td>
+              <td><code>ecHtfHeroPanel</code></td>
+              <td><code>pcHero</code></td>
+            </tr>
+            <tr>
+              <td>Interior page hero (Insights, About, Article)</td>
+              <td><code>ecHtfPageHero</code></td>
+              <td><code>pcPageHero</code></td>
+            </tr>
+            <tr>
+              <td>"The Solution" checklist section</td>
+              <td><code>ecHtfFeatureSection</code></td>
+              <td><code>pcFeatureSplit</code></td>
+            </tr>
+            <tr>
+              <td>Partner ecosystem stat strip</td>
+              <td><code>ecHtfStatBand</code></td>
+              <td><code>pcStatBand</code></td>
+            </tr>
+            <tr>
+              <td>"How it works" partner lifecycle steps</td>
+              <td><code>ecHtfProcessSection</code></td>
+              <td><code>pcProcessSteps</code></td>
+            </tr>
+            <tr>
+              <td>Capabilities / offerings icon grid</td>
+              <td><code>ecHtfFinanceSection</code></td>
+              <td><code>pcCapabilityGrid</code></td>
+            </tr>
+            <tr>
+              <td>Blog article list (paginated)</td>
+              <td><code>ecHtfFinanceSection</code> (card grid pattern only)</td>
+              <td><code>pcArticleList</code></td>
+            </tr>
+            <tr>
+              <td>Blog article card</td>
+              <td>Asset card pattern from <code>ecHtfFinanceSection</code></td>
+              <td><code>pcArticleCard</code></td>
+            </tr>
+            <tr>
+              <td>Blog article detail page (rich body)</td>
+              <td><em>No direct precedent</em> — new pattern</td>
+              <td><code>pcArticlePage</code> + <code>pcArticleBody</code></td>
+            </tr>
+            <tr>
+              <td>FAQ accordion</td>
+              <td><code>ecHtfFaqAccordion</code></td>
+              <td><code>pcFaq</code></td>
+            </tr>
+            <tr>
+              <td>Closing "Connect with us" CTA</td>
+              <td><code>ecHtfCtaBand</code></td>
+              <td><code>pcCtaBand</code></td>
+            </tr>
+            <tr>
+              <td>Sticky site header + nav</td>
+              <td><code>ecHtfSiteHeader</code></td>
+              <td><code>pcSiteHeader</code></td>
+            </tr>
+            <tr>
+              <td>Dark footer with columns</td>
+              <td><code>ecHtfSiteFooter</code></td>
+              <td><code>pcSiteFooter</code></td>
+            </tr>
+            <tr>
+              <td>Preview mode banner</td>
+              <td><code>contentfulPreviewBanner</code></td>
+              <td><code>pcPreviewBanner</code> (if we implement preview)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="call call--tip">
+        <span class="call__label">Working method</span>
+        <p>For each new component: open the reference component's <code>.css</code> and <code>.html</code> side-by-side, extract the pattern into a new file with a Partner-Cloud-scoped class prefix (e.g. <code>.pc-hero__grid</code> instead of <code>.hero__grid</code>), swap in Partner Cloud content bindings, and validate visually at 1440px, 900px, 760px, and 400px viewport widths.</p>
+      </div>
+    </section>
+
+    <!-- ============ 13. STARTER SNIPPET ============ -->
+    <section id="starter">
+      <span class="section-num">13 · Starter</span>
+      <h2>Starter — a minimal pc section</h2>
+      <p class="section-lede">A complete, ready-to-fork three-file scaffold. Ships with tokens, layout, eyebrow, h2, lede, and a primary/ghost button pair. Copy, rename, extend.</p>
+
+      <span class="pre-label">pcStarterSection.html</span>
+<pre><code>&lt;template&gt;
+  &lt;section class="pc-section pc-section--surface" aria-labelledby="pc-starter-heading"&gt;
+    &lt;div class="pc-container"&gt;
+      &lt;header class="pc-sec-head"&gt;
+        &lt;p class="pc-eyebrow"&gt;{eyebrow}&lt;/p&gt;
+        &lt;h2 id="pc-starter-heading"&gt;{title}&lt;/h2&gt;
+        &lt;p&gt;{lede}&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;div class="pc-cta-row"&gt;
+        &lt;a href={primaryHref} class="pc-btn pc-btn--primary pc-btn--lg"&gt;{primaryLabel}&lt;/a&gt;
+        &lt;a href={secondaryHref} class="pc-btn pc-btn--ghost pc-btn--lg"&gt;{secondaryLabel}&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/template&gt;</code></pre>
+
+      <span class="pre-label">pcStarterSection.css</span>
+<pre><code>:host {
+  display: block;
+  --brand: #0c62fb;
+  --brand-deep: #0847c4;
+  --brand-2: #00a1e0;
+  --brand-tint: #e6efff;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 18px rgba(20,28,24,0.08), 0 2px 6px rgba(20,28,24,0.05);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+p { margin: 0; }
+h2 { margin: 0; }
+
+.pc-container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+.pc-section { padding: clamp(56px, 8vw, 104px) 0; }
+.pc-section--surface { background: var(--surface); }
+
+.pc-sec-head { max-width: 680px; }
+.pc-eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+.pc-sec-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 46px);
+  letter-spacing: -0.02em;
+  margin: 16px 0 0;
+  color: var(--ink);
+}
+.pc-sec-head p {
+  margin-top: 16px;
+  color: var(--ink-2);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.pc-cta-row {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.pc-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15.5px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none !important;
+  line-height: 1;
+  transition: transform 0.15s var(--ease), background 0.2s, color 0.2s, border-color 0.2s;
+}
+.pc-btn:active { transform: translateY(1px); }
+.pc-btn--primary { background: var(--brand); color: var(--brand-on) !important; }
+.pc-btn--primary:hover { background: var(--brand-deep); color: var(--brand-on) !important; }
+.pc-btn--ghost { background: transparent; color: var(--ink) !important; border-color: var(--line-strong); }
+.pc-btn--ghost:hover { border-color: var(--brand); color: var(--brand-deep) !important; background: var(--brand-tint); }
+.pc-btn--lg { padding: 17px 32px; font-size: 16.5px; }
+
+@media (max-width: 640px) {
+  .pc-container { padding: 0 20px; }
+  .pc-cta-row { flex-direction: column; align-items: flex-start; }
+}</code></pre>
+
+      <span class="pre-label">pcStarterSection.js</span>
+<pre><code>import { LightningElement, api } from "lwc";
+
+export default class PcStarterSection extends LightningElement {
+  @api eyebrow = "";
+  @api title = "";
+  @api lede = "";
+  @api primaryLabel = "Learn more";
+  @api primaryHref = "#";
+  @api secondaryLabel = "";
+  @api secondaryHref = "#";
+}</code></pre>
+    </section>
+
+    <footer>
+      Partner Cloud site · Styling &amp; Structure Reference · v1
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>

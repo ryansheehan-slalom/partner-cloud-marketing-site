@@ -1,0 +1,18 @@
+<template>
+  <section class="section--tight">
+    <div class="container">
+      <div class="stat-band" role="region" aria-label="Key statistics">
+        <template for:each={stats} for:item="stat">
+          <div key={stat.id} class="stat">
+            <div class="stat__num">
+              {stat.num}<template if:true={stat.hasUnit}
+                ><span class="u">&nbsp;{stat.unit}</span></template
+              >
+            </div>
+            <div class="stat__lbl">{stat.label}</div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>

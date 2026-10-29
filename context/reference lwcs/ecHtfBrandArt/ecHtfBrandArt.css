@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-art-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-art-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-art__label {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 5px 11px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}

@@ -1,0 +1,39 @@
+<template>
+  <section
+    class="section section--surface"
+    id="finance"
+    aria-labelledby="finance-heading"
+  >
+    <div class="container">
+      <header class="sec-head">
+        <span class="eyebrow">{financeEyebrow}</span>
+        <h2 id="finance-heading">{financeTitle}</h2>
+        <p>{financeBody}</p>
+      </header>
+
+      <div class="asset-grid">
+        <template for:each={assets} for:item="asset">
+          <article key={asset.id} class="card asset-card card--hover">
+            <div class="asset-card__top">
+              <span
+                class="ic"
+                data-asset-icon={asset.icon}
+                lwc:dom="manual"
+                aria-hidden="true"
+              ></span>
+              <h3>{asset.title}</h3>
+            </div>
+            <div class="asset-card__body">
+              <p>{asset.body}</p>
+              <div class="chips" aria-label="Asset types">
+                <template for:each={asset.chipsArr} for:item="chip">
+                  <span key={chip.id} class="chip">{chip.label}</span>
+                </template>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>

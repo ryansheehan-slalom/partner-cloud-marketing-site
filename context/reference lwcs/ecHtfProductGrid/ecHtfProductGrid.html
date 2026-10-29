@@ -1,0 +1,109 @@
+<template>
+  <!-- ── Brand guard ──────────────────────────────────────────────────── -->
+  <template if:false={hasCatalog}>
+    <div class="no-catalog">
+      <div class="container">
+        <div class="no-catalog__card">
+          <p class="no-catalog__msg">
+            This catalog is available for Subway® franchisees only.
+          </p>
+          <p class="no-catalog__sub">
+            Please visit the correct site or contact us for information about
+            available products.
+          </p>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template if:true={hasCatalog}>
+    <!-- ── Category filter pills ──────────────────────────────────── -->
+    <div class="cat-bar">
+      <div class="container">
+        <div class="cat-pills" role="group" aria-label="Filter by category">
+          <template for:each={categoryPills} for:item="pill">
+            <button
+              key={pill.value}
+              class={pill.cls}
+              type="button"
+              data-cat={pill.value}
+              onclick={handleCatFilter}
+              aria-pressed={pill.isActive}
+            >
+              {pill.label}
+            </button>
+          </template>
+        </div>
+        <p class="cat-bar__count">{productCountLabel}</p>
+      </div>
+    </div>
+
+    <!-- ── Product grid ────────────────────────────────────────────── -->
+    <section class="catalog-sec">
+      <div class="container">
+        <div class="product-grid">
+          <template for:each={filteredProducts} for:item="product">
+            <article key={product.id} class="product-card">
+              <div class="product-card__media">
+                <span class="product-card__tag-pill">{product.tag}</span>
+                <span
+                  class="product-card__icon"
+                  data-icon={product.icon}
+                  data-size="40"
+                  lwc:dom="manual"
+                  aria-hidden="true"
+                ></span>
+              </div>
+
+              <div class="product-card__body">
+                <p class="product-card__cat">{product.cat}</p>
+                <h3 class="product-card__name">{product.name}</h3>
+                <p class="product-card__desc">{product.desc}</p>
+                <div class="product-card__foot">
+                  <div class="product-card__price">
+                    <span class="product-card__amount">${product.price}</span>
+                    <span class="product-card__unit">/mo est.</span>
+                  </div>
+                  <button
+                    class={product.cartBtnClass}
+                    type="button"
+                    data-id={product.id}
+                    onclick={handleCartToggle}
+                    aria-pressed={product.inCart}
+                  >
+                    {product.cartBtnLabel}
+                  </button>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Sticky cart bar ─────────────────────────────────────────── -->
+    <template if:true={hasCart}>
+      <div class="cart-bar" role="region" aria-label="Lease selection">
+        <div class="container cart-bar__inner">
+          <span class="cart-bar__summary">{cartSummary}</span>
+          <div class="cart-bar__actions">
+            <button
+              class="btn btn--ghost btn--sm"
+              type="button"
+              onclick={handleClearCart}
+            >
+              Clear
+            </button>
+            <button
+              class="btn btn--brand"
+              type="button"
+              onclick={handleContinue}
+            >
+              Continue to application →
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

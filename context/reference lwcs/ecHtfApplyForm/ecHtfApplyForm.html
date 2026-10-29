@@ -1,0 +1,929 @@
+<template>
+  <!-- ═══════════════════════════════════════════════════════════════════
+         SUCCESS STATE
+    ═══════════════════════════════════════════════════════════════════ -->
+  <template if:true={submitted}>
+    <section class="success-sec">
+      <div class="container">
+        <div class="success-panel">
+          <span
+            class="success-icon"
+            data-success-icon
+            lwc:dom="manual"
+            aria-hidden="true"
+          ></span>
+          <h2 class="success-title">Application received!</h2>
+          <p class="success-body">
+            Thank you — your application has been submitted. A financing
+            specialist will be in touch within 24–48 business hours.
+          </p>
+          <div class="success-ref">
+            <span class="success-ref__label">Reference number</span>
+            <strong class="success-ref__num">{refNumber}</strong>
+          </div>
+          <div class="success-actions">
+            <a onclick={handleHomeClick} class="btn btn--brand">Back to home</a>
+            <a onclick={handleContactClick} class="btn btn--outline-brand"
+              >Contact us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+         APPLICATION FORM
+    ═══════════════════════════════════════════════════════════════════ -->
+  <template if:false={submitted}>
+    <section class="apply-sec">
+      <div class="container">
+        <!-- Step progress nav -->
+        <nav class="step-nav" aria-label="Application steps">
+          <template for:each={stepMeta} for:item="s">
+            <button
+              key={s.num}
+              class={s.navClass}
+              type="button"
+              data-step={s.num}
+              onclick={handleStepNav}
+              aria-current={s.isCurrent}
+              disabled={s.isDisabled}
+            >
+              <span class="step-nav__bubble">{s.num}</span>
+              <span class="step-nav__label">{s.label}</span>
+            </button>
+          </template>
+        </nav>
+
+        <div class="apply-card">
+          <!-- ── STEP 1: BUSINESS INFO ─────────────────────── -->
+          <template if:true={isStep1}>
+            <div class="form-section">
+              <h2 class="form-section__title">Business information</h2>
+              <p class="form-section__sub">
+                Tell us about the entity applying for financing.
+              </p>
+            </div>
+
+            <div class="form-grid">
+              <div class="field field--wide">
+                <label class="field__label" for="bizLegal"
+                  >Legal business name <span class="req">*</span></label
+                >
+                <input
+                  id="bizLegal"
+                  class={bizLegalCls}
+                  type="text"
+                  value={formData.bizLegal}
+                  data-key="bizLegal"
+                  oninput={handleInput}
+                  placeholder="As it appears on legal documents"
+                />
+                <template if:true={errors.bizLegal}
+                  ><span class="field__err">{errors.bizLegal}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizDba"
+                  >DBA / trade name</label
+                >
+                <input
+                  id="bizDba"
+                  class="field__input"
+                  type="text"
+                  value={formData.bizDba}
+                  data-key="bizDba"
+                  oninput={handleInput}
+                  placeholder="If different from legal name"
+                />
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizStructure"
+                  >Business structure <span class="req">*</span></label
+                >
+                <select
+                  id="bizStructure"
+                  class={bizStructureCls}
+                  value={formData.bizStructure}
+                  data-key="bizStructure"
+                  onchange={handleSelect}
+                >
+                  <option value="">Select…</option>
+                  <option value="LLC">LLC</option>
+                  <option value="Corporation">Corporation (C or S)</option>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Sole Proprietorship">
+                    Sole Proprietorship
+                  </option>
+                  <option value="Non-Profit">Non-Profit</option>
+                  <option value="Other">Other</option>
+                </select>
+                <template if:true={errors.bizStructure}
+                  ><span class="field__err"
+                    >{errors.bizStructure}</span
+                  ></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizEin"
+                  >Federal EIN <span class="req">*</span></label
+                >
+                <input
+                  id="bizEin"
+                  class={bizEinCls}
+                  type="text"
+                  value={formData.bizEin}
+                  data-key="bizEin"
+                  oninput={handleInput}
+                  placeholder="XX-XXXXXXX"
+                  maxlength="10"
+                />
+                <template if:true={errors.bizEin}
+                  ><span class="field__err">{errors.bizEin}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizYears"
+                  >Years in business <span class="req">*</span></label
+                >
+                <input
+                  id="bizYears"
+                  class={bizYearsCls}
+                  type="number"
+                  value={formData.bizYears}
+                  data-key="bizYears"
+                  oninput={handleInput}
+                  placeholder="e.g. 5"
+                  min="0"
+                />
+                <template if:true={errors.bizYears}
+                  ><span class="field__err">{errors.bizYears}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizLocations"
+                  >Number of locations</label
+                >
+                <input
+                  id="bizLocations"
+                  class="field__input"
+                  type="number"
+                  value={formData.bizLocations}
+                  data-key="bizLocations"
+                  oninput={handleInput}
+                  placeholder="e.g. 3"
+                  min="1"
+                />
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="bizAddress"
+                  >Business street address <span class="req">*</span></label
+                >
+                <input
+                  id="bizAddress"
+                  class={bizAddressCls}
+                  type="text"
+                  value={formData.bizAddress}
+                  data-key="bizAddress"
+                  oninput={handleInput}
+                  placeholder="Street address"
+                />
+                <template if:true={errors.bizAddress}
+                  ><span class="field__err">{errors.bizAddress}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizCity"
+                  >City <span class="req">*</span></label
+                >
+                <input
+                  id="bizCity"
+                  class={bizCityCls}
+                  type="text"
+                  value={formData.bizCity}
+                  data-key="bizCity"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.bizCity}
+                  ><span class="field__err">{errors.bizCity}</span></template
+                >
+              </div>
+
+              <div class="field field--state">
+                <label class="field__label" for="bizState"
+                  >State <span class="req">*</span></label
+                >
+                <select
+                  id="bizState"
+                  class={bizStateCls}
+                  value={formData.bizState}
+                  data-key="bizState"
+                  onchange={handleSelect}
+                >
+                  <option value="">—</option>
+                  <template for:each={usStates} for:item="st">
+                    <option key={st} value={st}>{st}</option>
+                  </template>
+                </select>
+                <template if:true={errors.bizState}
+                  ><span class="field__err">{errors.bizState}</span></template
+                >
+              </div>
+
+              <div class="field field--zip">
+                <label class="field__label" for="bizZip"
+                  >ZIP <span class="req">*</span></label
+                >
+                <input
+                  id="bizZip"
+                  class={bizZipCls}
+                  type="text"
+                  value={formData.bizZip}
+                  data-key="bizZip"
+                  oninput={handleInput}
+                  maxlength="5"
+                  placeholder="XXXXX"
+                />
+                <template if:true={errors.bizZip}
+                  ><span class="field__err">{errors.bizZip}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizPhone"
+                  >Business phone <span class="req">*</span></label
+                >
+                <input
+                  id="bizPhone"
+                  class={bizPhoneCls}
+                  type="tel"
+                  value={formData.bizPhone}
+                  data-key="bizPhone"
+                  oninput={handleInput}
+                  placeholder="(XXX) XXX-XXXX"
+                />
+                <template if:true={errors.bizPhone}
+                  ><span class="field__err">{errors.bizPhone}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="bizEmail"
+                  >Business email <span class="req">*</span></label
+                >
+                <input
+                  id="bizEmail"
+                  class={bizEmailCls}
+                  type="email"
+                  value={formData.bizEmail}
+                  data-key="bizEmail"
+                  oninput={handleInput}
+                  placeholder="contact@company.com"
+                />
+                <template if:true={errors.bizEmail}
+                  ><span class="field__err">{errors.bizEmail}</span></template
+                >
+              </div>
+            </div>
+          </template>
+
+          <!-- ── STEP 2: EQUIPMENT INFO ────────────────────── -->
+          <template if:true={isStep2}>
+            <div class="form-section">
+              <h2 class="form-section__title">Equipment details</h2>
+              <p class="form-section__sub">{appConfig.assetsQuestion}</p>
+            </div>
+
+            <!-- Asset category tiles -->
+            <div class="asset-tiles" role="group" aria-label="Asset categories">
+              <template for:each={assetTiles} for:item="tile">
+                <button
+                  key={tile.id}
+                  class={tile.tileClass}
+                  type="button"
+                  data-asset={tile.id}
+                  onclick={handleAssetToggle}
+                  aria-pressed={tile.selected}
+                >
+                  <span
+                    class="asset-tile__icon"
+                    data-asset-icon={tile.icon}
+                    lwc:dom="manual"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="asset-tile__title">{tile.title}</span>
+                </button>
+              </template>
+            </div>
+            <template if:true={errors.assets}
+              ><span class="field__err">{errors.assets}</span></template
+            >
+
+            <div class="form-grid">
+              <div class="field field--full">
+                <label class="field__label" for="equipDetails"
+                  >Equipment description <span class="req">*</span></label
+                >
+                <textarea
+                  id="equipDetails"
+                  class={equipDetailsCls}
+                  rows="4"
+                  value={formData.equipDetails}
+                  data-key="equipDetails"
+                  oninput={handleInput}
+                  placeholder="Describe the specific equipment, models, quantities, or vendor quote details…"
+                ></textarea>
+                <template if:true={errors.equipDetails}
+                  ><span class="field__err"
+                    >{errors.equipDetails}</span
+                  ></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="equipAmount"
+                  >{appConfig.amountLabel} <span class="req">*</span></label
+                >
+                <div class="field__prefix-wrap">
+                  <span class="field__prefix">$</span>
+                  <input
+                    id="equipAmount"
+                    class={equipAmountCls}
+                    type="text"
+                    value={formData.equipAmount}
+                    data-key="equipAmount"
+                    oninput={handleInput}
+                    placeholder="0"
+                  />
+                </div>
+                <template if:true={errors.equipAmount}
+                  ><span class="field__err"
+                    >{errors.equipAmount}</span
+                  ></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="equipTerm"
+                  >Preferred term <span class="req">*</span></label
+                >
+                <select
+                  id="equipTerm"
+                  class={equipTermCls}
+                  value={formData.equipTerm}
+                  data-key="equipTerm"
+                  onchange={handleSelect}
+                >
+                  <option value="">Select…</option>
+                  <template for:each={appConfig.terms} for:item="t">
+                    <option key={t} value={t}>{t}</option>
+                  </template>
+                </select>
+                <template if:true={errors.equipTerm}
+                  ><span class="field__err">{errors.equipTerm}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="equipProject"
+                  >Project type</label
+                >
+                <select
+                  id="equipProject"
+                  class="field__input"
+                  value={formData.equipProject}
+                  data-key="equipProject"
+                  onchange={handleSelect}
+                >
+                  <option value="">Select…</option>
+                  <template for:each={appConfig.projects} for:item="p">
+                    <option key={p} value={p}>{p}</option>
+                  </template>
+                </select>
+              </div>
+
+              <template if:true={showFinType}>
+                <div class="field">
+                  <label class="field__label" for="equipFinType"
+                    >Financing type</label
+                  >
+                  <select
+                    id="equipFinType"
+                    class="field__input"
+                    value={formData.equipFinType}
+                    data-key="equipFinType"
+                    onchange={handleSelect}
+                  >
+                    <option value="">Select…</option>
+                    <template for:each={appConfig.finTypes} for:item="ft">
+                      <option key={ft} value={ft}>{ft}</option>
+                    </template>
+                  </select>
+                </div>
+              </template>
+
+              <div class="field field--wide">
+                <label class="field__label" for="equipVendor"
+                  >Preferred vendor / supplier</label
+                >
+                <input
+                  id="equipVendor"
+                  class="field__input"
+                  type="text"
+                  value={formData.equipVendor}
+                  data-key="equipVendor"
+                  oninput={handleInput}
+                  placeholder="Vendor name (optional)"
+                />
+              </div>
+            </div>
+          </template>
+
+          <!-- ── STEP 3: OWNERSHIP ─────────────────────────── -->
+          <template if:true={isStep3}>
+            <div class="form-section">
+              <h2 class="form-section__title">
+                Principal / ownership information
+              </h2>
+              <p class="form-section__sub">
+                Information for the primary business owner or authorized signing
+                officer. All fields are encrypted and used for credit evaluation
+                only.
+              </p>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label class="field__label" for="ownFirst"
+                  >First name <span class="req">*</span></label
+                >
+                <input
+                  id="ownFirst"
+                  class={ownFirstCls}
+                  type="text"
+                  value={formData.ownFirst}
+                  data-key="ownFirst"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.ownFirst}
+                  ><span class="field__err">{errors.ownFirst}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownLast"
+                  >Last name <span class="req">*</span></label
+                >
+                <input
+                  id="ownLast"
+                  class={ownLastCls}
+                  type="text"
+                  value={formData.ownLast}
+                  data-key="ownLast"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.ownLast}
+                  ><span class="field__err">{errors.ownLast}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownTitle"
+                  >Title / role <span class="req">*</span></label
+                >
+                <input
+                  id="ownTitle"
+                  class={ownTitleCls}
+                  type="text"
+                  value={formData.ownTitle}
+                  data-key="ownTitle"
+                  oninput={handleInput}
+                  placeholder="e.g. Owner, CEO, CFO"
+                />
+                <template if:true={errors.ownTitle}
+                  ><span class="field__err">{errors.ownTitle}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownPct"
+                  >Ownership % <span class="req">*</span></label
+                >
+                <div class="field__suffix-wrap">
+                  <input
+                    id="ownPct"
+                    class={ownPctCls}
+                    type="number"
+                    value={formData.ownPct}
+                    data-key="ownPct"
+                    oninput={handleInput}
+                    min="1"
+                    max="100"
+                  />
+                  <span class="field__suffix">%</span>
+                </div>
+                <template if:true={errors.ownPct}
+                  ><span class="field__err">{errors.ownPct}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownSsn"
+                  >SSN (last 4) <span class="req">*</span></label
+                >
+                <input
+                  id="ownSsn"
+                  class={ownSsnCls}
+                  type="text"
+                  value={formData.ownSsn}
+                  data-key="ownSsn"
+                  oninput={handleInput}
+                  maxlength="4"
+                  placeholder="XXXX"
+                />
+                <template if:true={errors.ownSsn}
+                  ><span class="field__err">{errors.ownSsn}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownDob"
+                  >Date of birth <span class="req">*</span></label
+                >
+                <input
+                  id="ownDob"
+                  class={ownDobCls}
+                  type="date"
+                  value={formData.ownDob}
+                  data-key="ownDob"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.ownDob}
+                  ><span class="field__err">{errors.ownDob}</span></template
+                >
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="ownAddress"
+                  >Home street address <span class="req">*</span></label
+                >
+                <input
+                  id="ownAddress"
+                  class={ownAddressCls}
+                  type="text"
+                  value={formData.ownAddress}
+                  data-key="ownAddress"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.ownAddress}
+                  ><span class="field__err">{errors.ownAddress}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownCity"
+                  >City <span class="req">*</span></label
+                >
+                <input
+                  id="ownCity"
+                  class={ownCityCls}
+                  type="text"
+                  value={formData.ownCity}
+                  data-key="ownCity"
+                  oninput={handleInput}
+                />
+                <template if:true={errors.ownCity}
+                  ><span class="field__err">{errors.ownCity}</span></template
+                >
+              </div>
+
+              <div class="field field--state">
+                <label class="field__label" for="ownState"
+                  >State <span class="req">*</span></label
+                >
+                <select
+                  id="ownState"
+                  class={ownStateCls}
+                  value={formData.ownState}
+                  data-key="ownState"
+                  onchange={handleSelect}
+                >
+                  <option value="">—</option>
+                  <template for:each={usStates} for:item="st">
+                    <option key={st} value={st}>{st}</option>
+                  </template>
+                </select>
+                <template if:true={errors.ownState}
+                  ><span class="field__err">{errors.ownState}</span></template
+                >
+              </div>
+
+              <div class="field field--zip">
+                <label class="field__label" for="ownZip"
+                  >ZIP <span class="req">*</span></label
+                >
+                <input
+                  id="ownZip"
+                  class={ownZipCls}
+                  type="text"
+                  value={formData.ownZip}
+                  data-key="ownZip"
+                  oninput={handleInput}
+                  maxlength="5"
+                />
+                <template if:true={errors.ownZip}
+                  ><span class="field__err">{errors.ownZip}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownPhone"
+                  >Mobile phone <span class="req">*</span></label
+                >
+                <input
+                  id="ownPhone"
+                  class={ownPhoneCls}
+                  type="tel"
+                  value={formData.ownPhone}
+                  data-key="ownPhone"
+                  oninput={handleInput}
+                  placeholder="(XXX) XXX-XXXX"
+                />
+                <template if:true={errors.ownPhone}
+                  ><span class="field__err">{errors.ownPhone}</span></template
+                >
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="ownEmail"
+                  >Personal email <span class="req">*</span></label
+                >
+                <input
+                  id="ownEmail"
+                  class={ownEmailCls}
+                  type="email"
+                  value={formData.ownEmail}
+                  data-key="ownEmail"
+                  oninput={handleInput}
+                  placeholder="you@email.com"
+                />
+                <template if:true={errors.ownEmail}
+                  ><span class="field__err">{errors.ownEmail}</span></template
+                >
+              </div>
+            </div>
+          </template>
+
+          <!-- ── STEP 4: REVIEW ────────────────────────────── -->
+          <template if:true={isStep4}>
+            <div class="form-section">
+              <h2 class="form-section__title">Review &amp; submit</h2>
+              <p class="form-section__sub">
+                Please review your information before submitting. Use the Edit
+                buttons to make changes.
+              </p>
+            </div>
+
+            <!-- Review: Business -->
+            <div class="review-block">
+              <div class="review-block__head">
+                <h3 class="review-block__title">Business information</h3>
+                <button
+                  class="review-edit"
+                  type="button"
+                  data-goto="1"
+                  onclick={handleStepNav}
+                >
+                  Edit
+                </button>
+              </div>
+              <dl class="review-dl">
+                <div class="review-row">
+                  <dt>Legal name</dt>
+                  <dd>{formData.bizLegal}</dd>
+                </div>
+                <template if:true={formData.bizDba}>
+                  <div class="review-row">
+                    <dt>DBA</dt>
+                    <dd>{formData.bizDba}</dd>
+                  </div>
+                </template>
+                <div class="review-row">
+                  <dt>Structure</dt>
+                  <dd>{formData.bizStructure}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>EIN</dt>
+                  <dd>{formData.bizEin}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Years in business</dt>
+                  <dd>{formData.bizYears}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Address</dt>
+                  <dd>{reviewBizAddress}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Phone</dt>
+                  <dd>{formData.bizPhone}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Email</dt>
+                  <dd>{formData.bizEmail}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Review: Equipment -->
+            <div class="review-block">
+              <div class="review-block__head">
+                <h3 class="review-block__title">Equipment details</h3>
+                <button
+                  class="review-edit"
+                  type="button"
+                  data-goto="2"
+                  onclick={handleStepNav}
+                >
+                  Edit
+                </button>
+              </div>
+              <dl class="review-dl">
+                <div class="review-row">
+                  <dt>Asset categories</dt>
+                  <dd>{reviewAssets}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Description</dt>
+                  <dd>{formData.equipDetails}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Estimated amount</dt>
+                  <dd>{reviewAmount}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Preferred term</dt>
+                  <dd>{formData.equipTerm}</dd>
+                </div>
+                <template if:true={formData.equipProject}>
+                  <div class="review-row">
+                    <dt>Project type</dt>
+                    <dd>{formData.equipProject}</dd>
+                  </div>
+                </template>
+                <template if:true={formData.equipFinType}>
+                  <div class="review-row">
+                    <dt>Financing type</dt>
+                    <dd>{formData.equipFinType}</dd>
+                  </div>
+                </template>
+              </dl>
+            </div>
+
+            <!-- Review: Ownership -->
+            <div class="review-block">
+              <div class="review-block__head">
+                <h3 class="review-block__title">Principal information</h3>
+                <button
+                  class="review-edit"
+                  type="button"
+                  data-goto="3"
+                  onclick={handleStepNav}
+                >
+                  Edit
+                </button>
+              </div>
+              <dl class="review-dl">
+                <div class="review-row">
+                  <dt>Name</dt>
+                  <dd>{reviewOwnName}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Title</dt>
+                  <dd>{formData.ownTitle}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Ownership</dt>
+                  <dd>{formData.ownPct}%</dd>
+                </div>
+                <div class="review-row">
+                  <dt>SSN (last 4)</dt>
+                  <dd>***-**-{formData.ownSsn}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Phone</dt>
+                  <dd>{formData.ownPhone}</dd>
+                </div>
+                <div class="review-row">
+                  <dt>Email</dt>
+                  <dd>{formData.ownEmail}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Consent + signature -->
+            <div class="consent-block">
+              <label class="consent-item">
+                <input
+                  type="checkbox"
+                  class="consent-check"
+                  checked={consentCredit}
+                  data-key="consentCredit"
+                  onchange={handleCheckbox}
+                />
+                <span class="consent-text"
+                  >I authorize Hudson Bank to obtain a business credit report
+                  and verify the information provided.
+                  <span class="req">*</span></span
+                >
+              </label>
+              <template if:true={errors.consentCredit}
+                ><span class="field__err"
+                  >{errors.consentCredit}</span
+                ></template
+              >
+
+              <label class="consent-item">
+                <input
+                  type="checkbox"
+                  class="consent-check"
+                  checked={consentTerms}
+                  data-key="consentTerms"
+                  onchange={handleCheckbox}
+                />
+                <span class="consent-text"
+                  >I certify that the information provided is accurate and
+                  complete, and I agree to the
+                  <a href="#" class="consent-link">Terms and Conditions</a>.
+                  <span class="req">*</span></span
+                >
+              </label>
+              <template if:true={errors.consentTerms}
+                ><span class="field__err">{errors.consentTerms}</span></template
+              >
+
+              <div class="field field--wide sig-field">
+                <label class="field__label" for="signature"
+                  >Electronic signature (full legal name)
+                  <span class="req">*</span></label
+                >
+                <input
+                  id="signature"
+                  class={signatureCls}
+                  type="text"
+                  value={formData.signature}
+                  data-key="signature"
+                  oninput={handleInput}
+                  placeholder="Type your full legal name as your electronic signature"
+                />
+                <template if:true={errors.signature}
+                  ><span class="field__err">{errors.signature}</span></template
+                >
+              </div>
+            </div>
+          </template>
+
+          <!-- ── Navigation buttons ────────────────────────── -->
+          <div class="form-nav">
+            <template if:true={showBack}>
+              <button
+                class="btn btn--outline-brand"
+                type="button"
+                onclick={handleBack}
+              >
+                ← Back
+              </button>
+            </template>
+            <template if:false={showBack}>
+              <span></span>
+            </template>
+
+            <template if:false={isStep4}>
+              <button class="btn btn--brand" type="button" onclick={handleNext}>
+                Continue →
+              </button>
+            </template>
+            <template if:true={isStep4}>
+              <button
+                class="btn btn--brand btn--lg"
+                type="button"
+                onclick={handleSubmit}
+              >
+                Submit application
+              </button>
+            </template>
+          </div>
+        </div>
+        <!-- /apply-card -->
+      </div>
+    </section>
+  </template>
+</template>

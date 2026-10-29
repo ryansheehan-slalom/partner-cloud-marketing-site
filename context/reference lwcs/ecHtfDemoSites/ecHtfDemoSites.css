@@ -1,0 +1,279 @@
+/* ── Host & Slalom tokens ───────────────────────────────────────────── */
+:host {
+  display: block;
+  --brand: #0c62fb;
+  --brand-deep: #002faf;
+  --brand-tint: #e7eeff;
+  --brand-tint-2: #f4f7ff;
+  --brand-on: #ffffff;
+  --ink: #0a1633;
+  --ink-2: #45506b;
+  --ink-3: #7b85a0;
+  --surface: #f5f7fb;
+  --surface-2: #eef1f8;
+  --line: #e2e7f2;
+  --dark: #000a25;
+  --dark-2: #061233;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 6px 18px rgba(10, 22, 51, 0.08), 0 2px 6px rgba(10, 22, 51, 0.05);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Page band (dark header) ────────────────────────────────────────── */
+.page-band {
+  background: var(--dark);
+  padding: 72px 0 64px;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.breadcrumb__link,
+.breadcrumb__link:link,
+.breadcrumb__link:visited {
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: color 0.18s;
+}
+.breadcrumb__link:hover,
+.breadcrumb__link:focus {
+  color: #fff;
+}
+.breadcrumb__sep {
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+.breadcrumb__current {
+  color: #fff;
+}
+.page-band__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b9bff;
+  margin-bottom: 14px;
+  display: block;
+}
+.page-band__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 18px;
+}
+.page-band__lede {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ── Section ─────────────────────────────────────────────────────────── */
+.section {
+  padding: 72px 0 80px;
+}
+
+/* ── Brand grid ─────────────────────────────────────────────────────── */
+.brand-grid {
+  display: grid;
+  /* Explicit column counts (not auto-fill) so the layout is deterministic at
+     every width — auto-fill flapped between 2 and 3 columns near its 320px
+     threshold (e.g. ~1063px). minmax(0,1fr) lets columns shrink without
+     overflowing. Breakpoints below step 3 → 2 → 1. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.brand-card--htf {
+  --card-accent: #117aca;
+  --card-accent-deep: #0a5293;
+}
+.brand-card--subway {
+  --card-accent: #009b3a;
+  --card-accent-deep: #00712b;
+}
+.brand-card--dunkin {
+  --card-accent: #ff671b;
+  --card-accent-deep: #c44500;
+}
+
+.brand-card__art {
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.brand-card__body {
+  padding: 24px 24px 20px;
+  flex: 1;
+}
+.brand-card__identity {
+  margin-bottom: 14px;
+}
+.brand-card__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--surface-2);
+  color: var(--ink-3);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-bottom: 6px;
+}
+.brand-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.brand-card__domain {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  font-family: "Courier New", monospace;
+}
+.brand-card__desc {
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+.brand-card__pages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.brand-card__page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--ink-2);
+}
+.brand-card__page-check {
+  width: 14px;
+  height: 14px;
+  color: var(--card-accent, var(--brand));
+  flex-shrink: 0;
+}
+.brand-card__page-pill {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+.brand-card__foot {
+  padding: 4px 24px 24px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none !important;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s;
+  white-space: nowrap;
+}
+.btn--enter,
+.btn--enter:link,
+.btn--enter:visited,
+.btn--enter:active {
+  gap: 8px;
+  background: var(--card-accent, var(--brand));
+  color: #fff;
+  border-color: transparent;
+  width: 100%;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+.btn--enter:hover {
+  background: var(--card-accent-deep, var(--brand-deep));
+}
+.btn--enter:focus-visible {
+  outline: 3px solid var(--card-accent, var(--brand));
+  outline-offset: 2px;
+}
+.btn--enter__arrow {
+  transition: transform 0.18s;
+}
+.btn--enter:hover .btn--enter__arrow {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .brand-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .container {
+    padding: 0 20px;
+  }
+  .page-band {
+    padding: 52px 0 44px;
+  }
+  .section {
+    padding: 52px 0 60px;
+  }
+}
+@media (max-width: 640px) {
+  .brand-grid {
+    grid-template-columns: 1fr;
+  }
+}

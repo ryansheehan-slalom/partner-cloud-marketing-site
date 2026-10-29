@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.section--tight {
+  padding: clamp(40px, 5vw, 68px) 0;
+}
+
+/* ── Stat Band — borderless grid on white (matches reference) ───────── */
+.stat-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.stat {
+  padding: 8px 28px;
+  border-left: 2px solid var(--line);
+}
+.stat:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.stat__num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(34px, 4vw, 50px);
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.stat__num .u {
+  color: var(--brand);
+}
+
+.stat__lbl {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+
+@media (max-width: 760px) {
+  .stat-band {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .stat {
+    border-left: none;
+    border-top: 2px solid var(--line);
+    padding: 16px 0 0;
+  }
+  .stat:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,30 @@
+<template>
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-band" aria-labelledby="cta-band-heading">
+        <!-- Background orbs -->
+        <div class="cta-band__orb cta-band__orb--1" aria-hidden="true"></div>
+        <div class="cta-band__orb cta-band__orb--2" aria-hidden="true"></div>
+
+        <div class="cta-band__inner">
+          <div class="cta-band__copy">
+            <span class="eyebrow">{ctaEyebrow}</span>
+            <h2 id="cta-band-heading" class="cta-band__title">{ctaTitle}</h2>
+            <p class="cta-band__body">{ctaBody}</p>
+          </div>
+          <div class="cta-band__btns">
+            <a onclick={handleApplyClick} class="btn btn--on-dark btn--lg">
+              {ctaApplyLabel} <span class="arr" aria-hidden="true">→</span>
+            </a>
+            <a
+              onclick={handleSecondaryClick}
+              class="btn btn--outline-white btn--lg"
+            >
+              {ctaSecondaryLabel}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

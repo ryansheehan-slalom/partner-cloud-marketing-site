@@ -1,0 +1,271 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 18px rgba(20, 28, 24, 0.08), 0 2px 6px rgba(20, 28, 24, 0.05);
+  --shadow-lg:
+    0 24px 60px rgba(20, 28, 24, 0.16), 0 8px 22px rgba(20, 28, 24, 0.09);
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.btn,
+.btn:hover,
+.btn:focus {
+  text-decoration: none !important;
+}
+p {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+  padding: clamp(48px, 7vw, 92px) 0;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 5.6vw, 70px);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 16px 0 0;
+}
+.hero__title .accent {
+  color: var(--brand-deep);
+}
+
+.hero__lede {
+  margin-top: 22px;
+  font-size: clamp(18px, 1.5vw, 21px);
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 36ch;
+}
+
+.hero__cta {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero__assure {
+  margin-top: 26px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+.assure-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.assure-chip__icon {
+  color: var(--brand);
+  display: flex;
+  flex: none;
+}
+
+/* ── Art panel + float card ────────────────────────────────────────── */
+.hero__art-wrap {
+  position: relative;
+}
+.hero__art {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--brand);
+}
+.hero__art c-ec-htf-brand-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__floatcard {
+  position: absolute;
+  z-index: 4;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  padding: 16px 18px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  right: -14px;
+  bottom: -18px;
+  white-space: nowrap;
+}
+.floatcard__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.floatcard__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+}
+.floatcard__sub {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  display: block;
+}
+
+/* ── Buttons (pill, display font — matches theme.css) ──────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15.5px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.2s,
+    background 0.2s,
+    color 0.2s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--primary {
+  background: var(--brand);
+  color: var(--brand-on) !important;
+}
+.btn--primary:hover {
+  background: var(--brand-deep);
+  color: var(--brand-on) !important;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink) !important;
+  border-color: var(--line-strong);
+}
+.btn--ghost:hover {
+  border-color: var(--brand);
+  color: var(--brand-deep) !important;
+  background: var(--brand-tint);
+}
+.btn--lg {
+  padding: 17px 32px;
+  font-size: 16.5px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 56px 0 48px;
+  }
+  .hero__art-wrap {
+    max-width: 560px;
+  }
+  .hero__floatcard {
+    right: 8px;
+    bottom: -14px;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+  .hero__grid {
+    padding: 40px 0 36px;
+    gap: 32px;
+  }
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero__floatcard {
+    right: 0;
+    bottom: -12px;
+    padding: 12px 14px;
+  }
+}

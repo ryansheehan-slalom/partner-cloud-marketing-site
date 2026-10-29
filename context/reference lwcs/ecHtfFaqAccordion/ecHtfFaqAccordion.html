@@ -1,0 +1,123 @@
+<template>
+  <!-- ===================================================================
+         SEARCH + FILTER BAR
+    =================================================================== -->
+  <section class="filter-bar">
+    <div class="container">
+      <div class="filter-bar__inner">
+        <div class="search-wrap">
+          <span
+            class="search-icon"
+            data-icon="magnifying-glass"
+            data-size="18"
+            lwc:dom="manual"
+            aria-hidden="true"
+          ></span>
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Search questions…"
+            value={searchQuery}
+            oninput={handleSearch}
+            aria-label="Search FAQ"
+          />
+        </div>
+        <div class="cat-pills" role="tablist" aria-label="Filter by category">
+          <template for:each={categories} for:item="cat">
+            <button
+              key={cat.value}
+              class={cat.btnClass}
+              role="tab"
+              aria-selected={cat.isActive}
+              data-cat={cat.value}
+              onclick={handleCatFilter}
+            >
+              {cat.label}
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+         FAQ LIST
+    =================================================================== -->
+  <section class="faq-sec">
+    <div class="container">
+      <div class="faq-list" role="list">
+        <template for:each={faqItems} for:item="item">
+          <template if:true={item.isVisible}>
+            <div key={item.id} class="faq-item" role="listitem">
+              <button
+                class="faq-q"
+                type="button"
+                aria-expanded={item.isOpen}
+                data-id={item.id}
+                onclick={handleAccordion}
+              >
+                <div class="faq-q__left">
+                  <span class="faq-q__cat">{item.cat}</span>
+                  <span class="faq-q__text">{item.q}</span>
+                </div>
+                <span
+                  class="faq-q__chevron"
+                  data-icon="plus"
+                  data-size="18"
+                  lwc:dom="manual"
+                  aria-hidden="true"
+                ></span>
+              </button>
+              <template if:true={item.isOpen}>
+                <div class="faq-a">
+                  <div
+                    class="faq-a__inner"
+                    lwc:dom="manual"
+                    data-html={item.a}
+                  ></div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </template>
+
+        <template if:true={noResults}>
+          <div class="faq-empty">
+            <span
+              class="faq-empty__icon"
+              data-icon="magnifying-glass"
+              data-size="40"
+              lwc:dom="manual"
+              aria-hidden="true"
+            ></span>
+            <p class="faq-empty__text">No questions match your search.</p>
+            <button class="btn btn--brand" onclick={handleClearSearch}>
+              Clear search
+            </button>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+         CONTACT CTA
+    =================================================================== -->
+  <section class="faq-cta">
+    <div class="container">
+      <div class="faq-cta__panel">
+        <div class="faq-cta__copy">
+          <p class="eyebrow">Still have questions?</p>
+          <h2 class="faq-cta__title">Talk to a financing specialist.</h2>
+          <p class="faq-cta__body">{contactBlurb}</p>
+        </div>
+        <div class="faq-cta__actions">
+          <a onclick={handleContactClick} class="btn btn--brand">Contact us</a>
+          <a onclick={handleApplyClick} class="btn btn--outline-brand"
+            >Apply now</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

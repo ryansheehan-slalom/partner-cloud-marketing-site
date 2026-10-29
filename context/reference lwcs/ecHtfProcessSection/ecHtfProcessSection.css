@@ -1,0 +1,131 @@
+:host {
+  display: block;
+  --brand: #117aca;
+  --brand-deep: #0a5293;
+  --brand-2: #63666a;
+  --brand-tint: #e8f2fb;
+  --brand-tint-2: #eef0ef;
+  --brand-on: #ffffff;
+  --ink: #23282b;
+  --ink-2: #555d60;
+  --ink-3: #828a8c;
+  --surface: #f6f7f6;
+  --line: #e3e6e4;
+  --line-strong: #d2d6d3;
+  --dark: #0a2540;
+  --dark-2: #103a5c;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+}
+h2,
+h3 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.section {
+  padding: clamp(56px, 8vw, 104px) 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+.sec-head {
+  max-width: 680px;
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 46px);
+  letter-spacing: -0.02em;
+  margin: 16px 0 0;
+  color: var(--ink);
+}
+
+/* ── Steps (4-up row with dashed connector — matches reference) ────── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 50px;
+}
+.step {
+  position: relative;
+  padding-top: 8px;
+}
+.step__n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--brand-on);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--brand);
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+.step h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.step p {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 50px;
+  right: -11px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--line-strong) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 0 20px;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .step:not(:last-child)::after {
+    display: none;
+  }
+}

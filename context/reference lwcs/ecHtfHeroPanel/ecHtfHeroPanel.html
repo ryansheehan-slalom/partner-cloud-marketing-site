@@ -1,0 +1,73 @@
+<template>
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__grid">
+        <!-- LEFT: copy ─────────────────────────────────────── -->
+        <div class="hero__copy">
+          <p class="eyebrow">{heroEyebrow}</p>
+
+          <!-- Title with accent spans injected via renderedCallback -->
+          <h1
+            id="hero-heading"
+            class="hero__title"
+            data-hero-title
+            lwc:dom="manual"
+          ></h1>
+
+          <p class="hero__lede">{heroLede}</p>
+
+          <div class="hero__cta">
+            <a onclick={handleApplyClick} class="btn btn--primary btn--lg"
+              >{ctaPrimaryLabel}</a
+            >
+            <template if:true={showSecondary}>
+              <a onclick={handleSecondaryClick} class="btn btn--ghost btn--lg"
+                >{ctaSecondaryLabel}</a
+              >
+            </template>
+          </div>
+
+          <!-- Assurance chips -->
+          <ul class="hero__assure" aria-label="Assurances">
+            <template for:each={assuranceItems} for:item="assure">
+              <li key={assure.id} class="assure-chip">
+                <span
+                  class="assure-chip__icon"
+                  data-assure-icon={assure.icon}
+                  lwc:dom="manual"
+                  aria-hidden="true"
+                ></span>
+                <span>{assure.text}</span>
+              </li>
+            </template>
+          </ul>
+        </div>
+        <!-- /hero__copy -->
+
+        <!-- RIGHT: art panel + floating card ───────────────── -->
+        <div class="hero__art-wrap">
+          <div class="hero__art">
+            <c-ec-htf-brand-art art-type={brandId}></c-ec-htf-brand-art>
+          </div>
+
+          <div class="hero__floatcard">
+            <span
+              class="floatcard__icon"
+              data-float-icon
+              lwc:dom="manual"
+              aria-hidden="true"
+            ></span>
+            <div class="floatcard__body">
+              <strong class="floatcard__title">{floatcardTitle}</strong>
+              <span class="floatcard__sub">{floatcardSub}</span>
+            </div>
+          </div>
+        </div>
+        <!-- /hero__art-wrap -->
+      </div>
+      <!-- /hero__grid -->
+    </div>
+    <!-- /container -->
+  </section>
+  <!-- /hero -->
+</template>

@@ -1,0 +1,80 @@
+<template>
+  <template lwc:if={isHero}>
+    <c-ec-htf-hero-panel
+      apply-page-name={applyPageName}
+      home-page-name={homePageName}
+      catalog-page-name={catalogPageName}
+    ></c-ec-htf-hero-panel>
+  </template>
+
+  <template lwc:elseif={isPageHero}>
+    <c-ec-htf-page-hero
+      page-type={pageHeroType}
+      home-page-name={homePageName}
+    ></c-ec-htf-page-hero>
+  </template>
+
+  <template lwc:elseif={isStat}>
+    <c-ec-htf-stat-band></c-ec-htf-stat-band>
+  </template>
+
+  <template lwc:elseif={isFinance}>
+    <c-ec-htf-finance-section></c-ec-htf-finance-section>
+  </template>
+
+  <template lwc:elseif={isProcess}>
+    <c-ec-htf-process-section></c-ec-htf-process-section>
+  </template>
+
+  <template lwc:elseif={isFeature}>
+    <c-ec-htf-feature-section
+      apply-page-name={applyPageName}
+      about-page-name={aboutPageName}
+      faq-page-name={faqPageName}
+      catalog-page-name={catalogPageName}
+    ></c-ec-htf-feature-section>
+  </template>
+
+  <template lwc:elseif={isCta}>
+    <c-ec-htf-cta-band
+      apply-page-name={applyPageName}
+      contact-page-name={contactPageName}
+      faq-page-name={faqPageName}
+      secondary-mode={ctaSecondaryMode}
+    ></c-ec-htf-cta-band>
+  </template>
+
+  <template lwc:elseif={isAbout}>
+    <c-ec-htf-about-section
+      apply-page-name={applyPageName}
+      contact-page-name={contactPageName}
+    ></c-ec-htf-about-section>
+  </template>
+
+  <template lwc:elseif={isFaq}>
+    <c-ec-htf-faq-accordion
+      contact-page-name={contactPageName}
+      apply-page-name={applyPageName}
+    ></c-ec-htf-faq-accordion>
+  </template>
+
+  <template lwc:elseif={isContact}>
+    <c-ec-htf-contact-section
+      home-page-name={homePageName}
+      apply-page-name={applyPageName}
+    ></c-ec-htf-contact-section>
+  </template>
+
+  <template lwc:elseif={isCatalog}>
+    <c-ec-htf-product-grid
+      apply-page-name={applyPageName}
+    ></c-ec-htf-product-grid>
+  </template>
+
+  <template lwc:elseif={isApply}>
+    <c-ec-htf-apply-form
+      home-page-name={homePageName}
+      contact-page-name={contactPageName}
+    ></c-ec-htf-apply-form>
+  </template>
+</template>

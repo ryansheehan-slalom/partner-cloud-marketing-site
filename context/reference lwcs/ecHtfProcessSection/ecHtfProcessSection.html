@@ -1,0 +1,25 @@
+<template>
+  <section class="section" id="process" aria-label="How it works">
+    <div class="container">
+      <header class="sec-head">
+        <span class="eyebrow">How it works</span>
+        <template if:true={isHTF}>
+          <h2>A planned path from finance to refresh.</h2>
+        </template>
+        <template if:false={isHTF}>
+          <h2>From application to funded — fast.</h2>
+        </template>
+      </header>
+
+      <ol class="steps" aria-label="Process steps">
+        <template for:each={steps} for:item="step">
+          <li key={step.id} class="step">
+            <div class="step__n">{step.stepNum}</div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        </template>
+      </ol>
+    </div>
+  </section>
+</template>

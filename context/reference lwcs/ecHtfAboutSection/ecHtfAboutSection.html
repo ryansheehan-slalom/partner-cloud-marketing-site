@@ -1,0 +1,81 @@
+<template>
+  <!-- STORY -->
+  <section class="section" aria-labelledby="about-story-heading">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">Our story</span>
+        <h2 id="about-story-heading" class="about-h2">
+          Simple, transparent, fair — by design.
+        </h2>
+      </div>
+      <div class="about-story">
+        <template for:each={storyParagraphs} for:item="para">
+          <p key={para.id}>{para.text}</p>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATIONSHIP BAND -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="rel-band">
+        <div class="rel-band__copy">
+          <span class="eyebrow">{relEyebrow}</span>
+          <h2 class="rel-band__title">{relTitle}</h2>
+          <p class="rel-band__body">{relBody}</p>
+          <div class="rel-band__cta">
+            <a onclick={handleApplyClick} class="btn btn--primary"
+              >Start an application</a
+            >
+            <a onclick={handleContactClick} class="btn btn--ghost"
+              >Talk to a specialist</a
+            >
+          </div>
+        </div>
+        <div class="rel-band__media">
+          <c-ec-htf-brand-art art-type={brandId}></c-ec-htf-brand-art>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" aria-labelledby="values-heading">
+    <div class="container">
+      <header class="sec-head sec-head--center">
+        <span class="eyebrow">What we stand for</span>
+        <h2 id="values-heading">Principles behind every agreement.</h2>
+      </header>
+      <div class="value-grid">
+        <template for:each={values} for:item="val">
+          <div key={val.id} class="card card--hover">
+            <span
+              class="card__ic"
+              data-icon={val.icon}
+              data-size="24"
+              lwc:dom="manual"
+              aria-hidden="true"
+            ></span>
+            <h3>{val.title}</h3>
+            <p>{val.body}</p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT LINE -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="stat-grid">
+        <template for:each={statline} for:item="s">
+          <div key={s.id} class="stat-box">
+            <div class="stat-box__num">{s.num}</div>
+            <div class="stat-box__label">{s.label}</div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>
