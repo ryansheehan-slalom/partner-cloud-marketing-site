@@ -1,0 +1,56 @@
+@import "c/pcStyles";
+
+.pc-stat-section {
+  position: relative;
+  padding: clamp(40px, 5vw, 64px) 0;
+  background: var(--surface);
+}
+.pc-stats {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.pc-stat {
+  /* Value renders above label visually; dt stays first in DOM for semantics */
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: clamp(26px, 3.5vw, 40px) clamp(22px, 3vw, 36px);
+}
+.pc-stat + .pc-stat {
+  border-left: 2px solid var(--line);
+}
+.pc-stat__value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(34px, 4vw, 50px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pc-stat__label {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.45;
+  max-width: 28ch;
+}
+
+@media (max-width: 760px) {
+  .pc-stats {
+    grid-template-columns: 1fr;
+  }
+  .pc-stat + .pc-stat {
+    border-left: 0;
+    border-top: 2px solid var(--line);
+  }
+}

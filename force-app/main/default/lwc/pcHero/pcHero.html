@@ -1,0 +1,88 @@
+<template>
+  <section
+    class="pc-hero pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-hero-heading"
+  >
+    <div class="pc-hero__mesh" aria-hidden="true"></div>
+    <div class="pc-container">
+      <div class="pc-hero__grid">
+        <!-- Copy column -->
+        <div class="pc-hero__copy">
+          <p class="pc-eyebrow">Salesforce Partner Cloud</p>
+          <h1 id="pc-hero-heading" class="pc-hero__title">
+            <!-- Segments carry their own spaces so whitespace trimming can't merge words -->
+            <template for:each={titleSegments} for:item="segment">
+              <template lwc:if={segment.accent}>
+                <span key={segment.key} class="pc-accent">{segment.text}</span>
+              </template>
+              <template lwc:else>
+                <span key={segment.key}>{segment.text}</span>
+              </template>
+            </template>
+          </h1>
+          <p class="pc-hero__lede">
+            A strategy-first approach to modernizing partner ecosystems —
+            grounded in program insight, intentional design, and Slalom's deep
+            Salesforce expertise.
+          </p>
+          <div class="pc-hero__cta">
+            <a
+              class="pc-btn pc-btn--primary pc-btn--lg"
+              href={connectHref}
+              data-anchor="connect"
+              onclick={handleAnchorClick}
+              >Connect with us<c-pc-icon
+                class="pc-arr"
+                name="arrowRight"
+                size="18"
+                stroke-width="2.2"
+              ></c-pc-icon
+            ></a>
+            <a class="pc-btn pc-btn--ghost pc-btn--lg" href={approachHref}
+              >See our approach</a
+            >
+          </div>
+          <ul class="pc-hero__assure" aria-label="Why Slalom">
+            <template for:each={assurances} for:item="item">
+              <li key={item} class="pc-chip-a">
+                <span class="pc-chip-a__ic"
+                  ><c-pc-icon
+                    name="check"
+                    size="14"
+                    stroke-width="2.6"
+                  ></c-pc-icon
+                ></span>
+                {item}
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Art column -->
+        <div class="pc-hero__art-wrap">
+          <div class="pc-hero__art">
+            <img
+              class="pc-hero__img"
+              src={heroImageUrl}
+              alt={heroImageAlt}
+              width="800"
+              height="680"
+            />
+            <div class="pc-hero__art-glow" aria-hidden="true"></div>
+          </div>
+          <div class="pc-hero__floatcard">
+            <span class="pc-floatcard__ic">
+              <c-pc-icon name="handshake" size="22"></c-pc-icon>
+            </span>
+            <div>
+              <strong class="pc-floatcard__title">Salesforce Partner</strong>
+              <span class="pc-floatcard__sub">Consulting Summit tier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

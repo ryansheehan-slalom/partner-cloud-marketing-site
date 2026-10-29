@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Partner Cloud marketing site — pc* LWC components and static resources -->
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <!-- Shared modules / internal children -->
+        <members>pcStyles</members>
+        <members>pcIconLibrary</members>
+        <members>pcIcon</members>
+        <members>pcNav</members>
+        <members>pcArticleData</members>
+        <members>pcArticleCard</members>
+        <!-- Site chrome -->
+        <members>pcSiteHeader</members>
+        <members>pcSiteFooter</members>
+        <!-- Home page sections -->
+        <members>pcHero</members>
+        <members>pcChallengeSection</members>
+        <members>pcSolutionGrid</members>
+        <members>pcInsightsPreview</members>
+        <members>pcWhoWeAre</members>
+        <members>pcCtaBand</members>
+        <!-- Approach page -->
+        <members>pcPageHero</members>
+        <members>pcProcessSteps</members>
+        <members>pcStatBand</members>
+        <members>pcFeatureSplit</members>
+        <members>pcFaq</members>
+        <!-- Insights pages -->
+        <members>pcInsightsPage</members>
+        <members>pcArticleDetail</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>pcLogo</members>
+        <members>pcFavicon</members>
+        <members>pcHeroPhoto</members>
+        <members>pcChallengeArt</members>
+        <members>pcWhoWeAreArt</members>
+        <members>pcContactAvatar</members>
+        <members>pcInsightArt</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <!-- Site pages + theme layout that place the pc* components -->
+        <members>site/Partner_Cloud_Marketing_Site1</members>
+        <name>DigitalExperienceBundle</name>
+    </types>
+    <version>66.0</version>
+</Package>

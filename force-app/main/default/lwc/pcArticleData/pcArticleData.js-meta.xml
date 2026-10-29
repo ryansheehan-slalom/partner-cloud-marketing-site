@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>false</isExposed>
+    <masterLabel>PC Article Data</masterLabel>
+    <description
+  >Utility module with static v1 Partner Cloud Insights articles and authors (no CMS dependency).</description>
+</LightningComponentBundle>

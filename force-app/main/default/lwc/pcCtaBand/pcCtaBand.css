@@ -1,0 +1,152 @@
+@import "c/pcStyles";
+
+.pc-cta-section {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--canvas);
+  scroll-margin-top: var(--pc-header-offset);
+}
+.pc-cta-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--dark) 0%,
+    var(--dark-2) 60%,
+    var(--brand-deep) 140%
+  );
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 6vw, 76px);
+  color: var(--white);
+}
+
+/* ── Decorative orbs ─────────────────────────────────────────── */
+.pc-cta-band__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  pointer-events: none;
+  animation: pcFloat 9s ease-in-out infinite;
+}
+.pc-cta-band__orb--1 {
+  width: 300px;
+  height: 300px;
+  right: -60px;
+  top: -70px;
+  background: var(--brand);
+  opacity: 0.35;
+}
+.pc-cta-band__orb--2 {
+  width: 220px;
+  height: 220px;
+  right: 130px;
+  bottom: -100px;
+  background: var(--brand-2);
+  opacity: 0.32;
+  animation-delay: -4s;
+}
+@keyframes pcFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-14px, -22px);
+  }
+}
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.pc-cta-band__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 48px;
+  align-items: center;
+}
+.pc-cta-band__title {
+  color: var(--white);
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.1;
+  margin-top: 4px;
+  text-wrap: balance;
+}
+.pc-cta-band__body {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  line-height: 1.55;
+  max-width: 46ch;
+}
+.pc-cta-band__btns {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── Contact card ────────────────────────────────────────────── */
+.pc-contact-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.pc-contact-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 20px rgba(12, 98, 251, 0.4);
+}
+.pc-contact-card__name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white);
+}
+.pc-contact-card__role {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.4;
+}
+.pc-contact-card__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--on-dark-accent);
+  --pc-link-color: var(--on-dark-accent);
+  word-break: break-all;
+}
+.pc-contact-card__email:hover {
+  color: var(--white);
+  --pc-link-color: var(--white);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pc-cta-band__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 640px) {
+  .pc-cta-band__btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

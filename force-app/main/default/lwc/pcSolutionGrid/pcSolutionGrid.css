@@ -1,0 +1,91 @@
+@import "c/pcStyles";
+
+.pc-solution {
+  overflow: hidden;
+}
+/* Soft brand mesh distinguishes the centerpiece from neighbouring sections */
+.pc-solution__mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      40% 50% at 8% 12%,
+      rgba(12, 98, 251, 0.08),
+      transparent 70%
+    ),
+    radial-gradient(36% 46% at 94% 88%, rgba(0, 161, 224, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Asset grid ──────────────────────────────────────────────── */
+.pc-asset-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.pc-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px 28px;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.24s ease,
+    border-color 0.2s;
+}
+.pc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.pc-card__badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.pc-card:hover .pc-card__badge {
+  background: var(--brand-grad);
+  color: var(--white);
+}
+.pc-card__title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.pc-card__body {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.pc-solution__cta {
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pc-asset-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .pc-asset-grid {
+    grid-template-columns: 1fr;
+  }
+}

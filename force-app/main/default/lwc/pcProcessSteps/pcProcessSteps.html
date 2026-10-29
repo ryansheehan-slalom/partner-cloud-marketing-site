@@ -1,0 +1,58 @@
+<template>
+  <section
+    class="pc-section pc-section--white pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-process-heading"
+  >
+    <div class="pc-container">
+      <!-- Section head -->
+      <header class="pc-sec-head">
+        <p class="pc-eyebrow">How we work</p>
+        <h2 id="pc-process-heading" class="pc-sec-head__title">
+          A proven path from assessment to impact.
+        </h2>
+        <p class="pc-sec-head__lede">
+          Four phases that turn partner strategy into partner behavior — each
+          with a clear outcome, so value shows up early and compounds.
+        </p>
+      </header>
+
+      <!-- Steps -->
+      <ol class="pc-steps">
+        <template for:each={steps} for:item="step">
+          <li key={step.number} class="pc-step">
+            <div class="pc-step__marker">
+              <span class="pc-step__num" aria-hidden="true">{step.number}</span>
+            </div>
+            <div class="pc-step__card">
+              <div class="pc-step__head">
+                <h3 class="pc-step__title">
+                  <span class="pc-visually-hidden">Phase {step.number}: </span
+                  >{step.title}
+                </h3>
+                <span class="pc-step__duration">{step.duration}</span>
+              </div>
+              <p class="pc-step__body">{step.description}</p>
+              <p class="pc-step__label">What you get</p>
+              <ul class="pc-step__list">
+                <template for:each={step.deliverables} for:item="item">
+                  <li key={item}>
+                    <span class="pc-step__check"
+                      ><c-pc-icon
+                        name="check"
+                        size="13"
+                        stroke-width="2.6"
+                      ></c-pc-icon
+                    ></span>
+                    {item}
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </li>
+        </template>
+      </ol>
+    </div>
+  </section>
+</template>

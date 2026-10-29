@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>false</isExposed>
+    <masterLabel>PC Navigation Utilities</masterLabel>
+    <description
+  >Utility module: base-path aware hrefs and shadow-safe in-page anchor scrolling for Partner Cloud components.</description>
+</LightningComponentBundle>

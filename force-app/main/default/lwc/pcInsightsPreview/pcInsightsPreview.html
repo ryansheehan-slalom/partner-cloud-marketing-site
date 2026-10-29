@@ -1,0 +1,42 @@
+<template>
+  <section
+    class="pc-section pc-section--white pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-insights-heading"
+  >
+    <div class="pc-container">
+      <!-- Section head -->
+      <header class="pc-sec-head">
+        <p class="pc-eyebrow">Insights</p>
+        <h2 id="pc-insights-heading" class="pc-sec-head__title">
+          Notes from the ecosystem.
+        </h2>
+        <p class="pc-sec-head__lede">
+          Fresh perspectives on modernizing partner programs, from the Slalom
+          team building them.
+        </p>
+      </header>
+
+      <!-- Latest articles -->
+      <ul class="pc-insights-grid">
+        <template for:each={articles} for:item="article">
+          <li key={article.slug}>
+            <c-pc-article-card article={article}></c-pc-article-card>
+          </li>
+        </template>
+      </ul>
+
+      <div class="pc-insights-cta">
+        <a class="pc-btn pc-btn--ghost" href={insightsHref}
+          >See all insights<c-pc-icon
+            class="pc-arr"
+            name="arrowRight"
+            size="17"
+            stroke-width="2.2"
+          ></c-pc-icon
+        ></a>
+      </div>
+    </div>
+  </section>
+</template>

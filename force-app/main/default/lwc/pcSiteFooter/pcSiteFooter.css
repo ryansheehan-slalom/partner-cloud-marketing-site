@@ -1,0 +1,103 @@
+@import "c/pcStyles";
+
+.pc-footer {
+  background: var(--dark);
+  color: rgba(255, 255, 255, 0.78);
+  padding: clamp(48px, 6vw, 76px) 0 34px;
+}
+.pc-footer__top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Brand block ─────────────────────────────────────────────── */
+.pc-footer__logo {
+  display: inline-flex;
+  margin-bottom: 18px;
+}
+.pc-footer__logo img {
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+.pc-footer__tagline {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+  max-width: 30ch;
+}
+.pc-footer__domain {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--on-dark-accent);
+}
+
+/* ── Link columns ────────────────────────────────────────────── */
+.pc-footer__head {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.pc-footer__list {
+  display: grid;
+  gap: 11px;
+}
+.pc-footer__link {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.78);
+  --pc-link-color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s;
+}
+.pc-footer__link:hover {
+  color: var(--white);
+  --pc-link-color: var(--white);
+}
+
+/* ── Bottom strip ────────────────────────────────────────────── */
+.pc-footer__bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 26px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.pc-footer__mini {
+  display: flex;
+  gap: 8px;
+}
+.pc-footer__mini li + li::before {
+  content: "·";
+  margin-right: 8px;
+}
+.pc-footer__mini a:hover {
+  color: var(--white);
+  --pc-link-color: var(--white);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pc-footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .pc-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .pc-footer__top {
+    grid-template-columns: 1fr;
+  }
+}

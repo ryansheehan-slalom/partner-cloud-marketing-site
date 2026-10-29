@@ -1,0 +1,56 @@
+<template>
+  <section
+    class="pc-section pc-section--surface pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-challenge-heading"
+  >
+    <div class="pc-container">
+      <div class={gridClass}>
+        <!-- Media panel -->
+        <div class="pc-feature__media">
+          <img
+            class="pc-feature__img"
+            src={artUrl}
+            alt="Illustration of a cluttered partner portal with a long registration form, a pending approval, and unclear tier status"
+            width="800"
+            height="640"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Copy column -->
+        <div class="pc-feature__copy">
+          <p class="pc-eyebrow">The Challenge</p>
+          <h2 id="pc-challenge-heading" class="pc-feature__title">
+            Partner experiences that get in the way of growth.
+          </h2>
+          <p class="pc-feature__body">
+            A thriving partner ecosystem boosts adoption, scale, and innovation
+            — but achieving that impact requires partner experiences that are
+            simple, consistent, and easy to navigate.
+          </p>
+          <p class="pc-feature__label">Common challenges we see…</p>
+          <ul class="pc-feature__list">
+            <template for:each={challenges} for:item="item">
+              <li key={item.title} class="pc-feature__item">
+                <span class="pc-feature__ic"
+                  ><c-pc-icon name={item.icon} size="22"></c-pc-icon
+                ></span>
+                <div class="pc-feature__txt">
+                  <strong>{item.title}</strong>
+                  <span>{item.sub}</span>
+                </div>
+              </li>
+            </template>
+          </ul>
+          <p class="pc-feature__note">
+            With deep experience solving these challenges, Slalom helps
+            organizations modernize partner experiences — whether improving
+            existing tools or implementing new solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

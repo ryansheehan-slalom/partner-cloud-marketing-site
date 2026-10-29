@@ -1,0 +1,111 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Login",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {},
+                "layoutDirectionDesktop": "row",
+                "layoutDirectionMobile": "column",
+                "layoutDirectionTablet": "column",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e290bbeb-5b75-4a86-a19f-c336fa15593f\",\"columns\":[{\"UUID\":\"4082f29b-9527-477e-aac2-3c38becb4c72\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+                "sectionMinHeight": "",
+                "sectionVerticalAlign": "flex-start"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {
+                        "alignment": "left",
+                        "dxpStyle": {},
+                        "imageInfo": "",
+                        "imageInfoMobile": "",
+                        "logoWidth": 250
+                      },
+                      "definition": "dxp_content_layout:siteLogo",
+                      "id": "5d65e8fd-aa2e-45cb-81bf-9b7028a2b3a6",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {},
+                        "forgotPasswordLabel": "Forgot your password?",
+                        "forgotPasswordUrl": "/ForgotPassword",
+                        "loginButtonLabel": "Log In",
+                        "passwordLabel": "Password",
+                        "selfRegisterLabel": "Not a member?",
+                        "selfRegisterUrl": "/SelfRegister",
+                        "startUrl": "",
+                        "usernameLabel": "Username"
+                      },
+                      "definition": "community_login:loginForm",
+                      "id": "9c8e69a2-6525-4cdb-b499-768e945eb7f1",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {},
+                        "employeeLoginLinkLabel": "Are you an employee? Log in"
+                      },
+                      "definition": "community_login:employeeLoginLink",
+                      "id": "5d8ec121-bfbc-4c52-aa72-c294644065e3",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "4082f29b-9527-477e-aac2-3c38becb4c72",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "e290bbeb-5b75-4a86-a19f-c336fa15593f",
+              "type": "component"
+            }
+          ],
+          "id": "bdb7b8c3-9a32-487c-8a0c-8233ae1517b0",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "dxpStyle": {},
+                "pageTitle": "Login",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "9c7cd0a5-fa46-4614-b2f0-6724d8cf33b0",
+              "type": "component"
+            }
+          ],
+          "id": "b76887aa-5df2-480d-99e2-1dcc108c7c2b",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "17990f09-3fdb-49df-a9c9-20d29142ae28",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "login-main"
+  },
+  "urlName": "login"
+}

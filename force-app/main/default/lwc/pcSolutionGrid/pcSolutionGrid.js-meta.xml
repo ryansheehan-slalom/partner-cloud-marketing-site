@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Solution Grid</masterLabel>
+    <description
+  >Partner Cloud "The Solution" section: six offering cards in a responsive 3-column asset grid (anchor #solution).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+</LightningComponentBundle>

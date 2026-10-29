@@ -1,0 +1,218 @@
+<template>
+  <template lwc:if={article}>
+    <article class="pc-post">
+      <!-- ══════════ HEADER ══════════ -->
+      <header class="pc-post-head pc-bleed">
+        <div class="pc-post-head__mesh" aria-hidden="true"></div>
+        <div class="pc-container pc-post-head__inner">
+          <nav class="pc-crumb" aria-label="Breadcrumb">
+            <ol class="pc-crumb__list">
+              <li><a href={insightsHref}>Insights</a></li>
+              <li aria-current="page" class="pc-crumb__current">
+                {article.crumb}
+              </li>
+            </ol>
+          </nav>
+
+          <span class="pc-tag">{article.tag}</span>
+          <h1 class="pc-post__title">{article.title}</h1>
+          <p class="pc-post__deck">{article.deck}</p>
+
+          <div class="pc-post__byline">
+            <div class="pc-author">
+              <template lwc:if={article.author.hasAvatar}>
+                <img
+                  class="pc-author__avatar"
+                  src={article.author.avatarUrl}
+                  alt=""
+                  width="44"
+                  height="44"
+                />
+              </template>
+              <template lwc:else>
+                <span class="pc-author__avatar" aria-hidden="true"
+                  >{article.author.initials}</span
+                >
+              </template>
+              <span class="pc-author__meta">
+                <strong>{article.author.name}</strong>
+                <span>{article.author.shortRole} · {article.metaLong}</span>
+              </span>
+            </div>
+
+            <div class="pc-share" role="group" aria-label="Share this article">
+              <button
+                class="pc-share__btn"
+                type="button"
+                aria-label="Copy link"
+                onclick={handleCopyLink}
+              >
+                <c-pc-icon name={copyIcon} size="18"></c-pc-icon>
+              </button>
+              <a
+                class="pc-share__btn"
+                href={linkedInShareHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Share on LinkedIn (opens in a new tab)"
+              >
+                <c-pc-icon name="linkedin" size="17"></c-pc-icon>
+              </a>
+              <a
+                class="pc-share__btn"
+                href={emailShareHref}
+                aria-label="Share by email"
+              >
+                <c-pc-icon name="mail" size="18"></c-pc-icon>
+              </a>
+              <span class="pc-share__status" role="status">{shareStatus}</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ══════════ HERO IMAGE ══════════ -->
+      <div class="pc-container">
+        <div class="pc-post__hero">
+          <img
+            class="pc-post__hero-img"
+            src={article.imageUrl}
+            alt={article.imageAlt}
+            width="1600"
+            height="900"
+          />
+        </div>
+      </div>
+
+      <!-- ══════════ BODY ══════════ -->
+      <div class="pc-container">
+        <div class="pc-prose">
+          <template for:each={article.body} for:item="block">
+            <div key={block.key} class="pc-prose__block">
+              <template lwc:if={block.isLead}>
+                <p class="pc-prose__lead">{block.text}</p>
+              </template>
+              <template lwc:elseif={block.isParagraph}>
+                <p>{block.text}</p>
+              </template>
+              <template lwc:elseif={block.isHeading}>
+                <h2>{block.text}</h2>
+              </template>
+              <template lwc:elseif={block.isQuote}>
+                <blockquote class="pc-quote">“{block.text}”</blockquote>
+              </template>
+              <template lwc:elseif={block.isCallout}>
+                <aside class="pc-callout" aria-label={block.title}>
+                  <strong class="pc-callout__title">{block.title}</strong>
+                  <ul class="pc-callout__list">
+                    <template for:each={block.items} for:item="item">
+                      <li key={item.key}>
+                        <strong>{item.label}</strong> {item.text}
+                      </li>
+                    </template>
+                  </ul>
+                </aside>
+              </template>
+              <template lwc:elseif={block.isFigure}>
+                <figure class="pc-figure">
+                  <img
+                    class="pc-figure__img"
+                    src={block.imageUrl}
+                    alt={block.alt}
+                    width="1600"
+                    height="800"
+                    loading="lazy"
+                  />
+                  <figcaption>{block.caption}</figcaption>
+                </figure>
+              </template>
+            </div>
+          </template>
+        </div>
+
+        <!-- Author bio -->
+        <div class="pc-biocard">
+          <template lwc:if={article.author.hasAvatar}>
+            <img
+              class="pc-biocard__avatar"
+              src={article.author.avatarUrl}
+              alt=""
+              width="64"
+              height="64"
+              loading="lazy"
+            />
+          </template>
+          <template lwc:else>
+            <span class="pc-biocard__avatar" aria-hidden="true"
+              >{article.author.initials}</span
+            >
+          </template>
+          <div>
+            <p class="pc-biocard__name">{article.author.name}</p>
+            <p class="pc-biocard__role">{article.author.role} at Slalom</p>
+            <p class="pc-biocard__bio">{article.author.bio}</p>
+            <template lwc:if={article.author.hasEmail}>
+              <a class="pc-biocard__link" href={article.author.mailto}
+                >{article.author.email} →</a
+              >
+            </template>
+            <template lwc:else>
+              <a class="pc-biocard__link" href={connectHref}
+                >Connect with our team →</a
+              >
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ RELATED ══════════ -->
+      <section
+        class="pc-section pc-section--surface pc-bleed"
+        aria-labelledby="pc-related-title"
+      >
+        <div class="pc-container">
+          <div class="pc-related-head">
+            <h2 id="pc-related-title">Keep reading</h2>
+            <a class="pc-btn pc-btn--ghost" href={insightsHref}
+              >All insights<c-pc-icon
+                class="pc-arr"
+                name="arrowRight"
+                size="17"
+                stroke-width="2.2"
+              ></c-pc-icon
+            ></a>
+          </div>
+          <ul class="pc-insights-grid">
+            <template for:each={relatedArticles} for:item="related">
+              <li key={related.slug}>
+                <c-pc-article-card
+                  article={related}
+                  meta-format="short"
+                ></c-pc-article-card>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </section>
+    </article>
+  </template>
+
+  <!-- ══════════ NOT FOUND ══════════ -->
+  <template lwc:else>
+    <section class="pc-notfound pc-bleed" aria-labelledby="pc-notfound-title">
+      <div class="pc-container">
+        <p class="pc-eyebrow">Insights</p>
+        <h1 id="pc-notfound-title" class="pc-post__title">
+          We couldn't find that article.
+        </h1>
+        <p class="pc-post__deck">
+          It may have moved or been retired. Browse the latest from the
+          ecosystem instead.
+        </p>
+        <a class="pc-btn pc-btn--primary pc-notfound__cta" href={insightsHref}
+          >Browse all insights</a
+        >
+      </div>
+    </section>
+  </template>
+</template>

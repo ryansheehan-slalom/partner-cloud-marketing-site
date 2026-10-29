@@ -1,0 +1,21 @@
+<template>
+  <!-- Decorative line icon; always hidden from assistive tech -->
+  <svg
+    class="pc-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill={fillValue}
+    stroke={strokeValue}
+    stroke-width={strokeWidth}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <template for:each={paths} for:item="path">
+      <path key={path.key} d={path.d}></path>
+    </template>
+  </svg>
+</template>

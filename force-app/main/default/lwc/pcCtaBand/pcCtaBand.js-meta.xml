@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC CTA Band</masterLabel>
+    <description
+  >Partner Cloud "Connect With Us" dark CTA band with decorative orbs, email / website buttons, and contact card (anchor #connect).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="contactName"
+        type="String"
+        label="Contact name"
+        default="Jake Seibert"
+      />
+            <property
+        name="contactRole"
+        type="String"
+        label="Contact role"
+        default="Senior Principal, Salesforce Partner Cloud"
+      />
+            <property
+        name="contactEmail"
+        type="String"
+        label="Contact email"
+        default="jake.seibert@slalom.com"
+      />
+            <property
+        name="websiteUrl"
+        type="String"
+        label="Website URL"
+        default="https://slalom.com/salesforce"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

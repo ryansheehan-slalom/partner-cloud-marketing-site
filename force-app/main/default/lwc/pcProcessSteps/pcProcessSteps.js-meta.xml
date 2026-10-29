@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Process Steps</masterLabel>
+    <description
+  >Partner Cloud "How we work" four-phase process (Assess, Design, Build, Optimize) with durations and deliverables (anchor #process).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+</LightningComponentBundle>

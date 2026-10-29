@@ -1,0 +1,15 @@
+<template>
+  <section class="pc-stat-section pc-bleed" aria-labelledby="pc-stat-heading">
+    <div class="pc-container">
+      <h2 id="pc-stat-heading" class="pc-visually-hidden">{heading}</h2>
+      <dl class="pc-stats">
+        <template for:each={stats} for:item="stat">
+          <div key={stat.key} class="pc-stat">
+            <dt class="pc-stat__label">{stat.label}</dt>
+            <dd class="pc-stat__value">{stat.value}</dd>
+          </div>
+        </template>
+      </dl>
+    </div>
+  </section>
+</template>

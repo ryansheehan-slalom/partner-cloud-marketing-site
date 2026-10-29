@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Archivo, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#5a3fa8"/></linearGradient>
+    <radialGradient id="glowA" cx="0.8" cy="0.15" r="0.55"><stop offset="0" stop-color="#ffffff" stop-opacity="0.3"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowB" cx="0.1" cy="0.95" r="0.5"><stop offset="0" stop-color="#7fdcff" stop-opacity="0.35"/><stop offset="1" stop-color="#7fdcff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <linearGradient id="barG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#ffffff" fill-opacity="0.14"/></pattern>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#021440" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <rect width="1600" height="900" fill="url(#glowA)"/>
+  <rect width="1600" height="900" fill="url(#glowB)"/>
+  <rect x="260" y="580" width="300" height="180" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.45" stroke-width="2"/>
+  <rect x="280" y="594" width="260" height="8" rx="4" fill="#ffffff" fill-opacity="0.55"/>
+  <text x="410" y="710" font-size="110" font-weight="800" fill="#ffffff" text-anchor="middle">30</text>
+  <text x="410" y="748" font-size="22" font-weight="700" fill="#ffffff" fill-opacity="0.75" text-anchor="middle" letter-spacing="5">DAYS</text>
+  <rect x="600" y="460" width="300" height="300" rx="22" fill="#ffffff" fill-opacity="0.19" stroke="#ffffff" stroke-opacity="0.45" stroke-width="2"/>
+  <rect x="620" y="474" width="260" height="8" rx="4" fill="#ffffff" fill-opacity="0.55"/>
+  <text x="750" y="590" font-size="110" font-weight="800" fill="#ffffff" text-anchor="middle">60</text>
+  <text x="750" y="628" font-size="22" font-weight="700" fill="#ffffff" fill-opacity="0.75" text-anchor="middle" letter-spacing="5">DAYS</text>
+  <rect x="940" y="340" width="300" height="420" rx="22" fill="#ffffff" fill-opacity="0.24" stroke="#ffffff" stroke-opacity="0.45" stroke-width="2"/>
+  <rect x="960" y="354" width="260" height="8" rx="4" fill="#ffffff" fill-opacity="0.55"/>
+  <text x="1090" y="470" font-size="110" font-weight="800" fill="#ffffff" text-anchor="middle">90</text>
+  <text x="1090" y="508" font-size="22" font-weight="700" fill="#ffffff" fill-opacity="0.75" text-anchor="middle" letter-spacing="5">DAYS</text>
+  <path d="M410 520Q580 380 750 400Q920 260 1090 240" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <circle cx="410" cy="540" r="32" fill="#22c55e" stroke="#ffffff" stroke-width="6"/><g transform="translate(394.0 524.0) scale(1.333)" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></g>
+  <g filter="url(#sh)"><circle cx="750" cy="410" r="40" fill="#ffffff"/></g><circle cx="750" cy="404.2" r="9.9" fill="#0c62fb"/><path d="M732.4 435.0q0 -17.6 17.6 -17.6q17.6 0 17.6 17.6Z" fill="#0c62fb"/>
+  <path d="M1090 330V170" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/><path d="M1093 170h110l-24 32 24 32h-110Z" fill="#ffd36e"/>
+<path transform="translate(1260 150) scale(1.5)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.8"/><path transform="translate(1330 300) scale(1)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.7"/><path transform="translate(560 220) scale(1.2)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.6"/><path transform="translate(180 420) scale(1)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.5"/>
+</svg>

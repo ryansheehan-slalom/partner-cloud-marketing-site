@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 680" width="800" height="680" font-family="Archivo, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0847c4"/>
+      <stop offset="0.5" stop-color="#0c62fb"/>
+      <stop offset="1" stop-color="#00a1e0"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.72" cy="0.18" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.15" cy="0.9" r="0.45">
+      <stop offset="0" stop-color="#7fdcff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#7fdcff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c62fb"/>
+      <stop offset="1" stop-color="#00a1e0"/>
+    </linearGradient>
+    <linearGradient id="cloudG" gradientUnits="userSpaceOnUse" x1="357" y1="316" x2="438" y2="366">
+      <stop offset="0" stop-color="#0c62fb"/>
+      <stop offset="1" stop-color="#00a1e0"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#0c62fb"/>
+      <stop offset="1" stop-color="#00a1e0"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.16"/>
+    </pattern>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#021440" flood-opacity="0.28"/>
+    </filter>
+    <g id="person">
+      <circle cx="0" cy="-8" r="9"/>
+      <path d="M-16 20q0-16 16-16q16 0 16 16Z"/>
+    </g>
+    <g id="sparkle">
+      <path d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff"/>
+    </g>
+  </defs>
+
+  <!-- Backdrop -->
+  <rect width="800" height="680" fill="url(#bg)"/>
+  <rect width="800" height="680" fill="url(#dots)"/>
+  <rect width="800" height="680" fill="url(#glowA)"/>
+  <rect width="800" height="680" fill="url(#glowB)"/>
+
+  <!-- Orbits -->
+  <g fill="none" stroke="#ffffff">
+    <circle cx="400" cy="340" r="150" stroke-opacity="0.22" stroke-width="1.5"/>
+    <circle cx="400" cy="340" r="235" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="4 10"/>
+    <circle cx="400" cy="340" r="320" stroke-opacity="0.1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Connections hub → partners -->
+  <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="3 8" stroke-linecap="round">
+    <line x1="400" y1="340" x2="196" y2="222"/>
+    <line x1="400" y1="340" x2="603" y2="222"/>
+    <line x1="400" y1="340" x2="400" y2="105"/>
+    <line x1="400" y1="340" x2="196" y2="457"/>
+    <line x1="400" y1="340" x2="603" y2="457"/>
+    <line x1="400" y1="340" x2="320" y2="561"/>
+  </g>
+
+  <!-- Partner nodes -->
+  <g filter="url(#sh)" fill="#ffffff">
+    <circle cx="196" cy="222" r="34"/>
+    <circle cx="603" cy="222" r="34"/>
+    <circle cx="400" cy="105" r="34"/>
+    <circle cx="196" cy="457" r="34"/>
+    <circle cx="603" cy="457" r="34"/>
+    <circle cx="320" cy="561" r="34"/>
+  </g>
+  <use href="#person" x="196" y="222" fill="#0c62fb"/>
+  <use href="#person" x="603" y="222" fill="#00a1e0"/>
+  <use href="#person" x="400" y="105" fill="#5a3fa8"/>
+  <use href="#person" x="196" y="457" fill="#2f8a4c"/>
+  <use href="#person" x="603" y="457" fill="#0847c4"/>
+  <use href="#person" x="320" y="561" fill="#e08a00"/>
+
+  <!-- Status badges -->
+  <g stroke="#ffffff" stroke-width="3">
+    <circle cx="627" cy="198" r="11" fill="#22c55e"/>
+    <circle cx="220" cy="433" r="11" fill="#22c55e"/>
+    <circle cx="424" cy="81" r="11" fill="#22c55e"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M622 198l3.5 3.5 6-7"/>
+    <path d="M215 433l3.5 3.5 6-7"/>
+    <path d="M419 81l3.5 3.5 6-7"/>
+  </g>
+
+  <!-- Hub -->
+  <circle cx="400" cy="340" r="104" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/>
+  <rect x="325" y="265" width="150" height="150" rx="36" fill="#ffffff" filter="url(#sh)"/>
+  <g fill="url(#cloudG)">
+    <circle cx="378" cy="352" r="14"/>
+    <circle cx="400" cy="337" r="21"/>
+    <circle cx="422" cy="350" r="16"/>
+    <rect x="378" y="346" width="44" height="20"/>
+  </g>
+  <rect x="368" y="380" width="64" height="6" rx="3" fill="#e6efff"/>
+
+  <!-- Card: pipeline -->
+  <g filter="url(#sh)">
+    <rect x="40" y="40" width="210" height="116" rx="18" fill="#ffffff"/>
+  </g>
+  <text x="60" y="70" font-size="13" font-weight="700" fill="#0a2540">Partner pipeline</text>
+  <text x="230" y="70" font-size="13" font-weight="700" fill="#16a34a" text-anchor="end">+38%</text>
+  <g fill="url(#bar)">
+    <rect x="62" y="118" width="18" height="22" rx="4"/>
+    <rect x="90" y="106" width="18" height="34" rx="4"/>
+    <rect x="118" y="112" width="18" height="28" rx="4"/>
+    <rect x="146" y="94" width="18" height="46" rx="4"/>
+    <rect x="174" y="84" width="18" height="56" rx="4"/>
+    <rect x="202" y="74" width="18" height="66" rx="4" fill-opacity="0.95"/>
+  </g>
+
+  <!-- Card: tier progress -->
+  <g filter="url(#sh)">
+    <rect x="550" y="40" width="210" height="116" rx="18" fill="#ffffff"/>
+  </g>
+  <text x="570" y="70" font-size="13" font-weight="700" fill="#0a2540">Tier progress</text>
+  <rect x="682" y="56" width="60" height="20" rx="10" fill="#e6efff"/>
+  <text x="712" y="70" font-size="11" font-weight="700" fill="#0847c4" text-anchor="middle">Summit</text>
+  <text x="570" y="94" font-size="11" fill="#64738b">Consulting partner</text>
+  <rect x="570" y="108" width="170" height="10" rx="5" fill="#e6efff"/>
+  <rect x="570" y="108" width="126" height="10" rx="5" fill="url(#brand)"/>
+  <text x="570" y="140" font-size="11" fill="#4a5c78">74% to next tier</text>
+
+  <!-- Pill: deal registered -->
+  <g filter="url(#sh)">
+    <rect x="40" y="596" width="236" height="56" rx="28" fill="#ffffff"/>
+  </g>
+  <circle cx="68" cy="624" r="16" fill="#dcfce7"/>
+  <path d="M61 624l5 5 9-10" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="94" y="620" font-size="13" font-weight="700" fill="#0a2540">Deal registered</text>
+  <text x="94" y="638" font-size="11" fill="#64738b">Approved in 2 min</text>
+
+  <!-- Sparkles -->
+  <use href="#sparkle" transform="translate(300 62) scale(0.8)" opacity="0.85"/>
+  <use href="#sparkle" transform="translate(735 300) scale(0.6)" opacity="0.7"/>
+  <use href="#sparkle" transform="translate(120 340) scale(0.55)" opacity="0.6"/>
+  <use href="#sparkle" transform="translate(500 600) scale(0.7)" opacity="0.65"/>
+</svg>

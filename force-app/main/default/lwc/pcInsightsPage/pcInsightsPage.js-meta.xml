@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Insights Page</masterLabel>
+    <description
+  >Partner Cloud Insights listing page: masthead with category filters, featured article, article grid with load more, and newsletter signup (static v1 data).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="pageSize"
+        type="Integer"
+        label="Articles per page"
+        default="6"
+        min="3"
+        max="24"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

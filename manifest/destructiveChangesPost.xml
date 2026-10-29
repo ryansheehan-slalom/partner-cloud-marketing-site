@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Removes the retired mockup components AFTER the site has been repointed to the pc* components -->
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>mockupPartnerCloudHome</members>
+        <members>mockupPcSiteHeader</members>
+        <members>mockupPcSiteFooter</members>
+        <members>mockupPcInsightsPage</members>
+        <members>mockupPcArticleDetail</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>66.0</version>
+</Package>

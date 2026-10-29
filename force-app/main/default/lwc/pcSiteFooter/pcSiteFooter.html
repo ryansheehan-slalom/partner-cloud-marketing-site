@@ -1,0 +1,67 @@
+<template>
+  <footer class="pc-footer pc-bleed">
+    <div class="pc-container">
+      <!-- Top grid: brand block + 3 link columns -->
+      <div class="pc-footer__top">
+        <div class="pc-footer__brand">
+          <a
+            class="pc-footer__logo"
+            href={homeHref}
+            aria-label="Slalom Salesforce Partner Cloud, home"
+          >
+            <img src={logoUrl} alt="" width="330" height="57" />
+          </a>
+          <p class="pc-footer__tagline">
+            Salesforce Partner Cloud, built by Slalom.
+          </p>
+          <p class="pc-footer__domain">partner.slalomdxp.com</p>
+        </div>
+
+        <template for:each={columns} for:item="column">
+          <nav
+            key={column.key}
+            class="pc-footer__col"
+            aria-label={column.title}
+          >
+            <h2 class="pc-footer__head">{column.title}</h2>
+            <ul class="pc-footer__list">
+              <template for:each={column.links} for:item="link">
+                <li key={link.key}>
+                  <a
+                    class="pc-footer__link"
+                    href={link.href}
+                    target={link.target}
+                    rel={link.rel}
+                    data-anchor={link.anchor}
+                    onclick={handleLinkClick}
+                    >{link.label}<template lwc:if={link.external}
+                      ><span class="pc-visually-hidden"
+                        >, opens in a new tab</span
+                      ></template
+                    ></a
+                  >
+                </li>
+              </template>
+            </ul>
+          </nav>
+        </template>
+      </div>
+
+      <!-- Bottom strip -->
+      <div class="pc-footer__bot">
+        <span>© {year} Slalom. All rights reserved.</span>
+        <ul class="pc-footer__mini" aria-label="Legal">
+          <template for:each={legalLinks} for:item="link">
+            <li key={link.key}>
+              <a href={link.href} target="_blank" rel="noopener noreferrer"
+                >{link.label}<span class="pc-visually-hidden"
+                  >, opens in a new tab</span
+                ></a
+              >
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</template>

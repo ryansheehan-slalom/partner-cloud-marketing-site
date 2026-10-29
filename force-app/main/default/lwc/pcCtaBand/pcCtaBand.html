@@ -1,0 +1,73 @@
+<template>
+  <section
+    class="pc-cta-section pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-cta-heading"
+  >
+    <div class="pc-container">
+      <div class="pc-cta-band">
+        <div
+          class="pc-cta-band__orb pc-cta-band__orb--1"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pc-cta-band__orb pc-cta-band__orb--2"
+          aria-hidden="true"
+        ></div>
+        <div class="pc-cta-band__inner">
+          <!-- Copy + buttons -->
+          <div class="pc-cta-band__copy">
+            <p class="pc-eyebrow pc-eyebrow--on-dark">Connect With Us</p>
+            <h2 id="pc-cta-heading" class="pc-cta-band__title">
+              Ready to modernize your partner experience?
+            </h2>
+            <p class="pc-cta-band__body">
+              Talk to our Salesforce Partner Cloud lead — we'll workshop your
+              program challenges and outline the fastest path to impact.
+            </p>
+            <div class="pc-cta-band__btns">
+              <a class="pc-btn pc-btn--on-dark pc-btn--lg" href={mailtoHref}
+                >{emailLabel}<c-pc-icon
+                  class="pc-arr"
+                  name="arrowRight"
+                  size="18"
+                  stroke-width="2.2"
+                ></c-pc-icon
+              ></a>
+              <a
+                class="pc-btn pc-btn--outline-white pc-btn--lg"
+                href={websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                >slalom.com/salesforce<span class="pc-visually-hidden"
+                  >, opens in a new tab</span
+                ></a
+              >
+            </div>
+          </div>
+
+          <!-- Contact card -->
+          <aside class="pc-contact-card" aria-label="Partner Cloud contact">
+            <img
+              class="pc-contact-card__avatar"
+              src={avatarUrl}
+              alt=""
+              width="64"
+              height="64"
+              loading="lazy"
+            />
+            <div class="pc-contact-card__body">
+              <strong class="pc-contact-card__name">{contactName}</strong>
+              <span class="pc-contact-card__role">{contactRole}</span>
+              <a class="pc-contact-card__email" href={mailtoHref}
+                ><c-pc-icon name="mail" size="16" stroke-width="2"></c-pc-icon
+                >{contactEmail}</a
+              >
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

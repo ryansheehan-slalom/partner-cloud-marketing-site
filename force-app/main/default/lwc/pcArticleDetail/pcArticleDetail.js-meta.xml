@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Article Detail</masterLabel>
+    <description
+  >Partner Cloud Insights article page: header with breadcrumb, byline and share actions, hero art, rich prose body, author bio, and related articles. Reads ?article=slug from the URL (static v1 data).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="articleSlug"
+        type="String"
+        label="Default article slug"
+        description="Shown when the URL has no ?article= parameter. Leave blank to show the featured article."
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

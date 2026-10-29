@@ -1,0 +1,136 @@
+<template>
+  <!-- Attribution bar (scrolls away; header bar below stays sticky) -->
+  <div class="pc-attrib pc-bleed">
+    <div class="pc-container pc-attrib__row">
+      <span class="pc-attrib__left"
+        ><span class="pc-dot" aria-hidden="true"></span> Made by Slalom ·
+        Salesforce Partner Cloud</span
+      >
+      <a
+        class="pc-attrib__link"
+        href={partnerSiteUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        >slalom.com/salesforce<span class="pc-attrib__ext" aria-hidden="true"
+          >↗</span
+        ><span class="pc-visually-hidden">, opens in a new tab</span></a
+      >
+    </div>
+  </div>
+
+  <!-- Glass header bar -->
+  <header class="pc-header pc-bleed">
+    <div class="pc-container pc-header__bar">
+      <a
+        class="pc-logo"
+        href={homeHref}
+        aria-label="Slalom Salesforce Partner Cloud, home"
+      >
+        <img
+          class="pc-logo__img"
+          src={logoUrl}
+          alt=""
+          width="330"
+          height="57"
+        />
+      </a>
+
+      <nav class="pc-nav" aria-label="Main navigation">
+        <template for:each={navLinks} for:item="link">
+          <a
+            key={link.key}
+            class="pc-nav__link"
+            href={link.href}
+            target={link.target}
+            rel={link.rel}
+            data-anchor={link.anchor}
+            onclick={handleLinkClick}
+            >{link.label}<template lwc:if={link.external}
+              ><c-pc-icon
+                class="pc-ext-ic"
+                name="external"
+                size="13"
+                stroke-width="2"
+              ></c-pc-icon
+              ><span class="pc-visually-hidden"
+                >, opens in a new tab</span
+              ></template
+            ></a
+          >
+        </template>
+      </nav>
+
+      <a
+        class="pc-btn pc-btn--primary pc-btn--sm pc-header__cta"
+        href={demoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        >View Demo Site<c-pc-icon
+          class="pc-ext-ic"
+          name="external"
+          size="13"
+          stroke-width="2"
+        ></c-pc-icon
+        ><span class="pc-visually-hidden">, opens in a new tab</span></a
+      >
+
+      <button
+        class="pc-menu-btn"
+        lwc:ref="menuButton"
+        type="button"
+        aria-controls="pc-mobile-menu"
+        aria-expanded={menuExpanded}
+        aria-label={menuButtonLabel}
+        onclick={handleMenuToggle}
+      >
+        <c-pc-icon name={menuIcon} size="22" stroke-width="2"></c-pc-icon>
+      </button>
+    </div>
+
+    <!-- Mobile menu (<960px) -->
+    <template lwc:if={menuOpen}>
+      <div class="pc-mobile-menu" id="pc-mobile-menu">
+        <nav
+          class="pc-container pc-mobile-menu__nav"
+          aria-label="Mobile navigation"
+        >
+          <template for:each={navLinks} for:item="link">
+            <a
+              key={link.key}
+              class="pc-mobile-menu__link"
+              href={link.href}
+              target={link.target}
+              rel={link.rel}
+              data-anchor={link.anchor}
+              onclick={handleLinkClick}
+              >{link.label}<template lwc:if={link.external}
+                ><c-pc-icon
+                  class="pc-ext-ic"
+                  name="external"
+                  size="14"
+                  stroke-width="2"
+                ></c-pc-icon
+                ><span class="pc-visually-hidden"
+                  >, opens in a new tab</span
+                ></template
+              ></a
+            >
+          </template>
+          <a
+            class="pc-btn pc-btn--primary pc-mobile-menu__cta"
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            >View Demo Site<c-pc-icon
+              class="pc-ext-ic"
+              name="external"
+              size="13"
+              stroke-width="2"
+            ></c-pc-icon
+            ><span class="pc-visually-hidden">, opens in a new tab</span></a
+          >
+        </nav>
+      </div>
+    </template>
+  </header>
+</template>

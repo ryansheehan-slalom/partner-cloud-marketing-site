@@ -1,0 +1,82 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Insights",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "0rem",
+                "dxpStyle": {},
+                "layoutDirectionDesktop": "row",
+                "layoutDirectionMobile": "column",
+                "layoutDirectionTablet": "column",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "0rem",
+                "sectionConfig": "{\"UUID\":\"6dfa719f-80a9-4897-aace-49752ae8f528\",\"columns\":[{\"UUID\":\"47e45c38-1ada-4396-9378-6cc6b71af93a\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+                "sectionMinHeight": "",
+                "sectionVerticalAlign": "flex-start"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcInsightsPage",
+                      "id": "6600c397-e43c-4749-b572-19a0d02718b3",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "47e45c38-1ada-4396-9378-6cc6b71af93a",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "6dfa719f-80a9-4897-aace-49752ae8f528",
+              "type": "component"
+            }
+          ],
+          "id": "46e78d80-d0bb-4f10-81a2-1e339813740e",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "dxpStyle": {},
+                "pageTitle": "Insights",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "52f2e531-0795-4c77-a5ee-aaeeed6f0cde",
+              "type": "component"
+            }
+          ],
+          "id": "7e359018-c9bf-4475-b1b6-9b8affcee030",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "a9676c09-8123-46ff-b5b8-6841400eb8cc",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "custom-insights"
+  },
+  "urlName": "insights"
+}

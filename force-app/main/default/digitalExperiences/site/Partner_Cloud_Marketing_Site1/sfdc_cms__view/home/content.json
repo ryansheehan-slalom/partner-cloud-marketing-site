@@ -1,0 +1,122 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Home",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "0rem",
+                "dxpStyle": {},
+                "layoutDirectionDesktop": "row",
+                "layoutDirectionMobile": "column",
+                "layoutDirectionTablet": "column",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "0rem",
+                "sectionConfig": "{\"UUID\":\"0b407e81-9ed5-4db6-be62-6cb87166a233\",\"columns\":[{\"UUID\":\"ea920ac5-92cd-4568-aee9-8a77cf6eaea1\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+                "sectionMinHeight": "",
+                "sectionVerticalAlign": "flex-start"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcHero",
+                      "id": "043217d4-def8-4d7c-a1d2-6f58f9f3c871",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcChallengeSection",
+                      "id": "204ca701-8bf1-4ad4-bcf9-62a43c88af74",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcSolutionGrid",
+                      "id": "66605430-6453-457e-8a7d-9f9fbecda281",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcInsightsPreview",
+                      "id": "ce1aed39-2659-496d-9867-24f2a12d1898",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcWhoWeAre",
+                      "id": "b5460567-cba7-45fc-b556-1a2c7d444457",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcCtaBand",
+                      "id": "b2ac3191-2bb2-4e1d-92a5-4f18f626b910",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "ea920ac5-92cd-4568-aee9-8a77cf6eaea1",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "0b407e81-9ed5-4db6-be62-6cb87166a233",
+              "type": "component"
+            }
+          ],
+          "id": "a14fb926-5fd8-4cbd-b24a-8840a5a3b85b",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "dxpStyle": {},
+                "pageTitle": "Home",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "a6936035-ebb8-46cd-8886-3c86392d1f66",
+              "type": "component"
+            }
+          ],
+          "id": "5fa8fd35-38b1-49b9-a885-b4ac9edbac75",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "c8ec1ddc-4453-4508-85f2-80352d640c8a",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "home"
+  },
+  "urlName": "home"
+}

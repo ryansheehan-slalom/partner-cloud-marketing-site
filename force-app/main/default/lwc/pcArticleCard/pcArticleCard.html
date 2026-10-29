@@ -1,0 +1,42 @@
+<template>
+  <!-- Article teaser card: cover → meta → title → excerpt → optional author -->
+  <a class="pc-article" href={article.href}>
+    <div class="pc-article__media">
+      <img
+        class="pc-article__img"
+        src={article.imageUrl}
+        alt=""
+        width="1600"
+        height="900"
+        loading="lazy"
+      />
+    </div>
+    <div class="pc-article__body">
+      <div class="pc-article__meta">
+        <span class="pc-tag">{article.tag}</span>
+        <span class="pc-article__date">{metaLabel}</span>
+      </div>
+      <h3 class="pc-article__title">{article.title}</h3>
+      <p class="pc-article__excerpt">{article.excerpt}</p>
+      <template lwc:if={showAuthor}>
+        <div class="pc-author">
+          <template lwc:if={article.author.hasAvatar}>
+            <img
+              class="pc-author__avatar"
+              src={article.author.avatarUrl}
+              alt=""
+              width="30"
+              height="30"
+            />
+          </template>
+          <template lwc:else>
+            <span class="pc-author__avatar" aria-hidden="true"
+              >{article.author.initials}</span
+            >
+          </template>
+          <span class="pc-author__name">{article.author.name}</span>
+        </div>
+      </template>
+    </div>
+  </a>
+</template>

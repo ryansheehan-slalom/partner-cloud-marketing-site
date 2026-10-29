@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Site Header</masterLabel>
+    <description
+  >Partner Cloud sticky site header: attribution bar, Slalom lockup, nav (Insights, About, Connect), View Demo Site CTA, and mobile menu.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="demoUrl"
+        type="String"
+        label="Demo site URL"
+        default="https://htf-poc-ai.my.site.com/partners/"
+      />
+            <property
+        name="aboutUrl"
+        type="String"
+        label="About link URL"
+        default="https://www.slalom.com/us/en/who-we-are"
+      />
+            <property
+        name="partnerSiteUrl"
+        type="String"
+        label="Attribution link URL"
+        default="https://slalom.com/salesforce"
+      />
+            <property
+        name="disableFontLoading"
+        type="Boolean"
+        label="Disable Google Fonts injection"
+        description="Check if Archivo and Hanken Grotesk are already loaded in the theme head markup."
+        default="false"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Insights Preview</masterLabel>
+    <description
+  >Partner Cloud home "Insights" teaser strip showing the latest articles (static v1 data) with a See all insights link.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="articleCount"
+        type="Integer"
+        label="Number of articles"
+        default="3"
+        min="1"
+        max="6"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

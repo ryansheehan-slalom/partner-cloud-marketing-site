@@ -1,0 +1,54 @@
+@import "c/pcStyles";
+
+/* ── Feature split (copy left, media right) ──────────────────── */
+.pc-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.pc-feature__media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--brand-tint-2);
+}
+.pc-feature__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pc-feature__title {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.pc-feature__body {
+  margin-top: 16px;
+  font-size: 16.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.pc-feature__body--dim {
+  color: var(--ink-3);
+  font-size: 15.5px;
+}
+.pc-feature__cta {
+  margin-top: 28px;
+}
+.pc-feature__cta .pc-btn {
+  white-space: normal;
+  text-align: left;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pc-feature {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

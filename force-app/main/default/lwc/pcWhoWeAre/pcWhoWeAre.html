@@ -1,0 +1,59 @@
+<template>
+  <section
+    class="pc-section pc-section--surface pc-section--tight pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-who-heading"
+  >
+    <div class="pc-container">
+      <div class="pc-feature">
+        <!-- Copy column -->
+        <div class="pc-feature__copy">
+          <p class="pc-eyebrow">Who We Are</p>
+          <h2 id="pc-who-heading" class="pc-feature__title">
+            Purpose-led. Salesforce-fluent. Ecosystem-focused.
+          </h2>
+          <p class="pc-feature__body">
+            Slalom is a purpose-led, global business and technology consulting
+            company. Our purpose — to help people and organizations dream
+            bigger, move faster, and build better tomorrows for all — guides
+            everything we do.
+          </p>
+          <p class="pc-feature__body pc-feature__body--dim">
+            Salesforce Partner Cloud is where our decades of channel and
+            partner-program experience meet the platform's fastest-growing
+            ecosystem product line. We help organizations turn partner strategy
+            into partner behavior.
+          </p>
+          <div class="pc-feature__cta">
+            <a
+              class="pc-btn pc-btn--primary"
+              href={learnMoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              >Learn more at slalom.com/salesforce<c-pc-icon
+                class="pc-arr"
+                name="external"
+                size="15"
+                stroke-width="2"
+              ></c-pc-icon
+              ><span class="pc-visually-hidden">, opens in a new tab</span></a
+            >
+          </div>
+        </div>
+
+        <!-- Media panel -->
+        <div class="pc-feature__media">
+          <img
+            class="pc-feature__img"
+            src={artUrl}
+            alt="Slalom and Salesforce Partner Cloud lockup surrounded by strategy, experience, data, and platform capabilities"
+            width="800"
+            height="640"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

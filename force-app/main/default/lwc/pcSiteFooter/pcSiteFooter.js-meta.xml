@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Site Footer</masterLabel>
+    <description
+  >Partner Cloud dark site footer: Slalom lockup, Solutions / Insights / Company link columns, and legal strip.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="contactEmail"
+        type="String"
+        label="Contact email"
+        default="jake.seibert@slalom.com"
+      />
+            <property
+        name="linkedInUrl"
+        type="String"
+        label="LinkedIn URL"
+        default="https://www.linkedin.com/company/slalom-consulting/"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

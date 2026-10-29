@@ -1,0 +1,52 @@
+<template>
+  <section class="pc-page-hero pc-bleed" aria-labelledby="pc-page-hero-title">
+    <!-- Decorative backdrop -->
+    <div class="pc-page-hero__mesh" aria-hidden="true"></div>
+    <div class="pc-page-hero__orbit" aria-hidden="true">
+      <span class="pc-page-hero__ring pc-page-hero__ring--1"></span>
+      <span class="pc-page-hero__ring pc-page-hero__ring--2"></span>
+      <span class="pc-page-hero__ring pc-page-hero__ring--3"></span>
+      <span class="pc-page-hero__node pc-page-hero__node--1"></span>
+      <span class="pc-page-hero__node pc-page-hero__node--2"></span>
+      <span class="pc-page-hero__node pc-page-hero__node--3"></span>
+    </div>
+
+    <div class="pc-container pc-page-hero__inner">
+      <!-- Breadcrumb -->
+      <template lwc:if={showBreadcrumb}>
+        <nav class="pc-crumb" aria-label="Breadcrumb">
+          <ol class="pc-crumb__list">
+            <li><a href={homeHref}>Home</a></li>
+            <li aria-current="page" class="pc-crumb__current">{crumbText}</li>
+          </ol>
+        </nav>
+      </template>
+
+      <p class="pc-eyebrow">{eyebrow}</p>
+      <h1 id="pc-page-hero-title" class="pc-page-hero__title">
+        {title}<template lwc:if={titleAccent}
+          >{titleSpacer}<span class="pc-accent">{titleAccent}</span></template
+        >
+      </h1>
+      <template lwc:if={lede}>
+        <p class="pc-page-hero__lede">{lede}</p>
+      </template>
+
+      <!-- Optional CTAs -->
+      <template lwc:if={hasCtas}>
+        <div class="pc-page-hero__cta">
+          <template for:each={ctas} for:item="cta">
+            <a
+              key={cta.key}
+              class={cta.className}
+              href={cta.href}
+              data-anchor={cta.anchor}
+              onclick={handleCtaClick}
+              >{cta.label}</a
+            >
+          </template>
+        </div>
+      </template>
+    </div>
+  </section>
+</template>

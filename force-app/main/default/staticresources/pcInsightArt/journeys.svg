@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Archivo, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <radialGradient id="glowA" cx="0.8" cy="0.15" r="0.55"><stop offset="0" stop-color="#ffffff" stop-opacity="0.3"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowB" cx="0.1" cy="0.95" r="0.5"><stop offset="0" stop-color="#7fdcff" stop-opacity="0.35"/><stop offset="1" stop-color="#7fdcff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <linearGradient id="barG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#ffffff" fill-opacity="0.14"/></pattern>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#021440" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <rect width="1600" height="900" fill="url(#glowA)"/>
+  <rect width="1600" height="900" fill="url(#glowB)"/>
+  <circle cx="1300" cy="180" r="260" fill="#ffffff" fill-opacity="0.06"/>
+  <path d="M180 640C330 640 420 470 560 450S700 330 820 330 980 540 1120 540 1300 300 1420 260" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="40" stroke-linecap="round"/>
+  <path d="M180 640C330 640 420 470 560 450S700 330 820 330 980 540 1120 540 1300 300 1420 260" fill="none" stroke="#ffffff" stroke-opacity="0.9" stroke-width="7" stroke-linecap="round" stroke-dasharray="2 20"/>
+  <g filter="url(#sh)"><circle cx="180" cy="640" r="46" fill="#ffffff"/></g><g transform="translate(158.0 618.0) scale(1.833)" fill="none" stroke="#0c62fb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0Z"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13A4 4 0 0 1 16 11"/></g>
+  <g filter="url(#sh)"><circle cx="560" cy="450" r="46" fill="#ffffff"/></g><g transform="translate(538.0 428.0) scale(1.833)" fill="none" stroke="#0c62fb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></g>
+  <g filter="url(#sh)"><circle cx="820" cy="330" r="46" fill="#ffffff"/></g><g transform="translate(798.0 308.0) scale(1.833)" fill="none" stroke="#0c62fb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8L4 10l5 3.5L7.5 20 12 16l4.5 4L15 13.5 20 10l-6.1-1.2Z"/></g>
+  <g filter="url(#sh)"><circle cx="1120" cy="540" r="46" fill="#ffffff"/></g><g transform="translate(1098.0 518.0) scale(1.833)" fill="none" stroke="#0c62fb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></g>
+  <g filter="url(#sh)"><circle cx="1420" cy="260" r="62" fill="#ffffff"/></g><circle cx="1420" cy="260" r="50" fill="url(#brand)"/><g transform="translate(1396.0 234.0) scale(2.167)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></g>
+<path transform="translate(1260 140) scale(1.6)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.8"/><path transform="translate(420 250) scale(1.2)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.6"/><path transform="translate(980 720) scale(1.4)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.7"/><path transform="translate(1500 480) scale(1)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.6"/>
+</svg>

@@ -1,0 +1,8 @@
+:host {
+  display: inline-flex;
+  flex: none;
+  line-height: 0;
+}
+.pc-icon {
+  display: block;
+}

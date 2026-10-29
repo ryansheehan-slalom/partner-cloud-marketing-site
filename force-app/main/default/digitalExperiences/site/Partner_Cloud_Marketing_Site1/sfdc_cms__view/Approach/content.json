@@ -1,0 +1,190 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Approach",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "0rem",
+                "dxpStyle": {},
+                "layoutDirectionDesktop": "row",
+                "layoutDirectionMobile": "column",
+                "layoutDirectionTablet": "column",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "0rem",
+                "sectionConfig": "{\"UUID\":\"335ed122-268b-4947-b490-b828f693bec5\",\"columns\":[{\"UUID\":\"1a2db008-af12-41f3-84c6-28ce014e99f9\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+                "sectionMinHeight": "",
+                "sectionVerticalAlign": "flex-start"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {
+                        "crumbLabel": "Approach",
+                        "dxpStyle": {},
+                        "eyebrow": "Our Approach",
+                        "hideBreadcrumb": false,
+                        "lede": "Slalom pairs partner-program insight with intentional design and deep Salesforce expertise to modernize your ecosystem — one measurable release at a time.",
+                        "primaryHref": "#process",
+                        "primaryLabel": "See how we work",
+                        "secondaryHref": "#connect",
+                        "secondaryLabel": "Talk to our team",
+                        "title": "From partner strategy to",
+                        "titleAccent": "partner behavior."
+                      },
+                      "definition": "c:pcPageHero",
+                      "id": "e16f92a2-bdee-45ae-8967-0572b9dc5435",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcProcessSteps",
+                      "id": "ba0c00b5-5fa2-46c7-9a61-a2deb6c91af3",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcStatBand",
+                      "id": "e6d2b291-bf7d-4749-a6c4-de325daa3bb5",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "anchorId": "roi",
+                        "background": "white",
+                        "body": "We connect deal registration, incentives, MDF, and marketing attribution so program leaders can forecast spend and prove return — not just report activity.",
+                        "bullet1": "Deal-to-incentive attribution",
+                        "bullet2": "MDF and campaign influence on pipeline",
+                        "bullet3": "Incentive liability forecasting",
+                        "bullet4": "",
+                        "ctaHref": "/insight-detail?article=proving-partner-roi",
+                        "ctaLabel": "Read: Proving partner ROI",
+                        "dxpStyle": {},
+                        "eyebrow": "Realized ROI",
+                        "image": "roi",
+                        "imageAlt": "",
+                        "reversed": false,
+                        "title": "See partner investment and expected revenue side by side."
+                      },
+                      "definition": "c:pcFeatureSplit",
+                      "id": "f96382d0-c21a-4e25-93fe-58b3e437a282",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "anchorId": "engagement",
+                        "background": "surface",
+                        "body": "Real-time Slack collaboration and orchestrated marketing communications keep partners informed and moving deals — without asking them to log in to yet another tool.",
+                        "bullet1": "Shared deal channels with channel managers",
+                        "bullet2": "Real-time registration and approval alerts",
+                        "bullet3": "Campaign-aligned enablement drops",
+                        "bullet4": "",
+                        "ctaHref": "",
+                        "ctaLabel": "",
+                        "dxpStyle": {},
+                        "eyebrow": "Multi-channel engagement",
+                        "image": "engagement",
+                        "imageAlt": "",
+                        "reversed": true,
+                        "title": "Meet partners in Slack, the portal, and their inbox."
+                      },
+                      "definition": "c:pcFeatureSplit",
+                      "id": "f82f46ba-cbeb-4f2d-ac74-07f3a5fe2a40",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "anchorId": "accelerators",
+                        "background": "white",
+                        "body": "Drive immediate impact with intuitive marketing development visualization and deal intake channels powered by directory management.",
+                        "bullet1": "Marketing development fund (MDF) visualization",
+                        "bullet2": "Directory-driven deal intake and routing",
+                        "bullet3": "Faster time-to-value on Salesforce Partner Cloud",
+                        "bullet4": "",
+                        "ctaHref": "",
+                        "ctaLabel": "",
+                        "dxpStyle": {},
+                        "eyebrow": "Slalom-only accelerators",
+                        "image": "directory",
+                        "imageAlt": "",
+                        "reversed": false,
+                        "title": "Start ahead with proven Partner Cloud accelerators."
+                      },
+                      "definition": "c:pcFeatureSplit",
+                      "id": "12328040-e40f-4089-8796-ca1df375adf5",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcFaq",
+                      "id": "fce6d04d-b363-4de0-a59d-6a4ea1c04a67",
+                      "type": "component"
+                    },
+                    {
+                      "attributes": {
+                        "dxpStyle": {}
+                      },
+                      "definition": "c:pcCtaBand",
+                      "id": "5c2525cc-792e-4fc9-89ce-bb37d7fc1b75",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "1a2db008-af12-41f3-84c6-28ce014e99f9",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "335ed122-268b-4947-b490-b828f693bec5",
+              "type": "component"
+            }
+          ],
+          "id": "5626a24f-e6e8-4e7f-9ede-243e03fa7773",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "How Slalom modernizes partner ecosystems on Salesforce Partner Cloud: assess, design, build, and optimize.",
+                "dxpStyle": {},
+                "pageTitle": "Our Approach",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "c43a4066-373d-4026-87cc-e7e2bf0d13ea",
+              "type": "component"
+            }
+          ],
+          "id": "8c43c8b6-476b-4f69-b1ef-0bf6aa4228d0",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "22bd1396-29c6-4a00-86a3-7528fd0d0e1d",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "custom-approach"
+  },
+  "urlName": "approach"
+}

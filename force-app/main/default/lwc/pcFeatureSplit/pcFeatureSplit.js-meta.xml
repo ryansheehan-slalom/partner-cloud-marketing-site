@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Feature Split</masterLabel>
+    <description
+  >Partner Cloud configurable two-column feature section: eyebrow, title, body, up to four check bullets, optional CTA, and art from the Partner Cloud illustration library.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="anchorId"
+        type="String"
+        label="Anchor ID"
+        description="Optional. Lets links like /approach#roi scroll to this section."
+      />
+            <property name="eyebrow" type="String" label="Eyebrow" />
+            <property name="title" type="String" label="Title" />
+            <property name="body" type="String" label="Body" />
+            <property name="bullet1" type="String" label="Bullet 1" />
+            <property name="bullet2" type="String" label="Bullet 2" />
+            <property name="bullet3" type="String" label="Bullet 3" />
+            <property name="bullet4" type="String" label="Bullet 4" />
+            <property
+        name="image"
+        type="String"
+        label="Illustration"
+        datasource="roi,engagement,directory,journeys,onboarding,tiering,conflict,forecast,challenge,lockup,hub"
+        default="roi"
+      />
+            <property
+        name="imageAlt"
+        type="String"
+        label="Image alt text"
+        description="Defaults to a description of the selected illustration."
+      />
+            <property
+        name="reversed"
+        type="Boolean"
+        label="Illustration on left"
+        default="false"
+      />
+            <property
+        name="background"
+        type="String"
+        label="Background"
+        datasource="white,surface,canvas"
+        default="white"
+      />
+            <property name="ctaLabel" type="String" label="Button label" />
+            <property
+        name="ctaHref"
+        type="String"
+        label="Button URL"
+        description="Site path, external URL, or #section on this page."
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

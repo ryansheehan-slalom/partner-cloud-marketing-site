@@ -1,0 +1,12 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Insight Detail",
+  "contentBody": {
+    "activeViewId": "Insight_Detail",
+    "configurationTags": [],
+    "pageAccess": "Public",
+    "routeType": "custom-insight-detail",
+    "urlPrefix": "insight-detail"
+  },
+  "urlName": "insight-detail"
+}

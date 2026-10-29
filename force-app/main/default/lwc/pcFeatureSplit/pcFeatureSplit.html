@@ -1,0 +1,67 @@
+<template>
+  <section
+    class={sectionClass}
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-split-heading"
+  >
+    <div class="pc-container">
+      <div class={gridClass}>
+        <!-- Copy column -->
+        <div class="pc-split__copy">
+          <template lwc:if={eyebrow}>
+            <p class="pc-eyebrow">{eyebrow}</p>
+          </template>
+          <h2 id="pc-split-heading" class="pc-split__title">{title}</h2>
+          <template lwc:if={body}>
+            <p class="pc-split__body">{body}</p>
+          </template>
+          <template lwc:if={hasBullets}>
+            <ul class="pc-split__list">
+              <template for:each={bullets} for:item="bullet">
+                <li key={bullet.key} class="pc-split__item">
+                  <span class="pc-split__check"
+                    ><c-pc-icon
+                      name="check"
+                      size="14"
+                      stroke-width="2.6"
+                    ></c-pc-icon
+                  ></span>
+                  <span>{bullet.text}</span>
+                </li>
+              </template>
+            </ul>
+          </template>
+          <template lwc:if={hasCta}>
+            <div class="pc-split__cta">
+              <a
+                class="pc-btn pc-btn--ghost"
+                href={ctaUrl}
+                data-anchor={ctaAnchor}
+                onclick={handleCtaClick}
+                >{ctaLabel}<c-pc-icon
+                  class="pc-arr"
+                  name="arrowRight"
+                  size="17"
+                  stroke-width="2.2"
+                ></c-pc-icon
+              ></a>
+            </div>
+          </template>
+        </div>
+
+        <!-- Media panel -->
+        <div class={mediaClass}>
+          <img
+            class="pc-split__img"
+            src={media.url}
+            alt={resolvedImageAlt}
+            width={media.width}
+            height={media.height}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

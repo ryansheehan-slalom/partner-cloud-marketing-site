@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Stat Band</masterLabel>
+    <description
+  >Partner Cloud three-up proof-point strip. Values and labels are configurable; defaults restate facts already published on the site.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="heading"
+        type="String"
+        label="Screen-reader heading"
+        default="Why Slalom for Partner Cloud"
+      />
+            <property
+        name="stat1Value"
+        type="String"
+        label="Stat 1 value"
+        default="Summit"
+      />
+            <property
+        name="stat1Label"
+        type="String"
+        label="Stat 1 label"
+        default="Salesforce Consulting Partner tier"
+      />
+            <property
+        name="stat2Value"
+        type="String"
+        label="Stat 2 value"
+        default="360°"
+      />
+            <property
+        name="stat2Label"
+        type="String"
+        label="Stat 2 label"
+        default="View of partner investment and expected revenue"
+      />
+            <property
+        name="stat3Value"
+        type="String"
+        label="Stat 3 value"
+        default="30·60·90"
+      />
+            <property
+        name="stat3Label"
+        type="String"
+        label="Stat 3 label"
+        default="Day onboarding blueprint to shorten time-to-first-deal"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

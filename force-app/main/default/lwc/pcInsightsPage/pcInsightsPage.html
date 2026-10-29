@@ -1,0 +1,201 @@
+<template>
+  <div class="pc-page">
+    <!-- ══════════ MASTHEAD ══════════ -->
+    <section class="pc-masthead pc-bleed" aria-labelledby="pc-insights-title">
+      <div class="pc-masthead__mesh" aria-hidden="true"></div>
+      <div class="pc-container pc-masthead__inner">
+        <p class="pc-eyebrow">Insights</p>
+        <h1 id="pc-insights-title" class="pc-masthead__title">
+          Notes from the ecosystem.
+        </h1>
+        <p class="pc-masthead__lede">
+          Fresh perspectives on modernizing partner programs, from the Slalom
+          team building them.
+        </p>
+
+        <div
+          class="pc-tabs"
+          role="group"
+          aria-label="Filter articles by category"
+        >
+          <template for:each={filters} for:item="filter">
+            <button
+              key={filter.value}
+              type="button"
+              class={filter.className}
+              aria-pressed={filter.pressed}
+              data-value={filter.value}
+              onclick={handleFilterClick}
+            >
+              {filter.label}
+            </button>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ FEATURED ══════════ -->
+    <template lwc:if={showFeatured}>
+      <section
+        class="pc-section pc-section--white pc-bleed"
+        aria-labelledby="pc-featured-title"
+      >
+        <div class="pc-container">
+          <a class="pc-featured" href={featured.href}>
+            <div class="pc-featured__media">
+              <img
+                class="pc-featured__img"
+                src={featured.imageUrl}
+                alt=""
+                width="1600"
+                height="900"
+              />
+              <span class="pc-featured__flag">Featured</span>
+            </div>
+            <div class="pc-featured__body">
+              <div class="pc-meta">
+                <span class="pc-tag">{featured.tag}</span>
+                <span class="pc-meta__date">{featured.metaLong}</span>
+              </div>
+              <h2 id="pc-featured-title" class="pc-featured__title">
+                {featured.title}
+              </h2>
+              <p class="pc-featured__excerpt">{featured.deck}</p>
+              <div class="pc-author">
+                <template lwc:if={featured.author.hasAvatar}>
+                  <img
+                    class="pc-author__avatar"
+                    src={featured.author.avatarUrl}
+                    alt=""
+                    width="40"
+                    height="40"
+                  />
+                </template>
+                <template lwc:else>
+                  <span class="pc-author__avatar" aria-hidden="true"
+                    >{featured.author.initials}</span
+                  >
+                </template>
+                <span class="pc-author__meta">
+                  <strong>{featured.author.name}</strong>
+                  <span>{featured.author.shortRole}</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </template>
+
+    <!-- ══════════ ARTICLE GRID ══════════ -->
+    <section
+      class="pc-section pc-section--canvas pc-bleed"
+      aria-labelledby="pc-grid-title"
+    >
+      <div class="pc-container">
+        <h2 id="pc-grid-title" class="pc-visually-hidden">{gridHeading}</h2>
+        <p class="pc-visually-hidden" aria-live="polite">
+          {resultsAnnouncement}
+        </p>
+        <template lwc:if={hasArticles}>
+          <ul class="pc-insights-grid">
+            <template for:each={visibleArticles} for:item="article">
+              <li key={article.slug}>
+                <c-pc-article-card
+                  article={article}
+                  show-author
+                  meta-format="short"
+                ></c-pc-article-card>
+              </li>
+            </template>
+          </ul>
+        </template>
+        <template lwc:else>
+          <p class="pc-empty">
+            No articles in this category yet — check back soon.
+          </p>
+        </template>
+
+        <template lwc:if={hasMore}>
+          <div class="pc-loadmore">
+            <button
+              class="pc-btn pc-btn--ghost"
+              type="button"
+              onclick={handleLoadMore}
+            >
+              Load more articles
+            </button>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- ══════════ NEWSLETTER ══════════ -->
+    <section
+      class="pc-news-section pc-bleed"
+      lwc:ref="newsletter"
+      tabindex="-1"
+      aria-labelledby="pc-news-title"
+    >
+      <div class="pc-container">
+        <div class="pc-news">
+          <div class="pc-news__orb pc-news__orb--1" aria-hidden="true"></div>
+          <div class="pc-news__orb pc-news__orb--2" aria-hidden="true"></div>
+          <div class="pc-news__inner">
+            <div>
+              <p class="pc-eyebrow pc-eyebrow--on-dark">Stay in the loop</p>
+              <h2 id="pc-news-title" class="pc-news__title">
+                Ecosystem insights, straight to your inbox.
+              </h2>
+              <p class="pc-news__body">
+                One thoughtful email a month on modernizing partner programs. No
+                noise.
+              </p>
+            </div>
+            <div>
+              <template lwc:if={subscribed}>
+                <p class="pc-news__success" role="status">
+                  <c-pc-icon
+                    name="check"
+                    size="18"
+                    stroke-width="2.6"
+                  ></c-pc-icon>
+                  Thanks — you're on the list.
+                </p>
+              </template>
+              <template lwc:else>
+                <form
+                  class="pc-news__form"
+                  novalidate
+                  onsubmit={handleSubscribe}
+                >
+                  <label class="pc-visually-hidden" for="pc-news-email"
+                    >Email address</label
+                  >
+                  <input
+                    id="pc-news-email"
+                    class="pc-news__input"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="you@company.com"
+                    value={email}
+                    aria-invalid={emailInvalid}
+                    aria-describedby="pc-news-error"
+                    oninput={handleEmailInput}
+                  />
+                  <button class="pc-btn pc-btn--on-dark" type="submit">
+                    Subscribe
+                  </button>
+                </form>
+                <p id="pc-news-error" class="pc-news__error" aria-live="polite">
+                  {errorMessage}
+                </p>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>false</isExposed>
+    <masterLabel>PC Article Card</masterLabel>
+    <description
+  >Internal child component: Insights article teaser card used by the insights preview, listing, and related-articles grids.</description>
+</LightningComponentBundle>

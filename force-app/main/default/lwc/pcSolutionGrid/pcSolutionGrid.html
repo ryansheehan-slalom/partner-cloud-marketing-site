@@ -1,0 +1,48 @@
+<template>
+  <section
+    class="pc-section pc-section--canvas pc-bleed pc-solution"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-solution-heading"
+  >
+    <div class="pc-solution__mesh" aria-hidden="true"></div>
+    <div class="pc-container">
+      <!-- Section head -->
+      <header class="pc-sec-head">
+        <p class="pc-eyebrow">The Solution</p>
+        <h2 id="pc-solution-heading" class="pc-sec-head__title">
+          A strategy-first approach to partner ecosystem modernization.
+        </h2>
+        <p class="pc-sec-head__lede">
+          Using partner-program insight and intentional design to modernize
+          ecosystems and remove friction.
+        </p>
+      </header>
+
+      <!-- Offering cards -->
+      <ul class="pc-asset-grid">
+        <template for:each={offerings} for:item="card">
+          <li key={card.title} class="pc-card">
+            <span class="pc-card__badge"
+              ><c-pc-icon name={card.icon} size="24"></c-pc-icon
+            ></span>
+            <h3 class="pc-card__title">{card.title}</h3>
+            <p class="pc-card__body">{card.description}</p>
+          </li>
+        </template>
+      </ul>
+
+      <!-- Link to the full approach page -->
+      <div class="pc-solution__cta">
+        <a class="pc-btn pc-btn--ghost" href={approachHref}
+          >Explore our approach<c-pc-icon
+            class="pc-arr"
+            name="arrowRight"
+            size="17"
+            stroke-width="2.2"
+          ></c-pc-icon
+        ></a>
+      </div>
+    </div>
+  </section>
+</template>

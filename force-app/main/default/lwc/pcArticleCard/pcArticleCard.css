@@ -1,0 +1,98 @@
+@import "c/pcStyles";
+
+:host {
+  height: 100%;
+}
+
+.pc-article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.24s ease,
+    border-color 0.2s;
+}
+.pc-article:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.pc-article__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--brand-grad);
+}
+.pc-article__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.pc-article:hover .pc-article__img {
+  transform: scale(1.04);
+}
+.pc-article__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 24px;
+}
+.pc-article__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pc-article__date {
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+.pc-article__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.pc-article:hover .pc-article__title {
+  color: var(--brand-deep);
+}
+.pc-article__excerpt {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* ── Author row ──────────────────────────────────────────────── */
+.pc-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.pc-author__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--brand-grad);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12px;
+  flex: none;
+  object-fit: cover;
+}
+.pc-author__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+}

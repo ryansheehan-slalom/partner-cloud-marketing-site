@@ -1,0 +1,169 @@
+@import "c/pcStyles";
+
+/* ── Steps grid (reference pattern: ecHtfProcessSection) ─────── */
+.pc-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.pc-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+/* Dashed connector between step markers */
+.pc-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 64px;
+  right: -14px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--line-strong) 0 6px,
+    transparent 6px 12px
+  );
+}
+.pc-step__marker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.pc-step__num {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand-grad);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 10px 22px rgba(12, 98, 251, 0.3);
+}
+.pc-step__card {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 22px 24px;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.24s ease,
+    border-color 0.2s;
+}
+.pc-step:hover .pc-step__card {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.pc-step__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.pc-step__title {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.pc-step__duration {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+  background: var(--brand-tint);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.pc-step__body {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.pc-step__label {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.pc-step__list {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+.pc-step__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.pc-step__check {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  display: grid;
+  place-items: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pc-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pc-step:nth-child(2n)::after {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .pc-steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .pc-step {
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 22px;
+  }
+  .pc-step__marker {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  /* Vertical connector on stacked layout */
+  .pc-step:not(:last-child)::after,
+  .pc-step:nth-child(2n)::after {
+    display: block;
+    top: 56px;
+    bottom: 0;
+    left: 23px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: repeating-linear-gradient(
+      180deg,
+      var(--line-strong) 0 6px,
+      transparent 6px 12px
+    );
+  }
+}

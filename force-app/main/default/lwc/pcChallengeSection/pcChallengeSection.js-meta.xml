@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Challenge Section</masterLabel>
+    <description
+  >Partner Cloud "The Challenge" feature split: problem statement, six common challenges, and illustrated media panel.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="reversed"
+        type="Boolean"
+        label="Media on right"
+        default="false"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

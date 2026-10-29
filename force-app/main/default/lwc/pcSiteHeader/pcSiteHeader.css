@@ -1,0 +1,203 @@
+@import "c/pcStyles";
+
+/* Sticky host: the attribution bar scrolls off, the glass bar stays pinned. */
+:host {
+  --pc-attrib-h: 38px;
+  position: sticky;
+  top: calc(var(--pc-attrib-h) * -1);
+  z-index: 100;
+}
+
+/* ── Attribution bar ─────────────────────────────────────────── */
+.pc-attrib {
+  background: var(--dark);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12.5px;
+}
+.pc-attrib__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--pc-attrib-h);
+}
+.pc-attrib__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.pc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-2);
+  box-shadow: 0 0 0 3px rgba(0, 161, 224, 0.25);
+}
+.pc-attrib__link {
+  color: rgba(255, 255, 255, 0.85);
+  --pc-link-color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pc-attrib__link:hover {
+  color: var(--white);
+  --pc-link-color: var(--white);
+}
+.pc-attrib__ext {
+  margin-left: 4px;
+}
+
+/* ── Header bar ──────────────────────────────────────────────── */
+.pc-header {
+  position: relative;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.pc-header__bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 72px;
+}
+.pc-logo {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.pc-logo__img {
+  height: 26px;
+  width: auto;
+}
+.pc-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: auto;
+}
+.pc-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink-2);
+  --pc-link-color: var(--ink-2);
+  transition: color 0.2s;
+}
+.pc-nav__link:hover {
+  color: var(--brand-deep);
+  --pc-link-color: var(--brand-deep);
+}
+.pc-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--brand-grad);
+  transition: width 0.2s var(--ease);
+}
+.pc-nav__link:hover::after {
+  width: 100%;
+}
+.pc-ext-ic {
+  opacity: 0.8;
+}
+
+/* ── Mobile menu ─────────────────────────────────────────────── */
+.pc-menu-btn {
+  display: none;
+  margin-left: 4px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  place-items: center;
+  cursor: pointer;
+}
+.pc-menu-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand-deep);
+}
+.pc-mobile-menu {
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--shadow);
+  animation: pcMenuIn 0.2s var(--ease);
+}
+.pc-mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.pc-mobile-menu__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  --pc-link-color: var(--ink);
+}
+.pc-mobile-menu__link:hover {
+  color: var(--brand-deep);
+  --pc-link-color: var(--brand-deep);
+}
+.pc-mobile-menu__cta {
+  margin-top: 18px;
+  align-self: flex-start;
+}
+@keyframes pcMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pc-nav {
+    display: none;
+  }
+  .pc-header__cta {
+    margin-left: auto;
+  }
+  .pc-menu-btn {
+    display: grid;
+  }
+}
+@media (min-width: 961px) {
+  .pc-mobile-menu {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .pc-attrib__link {
+    display: none;
+  }
+  .pc-header__cta {
+    display: none;
+  }
+  .pc-menu-btn {
+    margin-left: auto;
+  }
+}

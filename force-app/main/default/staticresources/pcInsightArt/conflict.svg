@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Archivo, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0847c4"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <radialGradient id="glowA" cx="0.8" cy="0.15" r="0.55"><stop offset="0" stop-color="#ffffff" stop-opacity="0.3"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowB" cx="0.1" cy="0.95" r="0.5"><stop offset="0" stop-color="#7fdcff" stop-opacity="0.35"/><stop offset="1" stop-color="#7fdcff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <linearGradient id="barG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0c62fb"/><stop offset="1" stop-color="#00a1e0"/></linearGradient>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#ffffff" fill-opacity="0.14"/></pattern>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#021440" flood-opacity="0.3"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <rect width="1600" height="900" fill="url(#glowA)"/>
+  <rect width="1600" height="900" fill="url(#glowB)"/>
+  <path d="M200 290C520 290 560 450 760 450M200 610C520 610 560 450 760 450" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="70" stroke-linecap="round"/>
+  <path d="M200 290C520 290 560 450 760 450" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round"/>
+  <path d="M200 610C520 610 560 450 760 450" fill="none" stroke="#7fdcff" stroke-width="26" stroke-linecap="round"/>
+  <path d="M860 450H1330" stroke="#ffffff" stroke-width="40" stroke-linecap="round"/>
+  <path d="M1320 384 1440 450 1320 516Z" fill="#ffffff" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"/>
+  <g filter="url(#sh)"><path transform="translate(680 330) scale(10)" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" fill="#ffffff"/></g>
+  <path transform="translate(680 330) scale(10)" d="M8.5 11.5l2.5 2.5 4.5-5" fill="none" stroke="#0c62fb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g filter="url(#sh)"><circle cx="200" cy="290" r="50" fill="#ffffff"/><circle cx="200" cy="610" r="50" fill="#ffffff"/></g>
+<circle cx="200" cy="282.6" r="11.7" fill="#0847c4"/><path d="M179.2 319.0q0 -20.8 20.8 -20.8q20.8 0 20.8 20.8Z" fill="#0847c4"/><circle cx="200" cy="602.6" r="11.7" fill="#00a1e0"/><path d="M179.2 639.0q0 -20.8 20.8 -20.8q20.8 0 20.8 20.8Z" fill="#00a1e0"/>
+  <text x="200" y="210" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">Direct</text>
+  <text x="200" y="712" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">Partner</text>
+<path transform="translate(1200 240) scale(1.4)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.8"/><path transform="translate(1380 680) scale(1.1)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.7"/><path transform="translate(560 160) scale(1)" d="M0-10 2.5-2.5 10 0 2.5 2.5 0 10-2.5 2.5-10 0-2.5-2.5Z" fill="#ffffff" opacity="0.6"/>
+</svg>

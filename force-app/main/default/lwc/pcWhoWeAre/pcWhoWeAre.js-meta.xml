@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Who We Are</masterLabel>
+    <description
+  >Partner Cloud "Who We Are" feature split with Slalom purpose copy, Slalom x Partner Cloud lockup art, and slalom.com/salesforce CTA (anchor #who-we-are).</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="learnMoreUrl"
+        type="String"
+        label="Learn more URL"
+        default="https://slalom.com/salesforce"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

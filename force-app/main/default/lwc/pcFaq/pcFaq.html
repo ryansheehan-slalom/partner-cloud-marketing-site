@@ -1,0 +1,64 @@
+<template>
+  <section
+    class="pc-section pc-section--surface pc-bleed"
+    lwc:ref="section"
+    tabindex="-1"
+    aria-labelledby="pc-faq-heading"
+  >
+    <div class="pc-container pc-faq">
+      <!-- Section head -->
+      <header class="pc-faq__head">
+        <p class="pc-eyebrow">FAQ</p>
+        <h2 id="pc-faq-heading" class="pc-faq__title">
+          Questions partner leaders ask us.
+        </h2>
+        <p class="pc-faq__lede">
+          Don't see yours? Our Partner Cloud team is happy to talk it through.
+        </p>
+        <a
+          class="pc-btn pc-btn--ghost pc-faq__cta"
+          href={connectHref}
+          data-anchor="connect"
+          onclick={handleAnchorClick}
+          >Ask a question<c-pc-icon
+            class="pc-arr"
+            name="arrowRight"
+            size="17"
+            stroke-width="2.2"
+          ></c-pc-icon
+        ></a>
+      </header>
+
+      <!-- Accordion -->
+      <ul class="pc-faq__list">
+        <template for:each={items} for:item="item">
+          <li key={item.id} class={item.className}>
+            <h3 class="pc-faq__q">
+              <button
+                class="pc-faq__btn"
+                type="button"
+                id={item.buttonId}
+                aria-expanded={item.expanded}
+                aria-controls={item.panelId}
+                data-id={item.id}
+                onclick={handleToggle}
+              >
+                <span>{item.question}</span>
+                <span class="pc-faq__toggle" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div
+              class="pc-faq__panel"
+              id={item.panelId}
+              role="region"
+              aria-labelledby={item.buttonId}
+              hidden={item.collapsed}
+            >
+              <p>{item.answer}</p>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </section>
+</template>

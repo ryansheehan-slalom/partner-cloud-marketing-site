@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PC Page Hero</masterLabel>
+    <description
+  >Partner Cloud interior-page hero: breadcrumb, eyebrow, H1 with optional gradient accent, lede, and up to two CTAs. CTA URLs starting with # scroll to a section on the same page.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="eyebrow" type="String" label="Eyebrow" />
+            <property name="title" type="String" label="Title" />
+            <property
+        name="titleAccent"
+        type="String"
+        label="Title accent (gradient text appended to the title)"
+      />
+            <property name="lede" type="String" label="Lede" />
+            <property
+        name="crumbLabel"
+        type="String"
+        label="Breadcrumb label"
+        description="Defaults to the eyebrow."
+      />
+            <property
+        name="hideBreadcrumb"
+        type="Boolean"
+        label="Hide breadcrumb"
+        default="false"
+      />
+            <property
+        name="primaryLabel"
+        type="String"
+        label="Primary button label"
+      />
+            <property
+        name="primaryHref"
+        type="String"
+        label="Primary button URL"
+        description="Site path (/insights), external URL, or #section on this page."
+      />
+            <property
+        name="secondaryLabel"
+        type="String"
+        label="Secondary button label"
+      />
+            <property
+        name="secondaryHref"
+        type="String"
+        label="Secondary button URL"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
